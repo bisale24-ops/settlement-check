@@ -33,6 +33,10 @@ def parse_args(argv=None):
                              "getSignaturesForAddress plus a getTransaction per signature, which "
                              "is why the default is small on a public node and why this is the "
                              "part that wants a real endpoint")
+    parser.add_argument("--workers", type=int, default=6, metavar="N",
+                        help="settlement lookups in flight at once. The public node starts "
+                             "refusing above a couple; an endpoint with headroom does not, which "
+                             "is where that headroom becomes wall-clock")
     parser.add_argument("--no-chain", action="store_true",
                         help="skip every on-chain lookup; nothing is claimed about who settled")
     return parser.parse_args(argv)
@@ -69,12 +73,8 @@ def read_settlements(cards, args):
     if args.no_chain or args.settlements <= 0:
         return None
     order = sorted(cards, key=lambda c: (c.get("phase") in ("primary", "secondary")))
-    found = {}
-    for card in order[:args.settlements]:
-        try:
-            found[card["marketId"]] = chain.settlement(card["marketId"])
-        except chain.ChainError:
-            pass
+    wanted = [card["marketId"] for card in order[:args.settlements]]
+    found = chain.settlements(wanted, workers=args.workers)
     return lambda market_id: found.get(market_id, classify.NOT_LOOKED)
 
 

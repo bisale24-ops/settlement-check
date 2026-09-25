@@ -128,13 +128,27 @@ what was claimed, who signed:
 `--replay <signature>` runs the same code over a settlement that already happened, so it can be
 shown without waiting for the next one.
 
-**Why this wants a real endpoint, measured rather than asserted.** Reading the settlements already
-in the catalogue costs one `getSignaturesForAddress` plus a `getTransaction` per signature, per
-market; on the public node that fails at a couple of dozen markets with `getTransaction failed
-after 3 attempts`. And the public node accepts a `logsSubscribe` with a program filter,
-acknowledges it, then closes the connection. The watcher reconnects and, when it gives up, says
-that is the endpoint's limit and not the venue having nothing to settle. `SOLANA_WS` and
-`SOLANA_RPC` point the same code somewhere that will hold it.
+### Why this wants a real endpoint, measured rather than asserted
+
+Reading who settled a market costs one `getSignaturesForAddress` plus a `getTransaction` per
+signature. Doing it for a catalogue means doing it a few hundred times, and sequential reads spend
+their whole day on round-trip latency — so the number that matters is how many can be in flight at
+once. Fourteen settled markets, same code, `--workers 6`:
+
+| endpoint | read | wall clock |
+|---|---:|---:|
+| `api.mainnet-beta.solana.com` | **0 of 14** | refused everything under concurrency |
+| Solami RPC | **14 of 14** | 101s — against 206s for the same reads one at a time |
+
+The public node also accepts a `logsSubscribe` with a program filter, acknowledges it, and then
+closes the connection, so the live watcher cannot hold a subscription there at all. It reconnects
+and, when it gives up, says that is the endpoint's limit and not the venue having nothing to
+settle.
+
+The endpoint is a setting either way. `SOLANA_RPC` wins if set; otherwise a key at
+`~/.config/solami.key` is used; otherwise the public node. The key is read from outside the
+repository, never committed and never printed — anything that names the endpoint runs it through
+`chain.safe()` first.
 
 ---
 

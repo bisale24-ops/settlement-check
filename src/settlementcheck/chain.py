@@ -6,12 +6,40 @@ read methods are used — `getAccountInfo`, `getSignaturesForAddress`, `getTrans
 """
 import json
 import os
+import pathlib
 import re
 import time
 import urllib.error
 import urllib.request
 
-RPC = os.environ.get("SOLANA_RPC", "https://api.mainnet-beta.solana.com")
+PUBLIC_RPC = "https://api.mainnet-beta.solana.com"
+SOLAMI_KEY_FILE = pathlib.Path(os.environ.get(
+    "SOLAMI_KEY_FILE", pathlib.Path.home() / ".config/solami.key"))
+
+
+def _endpoint():
+    """Where to read the chain. A key on disk beats the public node, and beats neither in code.
+
+    Order: `SOLANA_RPC` if set, then a Solami key at `~/.config/solami.key`, then the public node.
+    The key is read from outside the repository and never printed — `safe()` masks it for any
+    message that names the endpoint.
+    """
+    explicit = os.environ.get("SOLANA_RPC")
+    if explicit:
+        return explicit
+    if SOLAMI_KEY_FILE.exists():
+        key = SOLAMI_KEY_FILE.read_text().strip()
+        if key:
+            return f"https://rpc.solami.dev/solana?api-key={key}"
+    return PUBLIC_RPC
+
+
+def safe(url):
+    """An endpoint with its credential removed, fit to print."""
+    return re.sub(r"(api[-_]?key=)[^&\s]+", r"\1<key>", url or "")
+
+
+RPC = _endpoint()
 SYSTEM_PROGRAM = "11111111111111111111111111111111"
 BASE58 = re.compile(r"^[1-9A-HJ-NP-Za-km-z]{32,44}$")
 
@@ -128,6 +156,38 @@ def settlement(market_id, limit=12):
     if not seen:
         return None
     return {"signers": signers, "instructions": seen, "signatures": len(signatures)}
+
+
+def settlements(market_ids, limit=12, workers=1):
+    """Settlement for many markets, `workers` requests in flight at once.
+
+    Sequential reads waste an endpoint's headroom on round-trip latency: a node that will answer
+    200 requests a second still only answers one every 300ms if you ask for one at a time. This
+    is where a real endpoint turns into wall-clock, and why the number is a setting — the public
+    node starts refusing above a couple in flight, a Solami key does not.
+
+    Returns `{market_id: settlement-or-None}`, and a market whose lookup raised is simply absent,
+    never present with a None that would read as "nobody settled it".
+    """
+    if workers <= 1:
+        out = {}
+        for market_id in market_ids:
+            try:
+                out[market_id] = settlement(market_id, limit)
+            except ChainError:
+                pass
+        return out
+
+    from concurrent.futures import ThreadPoolExecutor
+    out = {}
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = {pool.submit(settlement, mid, limit): mid for mid in market_ids}
+        for future, market_id in futures.items():
+            try:
+                out[market_id] = future.result()
+            except ChainError:
+                pass
+    return out
 
 
 def programs_touched(signature):
