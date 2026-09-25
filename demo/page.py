@@ -28,6 +28,8 @@ CSS = """
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);
  font:16px/1.6 "IBM Plex Sans",-apple-system,Segoe UI,Roboto,sans-serif}
+.dim{color:var(--dim);font-size:14px}
+.tablewrap{overflow-x:auto}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
 header{padding:56px 0 34px;border-bottom:1px solid var(--line)}
 .brand{display:flex;align-items:center;gap:14px;margin-bottom:26px}
@@ -50,7 +52,7 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .quote{border-left:3px solid var(--accent);padding:14px 18px;background:var(--panel);
  border-radius:0 10px 10px 0;margin:18px 0;color:var(--ink)}
 .addr{color:var(--accent2);word-break:break-all}
-table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+table{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:18px;font-size:14px}
 th{text-align:left;color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;
  letter-spacing:.7px;padding:0 10px 10px;border-bottom:1px solid var(--line)}
 td{padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -66,7 +68,7 @@ tr:hover td{background:#141824}
 .vs{color:var(--dim);font-size:12.5px;margin-top:6px;max-width:52ch}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
 .cols h3{margin:0 0 10px;font-size:14px;color:var(--dim);text-transform:uppercase;letter-spacing:.7px}
-pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;
  overflow:auto;margin:0}
 pre b{color:var(--bad);font-weight:600}
 pre i{color:var(--good);font-style:normal}
@@ -107,6 +109,9 @@ def rows_html(markets, limit=26):
 
 
 def render(snapshot):
+    checks = snapshot.get("draft_checks", {})
+    failing = html.escape(checks.get("failing", "(not recorded)"))
+    passing = html.escape(checks.get("passing", "(not recorded)"))
     counts = snapshot["counts"]
     live, mute = counts["tradeable"], counts["tradeable_unstated"]
     done, done_mute = counts["settled"], counts["settled_unstated"]
@@ -139,7 +144,10 @@ def render(snapshot):
   <h1>A prediction market is a claim about the future.<br>
       This asks <em>what will decide it</em> — and whether anyone can check that.</h1>
   <p class="lede">Measured on the live Panta catalogue. Every number here comes from the snapshot
-     below it; nothing on this page is typed by hand.</p>
+     below it; nothing on this page is typed by hand.
+     <br><span class="dim">Three separate passes over the catalogue on 26 September 2026 —
+     reproduce them with <code>demo/census.py</code> — put the first figure at 85%, 84% and 76%,
+     and the second at 0 out of 60, 0 out of 50 and 0 out of 83.</span></p>
 
   <div class="split">
     <div class="card bad">
@@ -175,28 +183,10 @@ def render(snapshot):
      <code>on-chain</code>, typed into that list by a creator. <code>resolutionRule</code> is in no
      read response at all.</p>
   <div class="cols">
-    <div><h3>./run.sh --check-draft draft.json</h3>
-<pre><b>BLOCK</b> sourcesOfTruth: 'on-chain' is a word, not a reference
-      → name the account, the program or the outlet.
-        A buyer sees this string and nothing else — it
-        becomes the market's `oracle` field verbatim
-<b>BLOCK</b> startTime: starts in 589s; the chain requires 3600s
-<b>BLOCK</b> imageUrl: not reachable (HTTP 404)
-      → Panta refuses this draft with a generic
-        INVALID_MARKET_PARAMS that never mentions the image</pre></div>
+    <div><h3>a draft shaped like the catalogue</h3>
+<pre>{failing}</pre></div>
     <div><h3>a draft that passes</h3>
-<pre>Nothing here would leave a buyer unable to read this market.
-
-WHAT THE CATALOGUE WILL SHOW
-  title   Will the Pectra upgrade activate before 1 Dec 2026?
-  oracle  https://ethereum.org/…,https://etherscan.io
-  resolutionRule  <b>not returned by the read API under any
-                  name — you are writing it for nobody</b>
-
-PANTA SAYS  <i>the draft passes their validation.</i>
-  creation fee   50.00 USDC
-  event address  8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF
-  nothing was signed, submitted or paid by this tool.</pre></div>
+<pre>{passing}</pre></div>
   </div>
 </section>
 

@@ -6,9 +6,9 @@
     "on-chain"
   ],
   "category": "sports",
-  "startTime": 1790365736,
-  "endTime": 1790365436,
-  "resolutionTime": 1790365196,
+  "startTime": 1790366675,
+  "endTime": 1790366375,
+  "resolutionTime": 1790366135,
   "marketType": "standard",
   "imageUrl": "http://localhost:8080/market.png",
   "region": "Global"

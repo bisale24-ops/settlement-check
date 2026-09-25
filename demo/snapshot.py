@@ -14,7 +14,9 @@ import sys
 import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent / "src"))
-from settlementcheck import chain, classify, panta  # noqa: E402
+from settlementcheck import chain, classify, draft, panta  # noqa: E402
+
+FIXTURES = pathlib.Path(__file__).resolve().parent.parent / "fixtures"
 
 OUT = pathlib.Path(__file__).resolve().parent.parent / "docs" / "snapshot.json"
 
@@ -47,6 +49,26 @@ def collect(cards_wanted, settlements):
             for card in cards]
 
 
+def run_draft_checks():
+    """Run the pre-publish check for real and keep what it printed.
+
+    The page says nothing on it is typed by hand, so these two panels are not either. The failing
+    draft is checked offline — its defects are all local — and the passing one goes to Panta's own
+    validator, retries included, so the fee and the event address on the page are answers the API
+    actually gave.
+    """
+    now = int(time.time())
+    out = {}
+    failing = json.loads((FIXTURES / "draft-like-the-catalogue.json").read_text())
+    out["failing"], _ = draft.report(failing, now)
+
+    passing = json.loads((FIXTURES / "draft-readable.json").read_text())
+    quoted, verdict, detail = draft.quote(passing)
+    out["passing"], _ = draft.report(passing, now, quoted, verdict, detail)
+    out["passing_verdict"] = verdict
+    return out
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cards", type=int, default=40)
@@ -77,6 +99,7 @@ def main():
             "claims_uma": sum(1 for v in verdicts if v.claims_uma),
         },
         "settlers": sorted({address for v in verdicts for address in v.settled_by}),
+        "draft_checks": run_draft_checks(),
         "markets": rows,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
