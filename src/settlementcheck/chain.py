@@ -64,6 +64,60 @@ def recent_signatures(address, limit=25):
     return rpc("getSignaturesForAddress", [address, {"limit": limit}]) or []
 
 
+# The market program every Panta market is an account of. Its instruction names are readable in
+# the transaction logs, which is what lets this tool answer "who settled it" without an IDL.
+MARKET_PROGRAM = "6gM5afTQBq5VZCfgpGqcsqzfWd5maLSCKWtGjbEobZMp"
+
+# The two instructions that decide a market. `SubmitOracleResultUsdc` puts the outcome on chain;
+# `ResolveEventUsdc` closes the event against it. Everything else in a market's history is trading,
+# creation or claiming.
+SETTLEMENT_INSTRUCTIONS = ("SubmitOracleResultUsdc", "ResolveEventUsdc")
+
+
+def transaction(signature):
+    return rpc("getTransaction", [signature, {"encoding": "jsonParsed",
+                                              "maxSupportedTransactionVersion": 0}])
+
+
+def instructions_and_signer(result):
+    """Instruction names from the logs, and the fee payer that signed them."""
+    logs = (result.get("meta") or {}).get("logMessages") or []
+    names = {line.split("Instruction: ", 1)[1].strip() for line in logs if "Instruction: " in line}
+    keys = result["transaction"]["message"].get("accountKeys", [])
+    signer = next((k["pubkey"] for k in keys if isinstance(k, dict) and k.get("signer")), None)
+    return names, signer
+
+
+def settlement(market_id, limit=12):
+    """Who actually settled this market, read from the market account's own history.
+
+    This is the whole correction at the centre of this tool. The catalogue's `oracle` field is a
+    claim about who decides; it is not the account that does. On every market checked, the address
+    in `oracle` turned out to be the wallet whose instruction is `CreateEventUsdc` — it creates
+    markets, it does not resolve them. The account that resolves is found here, by reading the
+    market's own transactions and looking for the two settlement instructions.
+
+    Returns `{"signers": {...}, "instructions": {...}, "signatures": n}`, or None when the market
+    has no settlement on chain yet. Raises ChainError upward if the endpoint will not answer — a
+    lookup that failed must never be reported as a market that nobody settled.
+    """
+    signatures = recent_signatures(market_id, limit)
+    signers, seen = set(), set()
+    for entry in signatures:
+        result = transaction(entry["signature"])
+        if not result:
+            continue
+        names, signer = instructions_and_signer(result)
+        settling = names.intersection(SETTLEMENT_INSTRUCTIONS)
+        if settling:
+            seen |= settling
+            if signer:
+                signers.add(signer)
+    if not seen:
+        return None
+    return {"signers": signers, "instructions": seen, "signatures": len(signatures)}
+
+
 def programs_touched(signature):
     """Which programs a transaction called — how we learn what the settler actually invokes."""
     result = rpc("getTransaction", [signature, {"encoding": "jsonParsed",

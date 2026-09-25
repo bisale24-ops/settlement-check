@@ -15,6 +15,12 @@ UNKNOWN = "unknown"
 
 ORDER = [UNSTATED, NAMED_NOTHING, ONE_KEY, EDITORIAL, UNKNOWN, VERIFIABLE]
 
+# Returned by a settlement lookup that never ran — the budget was spent, or the endpoint refused.
+# It is a separate value from None, which means "looked, and this market has not settled yet".
+# Collapsing the two is how a tool comes to print "nobody settled this" about a market it never
+# opened, which is the same false clean bill this project exists to refuse.
+NOT_LOOKED = object()
+
 HEADINGS = {
     UNSTATED: ("UNSTATED  the market carries no question — whatever settles it, nobody buying "
                "can know what they bought"),
@@ -35,15 +41,35 @@ class Verdict:
     market_id: str
     kind: str
     question: str          # the stated question, or "" when there is none
-    oracle: str
+    oracle: str            # what the catalogue CLAIMS decides it
     detail: str            # what was found out about the oracle
     phase: str
     volume: float | None
     tradeable: bool
+    claims_uma: bool = False       # the catalogue's `sentToUma`
+    settled_by: tuple = ()         # who signed the settlement on chain, read from the market
+    settlement_seen: tuple = ()    # which settlement instructions were found
 
     @property
     def short(self):
         return self.market_id[:8] + "…"
+
+    @property
+    def claim_versus_chain(self):
+        """The one line a buyer needs: what was promised, and what the chain shows.
+
+        Returns None when there is nothing to compare — the market has not settled yet, or the
+        lookup was skipped.
+        """
+        if not self.settled_by:
+            return None
+        who = ", ".join(sorted(self.settled_by))
+        if self.claims_uma:
+            return (f"the catalogue says this went to UMA; on chain the result was submitted and "
+                    f"the event resolved by {who}, with no UMA assertion in the transaction")
+        if self.oracle and self.oracle not in self.settled_by:
+            return f"the catalogue names {self.oracle} as the oracle; on chain it was {who}"
+        return f"settled on chain by {who}"
 
 
 def stated_question(card):
@@ -100,18 +126,40 @@ def volume_of(card):
     return None
 
 
-def judge(card, owner_of, is_address):
+def judge(card, owner_of, is_address, settlement_of=None):
     """Classify one market.
 
-    `owner_of` and `is_address` are injected so the rule can be tested without a network, and so
-    the on-chain lookup can come from any RPC — the public endpoint today, Solami later.
+    `owner_of`, `is_address` and `settlement_of` are injected so the rule can be tested without a
+    network, and so the on-chain lookup can come from any RPC — the public endpoint today, Solami
+    later.
+
+    `settlement_of(market_id)` returns what the market's own transaction history shows, or None
+    when it has not settled yet. **It takes precedence over everything the catalogue says.** The
+    `oracle` field is a claim; the signature on `SubmitOracleResultUsdc` is what happened.
     """
     oracle = (card.get("oracle") or "").strip()
     question = stated_question(card)
     phase = (card.get("phase") or "").strip()
-    common = dict(market_id=card.get("marketId", ""), question=question, oracle=oracle,
+    market_id = card.get("marketId", "")
+    found = settlement_of(market_id) if settlement_of else NOT_LOOKED
+    looked = found is not NOT_LOOKED
+    common = dict(market_id=market_id, question=question, oracle=oracle,
                   phase=phase, volume=volume_of(card),
-                  tradeable=phase in ("primary", "secondary"))
+                  tradeable=phase in ("primary", "secondary"),
+                  claims_uma=bool(card.get("sentToUma")),
+                  settled_by=tuple(sorted(found["signers"])) if looked and found else (),
+                  settlement_seen=tuple(sorted(found["instructions"])) if looked and found else ())
+
+    if looked and found and len(found["signers"]) == 1 and question:
+        who = next(iter(found["signers"]))
+        owner = owner_of(who)
+        if owner == "11111111111111111111111111111111":
+            return Verdict(kind=ONE_KEY, detail=(
+                f"one keypair signed {' and '.join(sorted(found['instructions']))} — "
+                f"{who}"), **common)
+        if owner is not None:
+            return Verdict(kind=VERIFIABLE, detail=(
+                f"settled by {who}, an account owned by program {owner}"), **common)
 
     if not question:
         if not oracle:
@@ -139,14 +187,23 @@ def judge(card, owner_of, is_address):
             detail += f"; {len(unnamed)} naming nothing: {', '.join(map(repr, unnamed[:3]))}"
         return Verdict(kind=EDITORIAL, detail=detail, **common)
 
+    # An address in `oracle` is a claim about who will decide, and this tool used to take it as the
+    # answer. It is not: on every market checked, that address is the wallet whose instruction is
+    # `CreateEventUsdc`. Until the market settles and the chain can be read, the honest verdict is
+    # that nothing has been decided yet — and the detail says what was claimed and what it is.
     owner = owner_of(oracle)
     if owner is None:
         return Verdict(kind=UNKNOWN,
-                       detail="the named account does not exist on mainnet", **common)
-    if owner == "11111111111111111111111111111111":
-        return Verdict(kind=ONE_KEY,
-                       detail="a System Program account — a keypair, not an oracle", **common)
-    return Verdict(kind=VERIFIABLE, detail=f"account owned by program {owner}", **common)
+                       detail=f"the catalogue names {oracle} as the oracle; no such account "
+                              f"exists on mainnet", **common)
+    kind_of_thing = ("a keypair somebody controls" if owner == "11111111111111111111111111111111"
+                     else f"an account owned by program {owner}")
+    because = ("nothing has settled this market on chain yet" if looked
+               else "its settlement was not read — raise --settlements to check it")
+    return Verdict(kind=UNKNOWN,
+                   detail=f"the catalogue names {oracle} as the oracle — {kind_of_thing}. "
+                          f"The claim is untested: {because}",
+                   **common)
 
 
 def group(verdicts):

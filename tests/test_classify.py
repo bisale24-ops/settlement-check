@@ -90,21 +90,29 @@ def test_newsroom_feeds_are_editorial_and_are_named():
     assert "world-gaming-ign" in verdict.detail
 
 
-def test_a_wallet_settling_a_market_is_one_key_not_an_oracle():
+def test_an_address_in_the_oracle_field_is_a_claim_and_not_a_verdict():
+    """This assertion used to read `== ONE_KEY`, and that was the bug.
+
+    A wallet named in `oracle` has not settled anything; on every market checked it is the account
+    that runs `CreateEventUsdc`. Without a settlement on chain the tool now says the claim is
+    untested rather than naming a culprit.
+    """
     verdict = judge(card(oracle=WALLET))
-    assert verdict.kind == ONE_KEY
-    assert "keypair" in verdict.detail
+    assert verdict.kind == UNKNOWN
+    assert "untested" in verdict.detail
+    assert "keypair somebody controls" in verdict.detail
 
 
-def test_an_account_owned_by_a_program_is_the_good_case():
+def test_a_program_owned_oracle_address_is_still_only_a_claim():
     verdict = judge(card(oracle=PROGRAM_OWNED))
-    assert verdict.kind == VERIFIABLE
+    assert verdict.kind == UNKNOWN
+    assert "owned by program" in verdict.detail
 
 
 def test_an_address_that_does_not_exist_is_reported_as_unchecked_not_as_clean():
     verdict = judge(card(oracle=WALLET), owner={})
     assert verdict.kind == UNKNOWN
-    assert "does not exist" in verdict.detail
+    assert "no such account exists" in verdict.detail
 
 
 def test_a_market_naming_no_source_at_all_is_unchecked():
@@ -129,3 +137,75 @@ def test_phase_decides_whether_money_can_still_be_put_on_it():
     assert judge(card(phase="secondary")).tradeable
     assert not judge(card(phase="resolved")).tradeable
     assert not judge(card(phase="cancelled")).tradeable
+
+
+CREATOR = "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS"
+RESOLVER = "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+
+
+def settled(signers, instructions=("SubmitOracleResultUsdc", "ResolveEventUsdc")):
+    return lambda _market_id: {"signers": set(signers), "instructions": set(instructions),
+                               "signatures": 8}
+
+
+def judge_chain(c, settlement, owners=None):
+    owners = owners if owners is not None else {RESOLVER: SYSTEM, CREATOR: SYSTEM}
+    return classify.judge(c, lambda a: owners.get(a), classify_is_address, settlement)
+
+
+def test_who_settled_it_is_read_from_the_chain_not_from_the_oracle_field():
+    """The second thing this project got wrong, and the reason the rule moved on chain.
+
+    The address in `oracle` is the wallet whose instruction is `CreateEventUsdc` — it creates
+    markets, it does not resolve them. Believing that field named a settler produced a confident
+    verdict about the wrong account.
+    """
+    verdict = judge_chain(card(oracle=CREATOR), settled([RESOLVER]))
+    assert verdict.kind == ONE_KEY
+    assert RESOLVER in verdict.detail
+    assert CREATOR not in verdict.detail
+    assert verdict.settled_by == (RESOLVER,)
+
+
+def test_a_uma_claim_is_reported_against_what_the_chain_shows():
+    verdict = judge_chain(card(oracle=CREATOR, sentToUma=True), settled([RESOLVER]))
+    compared = verdict.claim_versus_chain
+    assert "says this went to UMA" in compared
+    assert "no UMA assertion in the transaction" in compared
+    assert RESOLVER in compared
+
+
+def test_a_settlement_signed_by_a_program_owned_account_is_the_good_case():
+    verdict = judge_chain(card(oracle=CREATOR), settled([PROGRAM_OWNED]),
+                          owners={PROGRAM_OWNED: "SomeProgram1111111111111111111111111111111"})
+    assert verdict.kind == VERIFIABLE
+
+
+def test_an_unsettled_market_makes_no_claim_about_who_decides():
+    """Before a market settles there is nothing on chain to read, and the catalogue's `oracle` is
+    only a claim. Reporting it as a decided verdict is what this tool did wrong."""
+    verdict = judge_chain(card(oracle=CREATOR), lambda _m: None)
+    assert verdict.kind == UNKNOWN
+    assert "untested" in verdict.detail
+    assert verdict.settled_by == ()
+
+
+def test_a_market_with_no_question_stays_unstated_even_once_settled():
+    verdict = judge_chain(card(title="", description="", oracle=CREATOR), settled([RESOLVER]))
+    assert verdict.kind == UNSTATED
+
+
+def test_a_settlement_never_looked_at_is_not_reported_as_no_settlement():
+    """A budget that runs out must not turn into a finding.
+
+    The first live run of the on-chain rule printed "nothing has settled this market on chain yet"
+    about markets whose history it had simply not opened, because the lookup returned None for
+    both cases. That is the false clean bill in the other direction, and it is the one mistake
+    this tool is least allowed to make.
+    """
+    skipped = judge_chain(card(oracle=CREATOR), lambda _m: classify.NOT_LOOKED)
+    looked = judge_chain(card(oracle=CREATOR), lambda _m: None)
+    assert skipped.kind == looked.kind == UNKNOWN
+    assert "not read" in skipped.detail and "--settlements" in skipped.detail
+    assert "nothing has settled this market on chain yet" in looked.detail
+    assert "nothing has settled" not in skipped.detail

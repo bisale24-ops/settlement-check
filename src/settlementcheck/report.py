@@ -94,6 +94,9 @@ def render(verdicts, show=6, settler_activity=None):
             out.append(f"      {verdict.short}  {verdict.phase}  {money(verdict.volume)}"
                        f"{'  tradeable' if verdict.tradeable else ''}")
             out.append(f"      {verdict.detail}")
+            compared = verdict.claim_versus_chain
+            if compared:
+                out.append(f"      claim vs chain: {compared}")
         if len(entries) > show:
             out.append(f"  … and {len(entries) - show} more")
         out.append("")
