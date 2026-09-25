@@ -1,0 +1,23 @@
+name: check
+on: [push, pull_request]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 is here because the code did not run on it: a dataclass annotation written
+        # `float | None` is evaluated at class creation and raised TypeError. Green on one
+        # version proves nothing about the other.
+        python: ["3.9", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: pip install pytest
+      - name: the tool runs from a clone with nothing installed
+        run: PYTHONPATH=src python -m settlementcheck.cli --check-draft fixtures/draft-like-the-catalogue.json --offline || test $? -eq 1
+      - name: tests
+        run: python -m pytest tests -q

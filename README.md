@@ -9,7 +9,7 @@ git clone https://github.com/bisale24-ops/settlement-check && cd settlement-chec
 ./run.sh --check-draft fixtures/draft-like-the-catalogue.json   # a market, before it is published
 ./run.sh --replay <settlement-signature>     # one settlement, read from the chain
 ./run.sh --watch 300                         # settlements as they land
-.venv/bin/python -m pytest tests -q          # 59 tests, no network
+./check.sh                                    # 59 tests on Python 3.9 and 3.13, no network
 ```
 
 No dependencies. `run.sh` works from a fresh clone. Read-only throughout: this tool never quotes a

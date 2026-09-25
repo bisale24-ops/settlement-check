@@ -4,6 +4,8 @@ The question is never "will this resolve YES or NO". It is "when it resolves, wh
 could anybody else have checked that decision". The answer comes from two facts that are already
 public: whether the market states its question at all, and what kind of thing its `oracle` is.
 """
+from __future__ import annotations
+
 import dataclasses
 
 UNSTATED = "unstated"
