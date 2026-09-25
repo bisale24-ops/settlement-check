@@ -3,7 +3,8 @@
 No network: the two on-chain lookups are injected, which is the whole reason they are parameters.
 """
 from settlementcheck import classify
-from settlementcheck.classify import EDITORIAL, ONE_KEY, UNKNOWN, UNSTATED, VERIFIABLE
+from settlementcheck.classify import (EDITORIAL, NAMED_NOTHING, ONE_KEY, UNKNOWN, UNSTATED,
+                                      VERIFIABLE)
 
 SYSTEM = "11111111111111111111111111111111"
 WALLET = "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS"
@@ -35,9 +36,51 @@ def test_a_market_with_no_question_is_the_finding_whatever_settles_it():
     assert "global-bbc" in verdict.detail
 
 
-def test_an_empty_title_does_not_count_as_a_question():
-    """Panta leaves `title` blank on every market; only `description` carries the question."""
+def test_a_market_with_neither_field_filled_is_unstated():
     assert judge(card(description="", title="")).kind == UNSTATED
+
+
+def test_the_question_is_read_from_the_card_title_not_only_the_description():
+    """The regression that nearly shipped.
+
+    Listing rows leave `title` empty on all 100 markets, so measuring `description` alone said 91%
+    of this catalogue states no question. Open the card and `title` carries it on 56 of 100. The
+    real figure is 34%, and the finding is the split: 0% of settled markets are silent against 85%
+    of the ones still on sale.
+    """
+    verdict = judge(card(description="", title="Will Portugal win their Round of 16 match?"))
+    assert verdict.kind != UNSTATED
+    assert verdict.question == "Will Portugal win their Round of 16 match?"
+
+
+def test_a_settlement_source_that_is_only_a_word_names_nothing():
+    """`on-chain` is the most common value in the whole oracle field. It is not an address, not a
+    program and not a masthead — and if settlement really were on-chain there would be an account
+    to name. Calling it a newsroom feed, as this tool first did, is too generous by half."""
+    verdict = judge(card(oracle="on-chain"))
+    assert verdict.kind == NAMED_NOTHING
+    assert "not an address" in verdict.detail
+
+
+def test_a_two_part_masthead_is_still_a_masthead():
+    """`global-ap`, `global-bbc` and `global-reuters` are real outlets with two-part identifiers,
+    which is why naming-nothing is a literal list and not a rule about shape."""
+    verdict = judge(card(oracle="global-ap,global-bbc"))
+    assert verdict.kind == EDITORIAL
+    assert "2 newsroom feed(s)" in verdict.detail
+
+
+def test_a_word_mixed_in_with_real_outlets_is_called_out_separately():
+    verdict = judge(card(oracle="world-sports-espn,on-chain"))
+    assert verdict.kind == EDITORIAL
+    assert "1 newsroom feed(s)" in verdict.detail
+    assert "1 naming nothing" in verdict.detail and "on-chain" in verdict.detail
+
+
+def test_an_unstated_market_settled_by_a_word_says_so():
+    verdict = judge(card(title="", description="", oracle="on-chain"))
+    assert verdict.kind == UNSTATED
+    assert "a word, not a reference" in verdict.detail
 
 
 def test_newsroom_feeds_are_editorial_and_are_named():

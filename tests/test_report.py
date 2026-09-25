@@ -20,13 +20,20 @@ def test_the_headline_counts_how_many_markets_reported_nothing():
     assert "(1 reported none)" in text
 
 
-def test_the_headline_leads_with_the_money_on_unstated_markets():
+def test_the_headline_splits_what_is_on_sale_from_what_is_over():
+    """The finding is the split, so the headline has to carry both halves.
+
+    Counting the two populations together hides it: 34% of this catalogue states no question,
+    which sounds like sloppy listings. Counted apart it is 85% of what you can still buy against
+    0% of what is already settled — the question appears once it is too late to use it.
+    """
     text = report.render([verdict(UNSTATED, 4225.49, True, question=""),
                           verdict(EDITORIAL, 10.0)])
     first = text.splitlines()[0]
     assert "2 markets read" in first and "$4,235" in first
-    assert "state no question at all" in text
-    assert "$4,225" in text and "1 still tradeable" in text
+    assert "Of the 1 you can buy right now, 1 (100%) do not say what you are buying" in text
+    assert "$4,225" in text
+    assert "Of the 1 already settled, every one states its question." in text
 
 
 def test_findings_come_before_the_good_news():

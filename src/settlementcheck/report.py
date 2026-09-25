@@ -1,10 +1,11 @@
 """The report: findings first, good news last, and the number that matters at the top.
 
-A report that opens with a score is a report nobody reads to the end, so this opens with the
-money: how much volume sits on markets that never say what they are about.
+A report that opens with a score is a report nobody reads to the end, so this opens with the one
+comparison that carries the whole finding: of the markets you can still buy, how many say what you
+are buying — set against the markets that are already over, where the question is always there.
 """
 from . import classify
-from .classify import EDITORIAL, ONE_KEY, ORDER, UNKNOWN, UNSTATED, VERIFIABLE
+from .classify import (EDITORIAL, NAMED_NOTHING, ONE_KEY, ORDER, UNKNOWN, UNSTATED, VERIFIABLE)
 
 EXIT_OK = 0
 EXIT_FOUND = 1
@@ -28,17 +29,45 @@ def silent(verdicts):
     return sum(1 for v in verdicts if v.volume is None)
 
 
+def share(part, whole):
+    return f"{round(100 * part / whole)}%" if whole else "—"
+
+
 def headline(verdicts):
-    unstated = [v for v in verdicts if v.kind == UNSTATED]
-    live = [v for v in unstated if v.tradeable]
-    keys = {v.oracle for v in verdicts if v.kind == ONE_KEY}
+    """Open with the split, because the split is the finding.
+
+    A market that states its question only once it is over has told nobody anything: the people who
+    could act on it have already acted. So the two populations are counted apart, and the report
+    says plainly when one of them is clean.
+    """
+    tradeable = [v for v in verdicts if v.tradeable]
+    settled = [v for v in verdicts if not v.tradeable]
+    mute = lambda group: [v for v in group if v.kind == UNSTATED]  # noqa: E731
     quiet = silent(verdicts)
     lines = [
         f"{len(verdicts)} markets read, {money(total(verdicts))} of reported volume behind them"
         + (f" ({quiet} reported none)." if quiet else "."),
-        f"{len(unstated)} of them state no question at all — {money(total(unstated))} of that"
-        f" volume, and {len(live)} still tradeable right now.",
     ]
+    if tradeable:
+        blind = mute(tradeable)
+        lines.append(
+            f"Of the {len(tradeable)} you can buy right now, {len(blind)} "
+            f"({share(len(blind), len(tradeable))}) do not say what you are buying — "
+            f"{money(total(blind))} of {money(total(tradeable))}.")
+    if settled:
+        blind = mute(settled)
+        lines.append(
+            f"Of the {len(settled)} already settled, "
+            + (f"every one states its question." if not blind
+               else f"{len(blind)} ({share(len(blind), len(settled))}) still do not."))
+    nothing = [v for v in verdicts if v.kind == NAMED_NOTHING]
+    if nothing:
+        words = sorted({v.oracle for v in nothing})
+        lines.append(
+            f"{len(nothing)} market(s) name their settlement source as "
+            f"{', '.join(map(repr, words[:2]))} — a word, not a reference; "
+            f"{money(total(nothing))} rides on it.")
+    keys = {v.oracle for v in verdicts if v.kind == ONE_KEY}
     if keys:
         controlled = [v for v in verdicts if v.kind == ONE_KEY]
         lines.append(
@@ -81,4 +110,5 @@ def render(verdicts, show=6, settler_activity=None):
 
 
 def exit_code(verdicts):
-    return EXIT_FOUND if any(v.kind in (UNSTATED, ONE_KEY) for v in verdicts) else EXIT_OK
+    found = (UNSTATED, NAMED_NOTHING, ONE_KEY)
+    return EXIT_FOUND if any(v.kind in found for v in verdicts) else EXIT_OK
