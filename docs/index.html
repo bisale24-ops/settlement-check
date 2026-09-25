@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Settlement Check</title>
+<meta name="description" content="What decides this prediction market, and could anyone else have
+ checked that decision? Measured on the live Panta catalogue.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0d12'/><rect x='8' y='8' width='84' height='84' rx='16' fill='%237c5cff'/></svg>">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d12;--panel:#12151d;--line:#232836;--ink:#e9ecf4;--dim:#9aa3b8;
+--bad:#ff6b6b;--warn:#f2b34b;--good:#3ddc97;--accent:#7c5cff;--accent2:#29e0d1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+ font:16px/1.6 "IBM Plex Sans",-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 34px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.mark{width:40px;height:40px;border-radius:11px;flex:0 0 auto;
+ background:linear-gradient(135deg,var(--accent),var(--accent2));
+ display:flex;align-items:center;justify-content:center;color:#07070b;font-weight:800;font-size:22px}
+.brand b{font-size:19px;letter-spacing:.2px}
+h1{margin:0 0 14px;font-size:clamp(28px,4.4vw,44px);line-height:1.15;letter-spacing:-.6px}
+h1 em{font-style:normal;color:var(--accent2)}
+.lede{margin:0;color:var(--dim);font-size:18px;max-width:64ch}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:34px 0 8px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+.big{font-size:clamp(34px,6vw,52px);font-weight:700;line-height:1;letter-spacing:-1px}
+.card small{display:block;color:var(--dim);margin-top:10px;font-size:14px}
+.bad .big{color:var(--bad)} .good .big{color:var(--good)}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+h2{font-size:22px;margin:0 0 8px;letter-spacing:-.2px}
+h2+p{margin-top:0;color:var(--dim);max-width:70ch}
+code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+.quote{border-left:3px solid var(--accent);padding:14px 18px;background:var(--panel);
+ border-radius:0 10px 10px 0;margin:18px 0;color:var(--ink)}
+.addr{color:var(--accent2);word-break:break-all}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+th{text-align:left;color:var(--dim);font-weight:500;font-size:12px;text-transform:uppercase;
+ letter-spacing:.7px;padding:0 10px 10px;border-bottom:1px solid var(--line)}
+td{padding:13px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:#141824}
+.q{max-width:46ch}
+.q .none{color:var(--bad);font-style:italic}
+.chip{display:inline-block;padding:3px 9px;border-radius:999px;font-size:12px;white-space:nowrap;
+ border:1px solid transparent}
+.chip.bad{background:rgba(255,107,107,.12);color:var(--bad);border-color:rgba(255,107,107,.3)}
+.chip.warn{background:rgba(242,179,75,.12);color:var(--warn);border-color:rgba(242,179,75,.3)}
+.chip.good{background:rgba(61,220,151,.12);color:var(--good);border-color:rgba(61,220,151,.3)}
+.chip.muted{background:#1a1f2b;color:var(--dim);border-color:var(--line)}
+.vs{color:var(--dim);font-size:12.5px;margin-top:6px;max-width:52ch}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.cols h3{margin:0 0 10px;font-size:14px;color:var(--dim);text-transform:uppercase;letter-spacing:.7px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;
+ overflow:auto;margin:0}
+pre b{color:var(--bad);font-weight:600}
+pre i{color:var(--good);font-style:normal}
+footer{padding:34px 0 60px;color:var(--dim);font-size:14px}
+a{color:var(--accent2)}
+@media(max-width:720px){.split,.cols{grid-template-columns:1fr}.hide-sm{display:none}}
+</style>
+</head><body>
+<div class="wrap">
+
+<header>
+  <div class="brand"><div class="mark">S</div><b>Settlement Check</b></div>
+  <h1>A prediction market is a claim about the future.<br>
+      This asks <em>what will decide it</em> — and whether anyone can check that.</h1>
+  <p class="lede">Measured on the live Panta catalogue. Every number here comes from the snapshot
+     below it; nothing on this page is typed by hand.</p>
+
+  <div class="split">
+    <div class="card bad">
+      <div class="big">17 of 17</div>
+      <small>markets <b>you can buy right now</b> do not say what you are buying — 100%</small>
+    </div>
+    <div class="card good">
+      <div class="big">19 of 19</div>
+      <small>markets that are <b>already settled</b> state their question — the question appears
+             once nobody can act on it</small>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2>The catalogue says UMA. The chain says one keypair.</h2>
+  <p><code>sentToUma</code> is true on 30 of the 36 markets in
+     this snapshot.</p>
+  <div class="quote">On chain, every result in this snapshot was submitted and every event resolved by <span class="addr mono">664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR</span> — an account owned by the System Program, holding no data. A person with a key, not a program. No UMA assertion appears in any of those transactions.</div>
+  <p>The settlement path is <code>GraduateMarketUsdc → SubmitOracleResultUsdc →
+     ResolveEventUsdc → ClaimWinUsdc</code>. This tool reads the market account's own history and
+     reports who signed the middle two, because the catalogue's <code>oracle</code> field is a
+     claim about who decides and not the account that does: on every market checked it names the
+     wallet whose instruction is <code>CreateEventUsdc</code>.</p>
+</section>
+
+<section>
+  <h2>What the creator wrote, and what the buyer gets</h2>
+  <p>Panta's create API requires a <code>question</code>, a <code>resolutionRule</code> of up to
+     2048 characters, and a non-empty <code>sourcesOfTruth</code>. The read API returns none of
+     them under those names. <code>oracle</code> is <code>sourcesOfTruth</code> joined by commas —
+     which is why the most common settlement source in the catalogue is the word
+     <code>on-chain</code>, typed into that list by a creator. <code>resolutionRule</code> is in no
+     read response at all.</p>
+  <div class="cols">
+    <div><h3>./run.sh --check-draft draft.json</h3>
+<pre><b>BLOCK</b> sourcesOfTruth: 'on-chain' is a word, not a reference
+      → name the account, the program or the outlet.
+        A buyer sees this string and nothing else — it
+        becomes the market's `oracle` field verbatim
+<b>BLOCK</b> startTime: starts in 589s; the chain requires 3600s
+<b>BLOCK</b> imageUrl: not reachable (HTTP 404)
+      → Panta refuses this draft with a generic
+        INVALID_MARKET_PARAMS that never mentions the image</pre></div>
+    <div><h3>a draft that passes</h3>
+<pre>Nothing here would leave a buyer unable to read this market.
+
+WHAT THE CATALOGUE WILL SHOW
+  title   Will the Pectra upgrade activate before 1 Dec 2026?
+  oracle  https://ethereum.org/…,https://etherscan.io
+  resolutionRule  <b>not returned by the read API under any
+                  name — you are writing it for nobody</b>
+
+PANTA SAYS  <i>the draft passes their validation.</i>
+  creation fee   50.00 USDC
+  event address  8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF
+  nothing was signed, submitted or paid by this tool.</pre></div>
+  </div>
+</section>
+
+<section>
+  <h2>The snapshot</h2>
+  <p>36 markets, 10 of them with their settlement read
+     from the chain. Taken 2026-09-25T19:46:37Z.</p>
+  <table>
+    <thead><tr><th>Market</th><th>Verdict</th><th class="hide-sm">Claimed source</th>
+      <th>Volume</th></tr></thead>
+    <tbody>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-crypto-coinmarketcap,world-crypt</td>
+  <td class="mono">$11,796<br><span style="color:var(--dim)">
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-crypto-coinmarketcap</td>
+  <td class="mono">$10,031<br><span style="color:var(--dim)">
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-sports-fifa</td>
+  <td class="mono">$6<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-gaming-ign,world-gaming-polygon,</td>
+  <td class="mono">$5<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">af-news-bbc-africa</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-weather-wmo</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">eu-sports-gazzetta</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-finance-yahoo</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-crypto-coingecko</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-finance-yahoo</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q"><span class="none">no question stated</span></td>
+  <td><span class="chip bad">no question</span></td>
+  <td class="mono hide-sm">world-crypto-coingecko</td>
+  <td class="mono">—<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q">Will Max Verstappen win the 2026 Dutch Grand Prix Main Race?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
+  <td class="mono">$548<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Tesla (NASDAQ: TSLA) close at or above $335.00 on Friday, August 14, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg,world-stocks-ny</td>
+  <td class="mono">$523<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will a full Safety Car be deployed within the first 10 laps of the 2026 Dutch Grand Prix Main Race?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
+  <td class="mono">$515<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will NVIDIA (NASDAQ: NVDA) close above $230.00 on Friday, August 14, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-finance-reuters,world-finance-ya</td>
+  <td class="mono">$437<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will September 2026 WTI Crude Oil Futures (CLU26) trade at or above $85.50 at any point between August 5 and August 17, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg,world-finance-r</td>
+  <td class="mono">$396<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will December 2026 COMEX Gold Futures (GCZ26) trade at or above $4,380.00 at any point between August 5 and August 14, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">world-stocks-bloomberg,world-finance-r</td>
+  <td class="mono">$394<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
+  <td class="mono">$322<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will there be an eviction AND will the first housemate evicted from BBNaija Season 11 on Sunday, August 16, 2026, be Male?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">ng-pop-pulse,ng-pop-africamagic</td>
+  <td class="mono">$316<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Super Micro Computer&#x27;s stock price ($SMCI) close at or above $37.00 on Monday, August 24, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
+  <td class="mono">$224<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p>Read-only throughout: no wallet, no signature, no transaction, nothing spent. Reproduce with
+     <code>./run.sh</code>, <code>demo/census.py</code> and <code>demo/snapshot.py</code> —
+     <a href="https://github.com/bisale24-ops/settlement-check">github.com/bisale24-ops/settlement-check</a>. Built for the Colosseum Crypto World's
+     Fair, Panta API and Solami sidetracks. MIT.</p>
+</footer>
+
+</div></body></html>

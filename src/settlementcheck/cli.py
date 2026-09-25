@@ -92,12 +92,12 @@ def check_draft(args):
     except (OSError, json.JSONDecodeError) as error:
         print(f"Could not read the draft: {error}", file=sys.stderr)
         return report.EXIT_FAILED
-    quoted = error = None
+    quoted, verdict, detail = None, None, ""
     if not args.offline:
-        quoted, error = draftcheck.quote(body)
+        quoted, verdict, detail = draftcheck.quote(body)
     # --offline means offline: no quote, and no reachability request either.
     reach = None if args.offline else draftcheck.image_reachable
-    text, blocks = draftcheck.report(body, int(time.time()), quoted, error, reach=reach)
+    text, blocks = draftcheck.report(body, int(time.time()), quoted, verdict, detail, reach=reach)
     print(text)
     return report.EXIT_FOUND if blocks else report.EXIT_OK
 

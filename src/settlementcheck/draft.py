@@ -20,6 +20,7 @@ transaction is built, signed and broadcast by the market's creator, not by this 
 """
 import dataclasses
 import re
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -226,30 +227,70 @@ def what_a_buyer_will_see(draft):
     }
 
 
-def quote(draft, get=None):
+PASSED, REFUSED, INCONCLUSIVE = "passed", "refused", "inconclusive"
+
+
+def read_refusal(error):
+    """Whose problem is a 400 — the draft's, or the endpoint's?
+
+    The documented contract is that field validation returns `code` **plus `fields`**. What the
+    live endpoint returns instead, for a draft it accepted seconds earlier, is
+    `INVALID_MARKET_PARAMS` with "unexpected create quote failure — check server logs" and no
+    fields at all. Measured on 2026-09-26: a second quote for the same wallet and question failed
+    4 times out of 4 (the documented code for that is `DUPLICATE_MARKET`), and 3 of 10 quotes for
+    fresh, distinct drafts failed the same way.
+
+    So a refusal that names no field is not evidence about the draft, and this tool will not
+    present it as one. Telling a creator their market is malformed because somebody else's
+    validator was flaky is the same false verdict this project exists to refuse.
+    """
+    text = str(error)
+    if '"fields"' in text or "'fields'" in text:
+        return REFUSED
+    if "INVALID_MARKET_PARAMS" in text and "check server logs" in text:
+        return INCONCLUSIVE
+    if "HTTP 400" in text:
+        return REFUSED
+    return INCONCLUSIVE
+
+
+def quote(draft, post=None, attempts=3, pause=1.0, sleep=time.sleep):
     """Ask Panta to validate the draft and price it. No signature, no broadcast, no payment.
 
-    Returns `(payload, error)`. The endpoint reserves a create session and returns the fee from
-    on-chain config; nothing is charged until a transaction is built, signed by the creator's
-    wallet and broadcast, none of which happens here.
+    Returns `(payload, verdict, detail)` where verdict is PASSED, REFUSED or INCONCLUSIVE. The
+    endpoint reserves a create session and returns the fee from on-chain config; nothing is
+    charged until a transaction is built, signed by the creator's wallet and broadcast, none of
+    which happens here.
+
+    Inconclusive refusals are retried, because they are flaky rather than final. A refusal that
+    names fields is final on the first answer and never retried — the draft really is wrong.
     """
-    caller = get or panta.post
-    try:
-        return caller("markets/create/quote/", draft), None
-    except panta.PantaError as error:
-        return None, str(error)
+    caller = post or panta.post
+    detail = ""
+    for attempt in range(attempts):
+        try:
+            return caller("markets/create/quote/", draft), PASSED, ""
+        except panta.PantaError as error:
+            detail = str(error)
+            if read_refusal(error) == REFUSED:
+                return None, REFUSED, detail
+            if attempt + 1 < attempts:
+                sleep(pause * (attempt + 1))
+    return None, INCONCLUSIVE, detail
 
 
-def report(draft, now, quoted=None, quote_error=None, reach=None):
+def report(draft, now, quoted=None, verdict=None, detail="", reach=None):
     findings = check_locally(draft, now)
     image = str(draft.get("imageUrl") or "").strip()
     if reach and _url(image) and not any(f.field == "imageUrl" for f in findings):
         ok, why = reach(image)
         if not ok:
             findings.append(Finding(
-                BLOCK, "imageUrl", f"not reachable ({why})",
-                "host the image where the API can fetch it. Panta refuses this draft with a "
-                "generic INVALID_MARKET_PARAMS that never mentions the image"))
+                WARN, "imageUrl", f"not reachable ({why})",
+                "host the image where a reader can fetch it — the catalogue will show a hole "
+                "where the market's picture should be. Panta's own validator does not object: a "
+                "draft pointing at a 404 was quoted successfully, so this is our check, not "
+                "theirs"))
     seen = what_a_buyer_will_see(draft)
     lines = []
     blocks = [f for f in findings if f.level == BLOCK]
@@ -269,8 +310,14 @@ def report(draft, now, quoted=None, quote_error=None, reach=None):
     lines.append("  resolutionRule  not returned by the read API under any name — you are writing "
                  "it for nobody")
 
-    if quote_error:
-        lines += ["", f"PANTA SAYS  the quote was refused: {quote_error}"]
+    if verdict == REFUSED:
+        lines += ["", f"PANTA SAYS  the draft was refused, naming the fields: {detail}"]
+    elif verdict == INCONCLUSIVE:
+        lines += ["", "PANTA SAYS  nothing usable. Their validator refused without naming a "
+                      "field, which it also does for drafts it accepts seconds later, so this is "
+                      "not evidence about your draft.",
+                  f"  what came back   {detail or '(no detail)'}",
+                  "  the local checks above still stand on their own."]
     elif quoted:
         fee = quoted.get("paymentUsdc")
         human = f"{int(fee) / 1_000_000:,.2f} USDC" if str(fee).isdigit() else str(fee)

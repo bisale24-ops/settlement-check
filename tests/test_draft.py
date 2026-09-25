@@ -4,7 +4,7 @@ No network: the quote call and the image reachability probe are both injected.
 """
 import time
 
-from settlementcheck import draft
+from settlementcheck import draft, panta
 from settlementcheck.draft import BLOCK, WARN
 
 NOW = 1790000000
@@ -96,12 +96,56 @@ def test_the_creator_is_shown_what_survives_into_the_catalogue():
     assert seen["resolutionRule"] is None
 
 
-def test_an_unreachable_image_is_named_locally_instead_of_becoming_a_server_error():
-    """Panta refuses a draft with a 404 image as INVALID_MARKET_PARAMS with no `fields` and a
-    message pointing at server logs the caller cannot read. Measured 2026-09-26."""
-    text, found = draft.report(good(), NOW, reach=lambda _u: (False, "HTTP 404"))
-    assert [f.field for f in found] == ["imageUrl"]
-    assert "HTTP 404" in text and "never mentions the image" in text
+def test_an_unreachable_image_is_our_finding_and_is_not_blamed_on_panta():
+    """This assertion used to claim Panta refuses a 404 image. It does not.
+
+    A draft pointing at a URL that returns 404 was quoted successfully on 2026-09-26, so the
+    refusal we saw had nothing to do with the image. A broken picture still leaves a hole in the
+    catalogue, so the tool keeps the check — as a warning of its own, without attributing it to
+    somebody else's validator.
+    """
+    text, blocks = draft.report(good(), NOW, reach=lambda _u: (False, "HTTP 404"))
+    assert blocks == []
+    assert "HTTP 404" in text
+    assert "our check, not" in text
+
+
+def test_a_refusal_naming_no_field_is_not_evidence_about_the_draft():
+    """Measured 2026-09-26: 19 of 20 identical quotes for one valid draft came back
+    INVALID_MARKET_PARAMS with "check server logs" and no fields, and a repeat quote for the same
+    wallet and question failed 4 times out of 4 where the docs promise DUPLICATE_MARKET."""
+    assert draft.read_refusal('HTTP 400: {"code":"INVALID_MARKET_PARAMS",'
+                              '"message":"unexpected create quote failure — check server logs"}'
+                              ) == draft.INCONCLUSIVE
+    assert draft.read_refusal('HTTP 400: {"code":"INVALID_MARKET_PARAMS",'
+                              '"fields":{"startTime":"too soon"}}') == draft.REFUSED
+
+
+def test_an_inconclusive_quote_is_retried_and_a_field_refusal_is_not():
+    calls = []
+
+    def flaky(_path, _body):
+        calls.append(1)
+        raise panta.PantaError('HTTP 400: {"code":"INVALID_MARKET_PARAMS",'
+                               '"message":"unexpected create quote failure — check server logs"}')
+
+    def refused(_path, _body):
+        calls.append(1)
+        raise panta.PantaError('HTTP 400: {"code":"INVALID_MARKET_PARAMS","fields":{"category":"?"}}')
+
+    payload, verdict, _detail = draft.quote(good(), post=flaky, attempts=3, sleep=lambda _s: None)
+    assert payload is None and verdict == draft.INCONCLUSIVE and len(calls) == 3
+
+    calls.clear()
+    payload, verdict, _detail = draft.quote(good(), post=refused, attempts=3, sleep=lambda _s: None)
+    assert payload is None and verdict == draft.REFUSED and len(calls) == 1
+
+
+def test_an_inconclusive_quote_never_tells_the_creator_their_draft_is_wrong():
+    text, _blocks = draft.report(good(), NOW, verdict=draft.INCONCLUSIVE,
+                                 detail="INVALID_MARKET_PARAMS")
+    assert "not evidence about your draft" in text
+    assert "refused, naming the fields" not in text
 
 
 def test_an_image_probe_that_fails_to_connect_is_not_a_finding():
