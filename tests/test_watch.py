@@ -135,3 +135,74 @@ def test_reconnecting_keeps_the_events_already_counted():
     seen = watch.watch(connect=Once, on_event=events.append, on_notice=lambda _t: None,
                        reconnects=1, sleep=lambda _s: None)
     assert seen == 1 and len(events) == 1
+
+
+def test_polling_reports_the_same_line_a_subscription_would():
+    """The live view must not depend on a plan. Solami refuses a WebSocket upgrade without one
+    that includes it, and the public node closes the subscription it just acknowledged."""
+    calls = {"n": 0}
+
+    def signatures():
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return [{"signature": "old1", "blockTime": 1}]          # backlog
+        return [{"signature": "new1", "blockTime": 2}, {"signature": "old1", "blockTime": 1}]
+
+    events = []
+    found = watch.poll(signatures=signatures, on_event=events.append, limit=1,
+                       look_up=lambda _s: transaction(RESOLVER, MARKET),
+                       catalogue=lambda a: {"oracle": "on-chain", "sentToUma": True}
+                       if a == MARKET else None,
+                       sleep=lambda _s: None)
+    assert found == 1 and len(events) == 1
+    assert MARKET in events[0] and RESOLVER in events[0]
+    assert "no UMA assertion in the transaction" in events[0]
+
+
+def test_the_backlog_on_the_first_pass_is_history_not_news():
+    """Starting up must not announce every settlement that already happened as if it just did."""
+    events = []
+    watch.poll(signatures=lambda: [{"signature": "already", "blockTime": 1}],
+               on_event=events.append, seconds=0,
+               look_up=lambda _s: transaction(RESOLVER, MARKET), sleep=lambda _s: None)
+    assert events == []
+
+
+def test_a_failed_transaction_is_not_polled_into_a_settlement():
+    calls = {"n": 0}
+
+    def signatures():
+        calls["n"] += 1
+        return [] if calls["n"] == 1 else [{"signature": "bad", "blockTime": 2, "err": {"x": 1}}]
+
+    events = []
+    found = watch.poll(signatures=signatures, on_event=events.append, seconds=0,
+                       look_up=lambda _s: transaction(RESOLVER, MARKET), sleep=lambda _s: None)
+    assert found == 0 and events == []
+
+
+def test_no_command_ever_prints_the_key(capsys, monkeypatch, tmp_path):
+    """A credential printed to the terminal is a credential in the next screen recording.
+
+    This is not hypothetical: the first live run of --watch --poll printed the Solami key in full
+    on its second line, because the endpoint was interpolated without chain.safe().
+    """
+    from settlementcheck import chain, cli
+    secret = "sk_thisIsTheKeyAndItMustNotAppear"
+    key_file = tmp_path / "solami.key"
+    key_file.write_text(secret)
+    monkeypatch.setenv("SOLAMI_KEY_FILE", str(key_file))
+    monkeypatch.delenv("SOLANA_RPC", raising=False)
+    monkeypatch.delenv("SOLANA_WS", raising=False)
+
+    import importlib
+    importlib.reload(chain)
+    assert secret in chain.RPC                       # the key really is in the endpoint
+    assert secret not in chain.safe(chain.RPC)
+    assert secret not in chain.safe(chain.websocket_endpoint())
+
+    monkeypatch.setattr(cli.watcher, "poll", lambda **_kw: 0)
+    cli.live(cli.parse_args(["--watch", "0", "--poll"]))
+    printed = capsys.readouterr().out
+    assert secret not in printed
+    assert "<key>" in printed

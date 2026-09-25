@@ -123,7 +123,7 @@ def watch(url=None, on_event=print, source=None, limit=None, look_up=None, catal
     and leaving the impression that nothing settles.
     """
     notice = on_notice or (lambda text: None)
-    deadline = time.time() + seconds if seconds else None
+    deadline = time.time() + seconds if seconds is not None else None
     opener = connect or (lambda: ws.rpc_subscribe(url or chain.websocket_endpoint(), SUBSCRIBE))
     seen = 0
     drops = 0
@@ -176,3 +176,52 @@ def watch(url=None, on_event=print, source=None, limit=None, look_up=None, catal
         finally:
             if connection:
                 connection.close()
+
+
+def poll(seen=None, look_up=None, catalogue=None, on_event=print, on_traffic=None,
+         seconds=None, every=6.0, sleep=time.sleep, signatures=None, limit=None,
+         on_notice=None):
+    """The live view without a subscription, for a plan that does not include one.
+
+    Solami answers a WebSocket upgrade on a Free key with
+    `WebSocket access requires a plan that includes WebSocket access`, and the public node accepts
+    a logs subscription and then closes it. Neither of those is a reason to have no live view: the
+    market program's own signature list, polled, is a few seconds behind a stream and needs nothing
+    but RPC — which is exactly where an endpoint with headroom pays for itself, because each new
+    signature costs a getTransaction and the public node refuses under any concurrency at all.
+
+    Reports the same lines as `watch`, through the same `describe` and `format_line`.
+    """
+    notice = on_notice or (lambda _text: None)
+    fetch = signatures or (lambda: chain.recent_signatures(chain.MARKET_PROGRAM, 50))
+    known = set(seen or ())
+    first_pass = not known
+    deadline = time.time() + seconds if seconds is not None else None
+    found = 0
+
+    while True:
+        try:
+            entries = fetch()
+        except chain.ChainError as error:
+            notice(f"could not list signatures: {error}")
+            entries = []
+        fresh = [entry for entry in entries if entry["signature"] not in known]
+        for entry in reversed(fresh):          # oldest first, so the order reads like time
+            known.add(entry["signature"])
+            if first_pass:
+                continue                       # the backlog is history, not news
+            result = look_up(entry["signature"]) if look_up else None
+            names = chain.instructions_and_signer(result)[0] if result else set()
+            if on_traffic:
+                on_traffic(entry["signature"], sorted(names), bool(entry.get("err")))
+            if entry.get("err") or not is_settlement(names):
+                continue
+            on_event(format_line(describe(entry["signature"], names, look_up, catalogue),
+                                 now=entry.get("blockTime")))
+            found += 1
+            if limit and found >= limit:
+                return found
+        first_pass = False
+        if deadline and time.time() > deadline:
+            return found
+        sleep(every)

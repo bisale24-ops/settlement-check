@@ -14,6 +14,11 @@ def parse_args(argv=None):
                         help="watch the market program live and report settlements as they land. "
                              "With no number it runs until interrupted. Traffic is printed too, "
                              "so an idle venue looks idle rather than broken")
+    parser.add_argument("--poll", action="store_true",
+                        help="with --watch: follow the signature list instead of holding a "
+                             "subscription. A few seconds behind a stream, and it works on any "
+                             "plan — Solami refuses a WebSocket without one that includes it, and "
+                             "the public node closes the subscription it just acknowledged")
     parser.add_argument("--replay", metavar="SIGNATURE",
                         help="run the live path over one settlement that already happened, so the "
                              "same code can be demonstrated without waiting for the next one")
@@ -112,7 +117,8 @@ def check_draft(args):
 def live(args):
     """The live path. Everything it prints is parsed by the same code the tests exercise."""
     endpoint = chain.websocket_endpoint()
-    print(f"watching {chain.MARKET_PROGRAM}\n  through {endpoint}")
+    # chain.safe() and nothing else: this line ends up in terminal recordings.
+    print(f"watching {chain.MARKET_PROGRAM}\n  through {chain.safe(endpoint)}")
     if "api.mainnet-beta.solana.com" in endpoint:
         print("  (the public node. SOLANA_WS points this at a real endpoint — a Solami key "
               "raises the ceiling this measured at, not the code)")
@@ -123,9 +129,16 @@ def live(args):
             names = " + ".join(instructions) or "(no instruction name in the logs)"
             print(f"  · {names}  {signature[:16]}…{'  failed' if failed else ''}")
 
-    seen = watcher.watch(on_event=print, seconds=args.watch or None, on_traffic=traffic,
-                         look_up=chain.transaction, catalogue=_card_if_market,
-                         on_notice=lambda text: print(f"  ! {text}"))
+    notice = lambda text: print(f"  ! {text}")  # noqa: E731
+    if args.poll:
+        print("  polling mode: the signature list, every few seconds\n")
+        seen = watcher.poll(on_event=print, seconds=args.watch or None, on_traffic=traffic,
+                            look_up=chain.transaction, catalogue=_card_if_market,
+                            on_notice=notice)
+    else:
+        seen = watcher.watch(on_event=print, seconds=args.watch or None, on_traffic=traffic,
+                             look_up=chain.transaction, catalogue=_card_if_market,
+                             on_notice=notice)
     print(f"\n{seen} settlement(s) seen.")
     return report.EXIT_OK
 
