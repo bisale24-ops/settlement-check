@@ -44,6 +44,18 @@ def rpc(method, params, timeout=30, retries=3):
     raise ChainError(method)
 
 
+def websocket_endpoint():
+    """Where to watch from. A Solami endpoint is a value here, not a code change.
+
+    `SOLANA_WS` wins; otherwise the http endpoint is turned into its websocket twin, which is the
+    convention every Solana provider follows.
+    """
+    explicit = os.environ.get("SOLANA_WS")
+    if explicit:
+        return explicit
+    return RPC.replace("https://", "wss://", 1).replace("http://", "ws://", 1)
+
+
 def account_owner(address):
     """The program that owns an account, or None when the account does not exist.
 

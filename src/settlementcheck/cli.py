@@ -5,11 +5,18 @@ import pathlib
 import sys
 import time
 
-from . import chain, classify, draft as draftcheck, panta, report
+from . import chain, classify, draft as draftcheck, panta, report, watch as watcher
 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(prog="settlement-check", description=__doc__)
+    parser.add_argument("--watch", type=int, metavar="SECONDS", nargs="?", const=0,
+                        help="watch the market program live and report settlements as they land. "
+                             "With no number it runs until interrupted. Traffic is printed too, "
+                             "so an idle venue looks idle rather than broken")
+    parser.add_argument("--replay", metavar="SIGNATURE",
+                        help="run the live path over one settlement that already happened, so the "
+                             "same code can be demonstrated without waiting for the next one")
     parser.add_argument("--check-draft", metavar="FILE",
                         help="check a market draft (JSON) before it is published, instead of "
                              "reading the catalogue. Asks Panta to validate and price it; nothing "
@@ -102,8 +109,60 @@ def check_draft(args):
     return report.EXIT_FOUND if blocks else report.EXIT_OK
 
 
+def live(args):
+    """The live path. Everything it prints is parsed by the same code the tests exercise."""
+    endpoint = chain.websocket_endpoint()
+    print(f"watching {chain.MARKET_PROGRAM}\n  through {endpoint}")
+    if "api.mainnet-beta.solana.com" in endpoint:
+        print("  (the public node. SOLANA_WS points this at a real endpoint — a Solami key "
+              "raises the ceiling this measured at, not the code)")
+    print("  settlements are rare; market traffic is printed so an idle venue looks idle\n")
+
+    def traffic(signature, instructions, failed):
+        if not watcher.is_settlement(instructions):
+            names = " + ".join(instructions) or "(no instruction name in the logs)"
+            print(f"  · {names}  {signature[:16]}…{'  failed' if failed else ''}")
+
+    seen = watcher.watch(on_event=print, seconds=args.watch or None, on_traffic=traffic,
+                         look_up=chain.transaction, catalogue=_card_if_market,
+                         on_notice=lambda text: print(f"  ! {text}"))
+    print(f"\n{seen} settlement(s) seen.")
+    return report.EXIT_OK
+
+
+def _card_if_market(address):
+    """Is this writable account one of Panta's markets? The catalogue answers, or it does not."""
+    try:
+        return panta.market(address)
+    except panta.PantaError:
+        return None
+
+
+def replay(signature):
+    try:
+        result = chain.transaction(signature)
+    except chain.ChainError as error:
+        print(f"could not read {signature}: {error}", file=sys.stderr)
+        return report.EXIT_FAILED
+    if not result:
+        print(f"no transaction {signature} on this endpoint", file=sys.stderr)
+        return report.EXIT_FAILED
+    names, _signer = chain.instructions_and_signer(result)
+    if not watcher.is_settlement(names):
+        print(f"{signature} is not a settlement: {sorted(names) or 'no named instruction'}",
+              file=sys.stderr)
+        return report.EXIT_FAILED
+    event = watcher.describe(signature, names, chain.transaction, _card_if_market)
+    print(watcher.format_line(event))
+    return report.EXIT_OK
+
+
 def main(argv=None):
     args = parse_args(argv)
+    if args.replay:
+        return replay(args.replay)
+    if args.watch is not None:
+        return live(args)
     if args.check_draft:
         return check_draft(args)
     try:
