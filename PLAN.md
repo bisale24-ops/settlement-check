@@ -9,12 +9,21 @@ Same spine as the three projects before it — an artifact makes a claim, the to
 receipt — moved to a domain where the gap is expensive. A market resolves to YES or NO and money
 changes hands; whether anyone can check that outcome is decided *after* people have bought in.
 
-**Measured on the live catalog, 24.09.2026** (300 markets via the Panta API, 60 cards read):
+**Measured on the live catalog, 26.09.2026** (three passes, 100 markets each, every card opened;
+reproduce with `demo/census.py`):
 
-- **252 of 300 markets carry no question at all** — `title` is empty on every single one and
-  `description` is empty on 252. Of the 60 cards read in full, 55 state nothing; 12 of those are in
-  `primary` phase, tradeable right now. **$81,131 of $91,938 total volume sits on markets whose
-  question is not written down anywhere in the API.**
+- **The question appears only after the market is over.** All 193 settled markets across the three
+  passes state their question. Of the markets still on sale, 76-85% state none (34/40, 42/50,
+  13/17). Withheld for exactly as long as it is worth something.
+- An earlier draft of this plan said 252 of 300 markets carry no question and put $81,131 of volume
+  on them. **Both numbers were wrong.** They were measured on `description` alone, because every
+  listing row leaves `title` empty — but the market's own card carries the question in `title` on
+  52-87 of 100. The volume figure never reproduced either: $81,660 on one pass, $0 on the next two.
+  The count split reproduces; the money does not, so the money is not claimed.
+- **The most common settlement source in the catalog is the word `on-chain`** — 34 of 100, every
+  pass, more than any newsroom and more than any wallet. Not an address, not a program, not a
+  masthead. It is also the one claim here that refutes itself: a settlement that is genuinely
+  on-chain has an account, and the identifier has to carry it.
 - Where a question *is* stated, resolution rests on a wallet: all five such markets name the same
   `oracle`, `4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS`. That account is owned by the System
   Program with zero data — a plain key, not an oracle program. It signs regularly and calls one
@@ -26,10 +35,12 @@ So the original guess — that some markets settle against verifiable on-chain d
 contact with the catalog. Nothing here settles from a feed anyone can audit. That is the finding,
 and it is a better one: **your bet is settled by a key, not by a fact.**
 
-## The three verdicts
+## The five verdicts
 
 - **unstated** — the market carries no question. Whatever settles it, nobody buying can know what
-  they bought. The volume riding on this is the headline number.
+  they bought. The headline number is the split against settled markets, not the volume: the volume
+  field does not reproduce between reads.
+- **named nothing** — the source is a word, not a reference: `on-chain`. Nothing to open.
 - **editorial** — the question is stated and resolution rests on named newsrooms. Say which ones
   must be trusted, and that no one can reproduce the call.
 - **one key** — the question is stated and one wallet decides. Name the key, show how many markets
@@ -50,9 +61,11 @@ a report that cannot say "this one is fine" is not measuring anything.
   side; the Data API fills in history on start-up. This is continuous work on a stream rather than
   one token call — which is what the track asks for.
 
-Open question to settle during the build: `hermesResponse` is `True` on 42 of the 60 cards read and
-`False` on 18. If that flags a Pyth price used at resolution, price markets may have a verifiable
-path after all, and the fourth verdict stops being empty. To be checked, not assumed.
+Open question, now settled: `hermesResponse` does **not** flag a Pyth price. Across 100 cards it is
+`True` on all 54 resolved markets and `False` on all 6 cancelled ones, and it is `True` on sports,
+weather and gaming markets where no price feed exists. It tracks whether an answer was recorded,
+not whether anyone can audit that answer. `verifiable` stays empty — now for a stated reason rather
+than an unexamined one.
 
 ## Deliverables
 
