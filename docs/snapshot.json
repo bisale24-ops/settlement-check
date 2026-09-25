@@ -1,22 +1,23 @@
 {
- "taken_at": "2026-09-25T19:59:00Z",
+ "taken_at": "2026-09-25T20:12:10Z",
  "counts": {
-  "markets": 40,
-  "tradeable": 23,
-  "tradeable_unstated": 16,
-  "settled": 17,
+  "markets": 36,
+  "tradeable": 18,
+  "tradeable_unstated": 14,
+  "settled": 18,
   "settled_unstated": 0,
   "settlements_read": 8,
-  "claims_uma": 34
+  "claims_uma": 30
  },
  "settlers": [
   "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
  ],
  "draft_checks": {
-  "failing": "6 thing(s) would leave a buyer unable to read this market\n  BLOCK question: no question\n        → state what is being bet on, in one sentence\n  BLOCK sourcesOfTruth: 'on-chain' is a word, not a reference\n        → name the account, the program or the outlet. A buyer sees this string and nothing else — it becomes the market's `oracle` field verbatim\n  BLOCK endTime: trading would close before it opens\n        → startTime must be earlier than endTime\n  BLOCK resolutionTime: the market resolves before trading ends\n        → resolutionTime must be at or after endTime\n  BLOCK startTime: starts in 335s; the chain requires 3600s\n        → move startTime further out, or declare it a breaking market in progress\n  BLOCK imageUrl: points at a private address\n        → host it somewhere a reader can reach\n  WARN  resolutionRule: 8 characters\n        → a rule this short rarely names both the measurement and the moment it is read; nobody can see this field after publication, so it is the creator's only record\n\nWHAT THE CATALOGUE WILL SHOW\n  title   (empty — and the listing leaves it empty anyway)\n  oracle  on-chain\n  resolutionRule  not returned by the read API under any name — you are writing it for nobody",
-  "passing": "Nothing here would leave a buyer unable to read this market.\n\nWHAT THE CATALOGUE WILL SHOW\n  title   Will the Ethereum Pectra upgrade activate on mainnet before 1 December 2026?\n  oracle  https://ethereum.org/en/roadmap/,https://etherscan.io\n  resolutionRule  not returned by the read API under any name — you are writing it for nobody\n\nPANTA SAYS  the draft passes their validation.\n  creation fee      50.00 USDC\n  event address     8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF\n  session expires   2026-09-25T20:04:50.815058Z\n  nothing was signed, submitted or paid by this tool.",
+  "failing": "6 thing(s) would leave a buyer unable to read this market\n  BLOCK question: no question\n        → state what is being bet on, in one sentence\n  BLOCK sourcesOfTruth: 'on-chain' is a word, not a reference\n        → name the account, the program or the outlet. A buyer sees this string and nothing else — it becomes the market's `oracle` field verbatim\n  BLOCK endTime: trading would close before it opens\n        → startTime must be earlier than endTime\n  BLOCK resolutionTime: the market resolves before trading ends\n        → resolutionTime must be at or after endTime\n  BLOCK startTime: starts in 0s; the chain requires 3600s\n        → move startTime further out, or declare it a breaking market in progress\n  BLOCK imageUrl: points at a private address\n        → host it somewhere a reader can reach\n  WARN  resolutionRule: 8 characters\n        → a rule this short rarely names both the measurement and the moment it is read; nobody can see this field after publication, so it is the creator's only record\n\nWHAT THE CATALOGUE WILL SHOW\n  title   (empty — and the listing leaves it empty anyway)\n  oracle  on-chain\n  resolutionRule  not returned by the read API under any name — you are writing it for nobody",
+  "passing": "Nothing here would leave a buyer unable to read this market.\n\nWHAT THE CATALOGUE WILL SHOW\n  title   Will the Ethereum Pectra upgrade activate on mainnet before 1 December 2026?\n  oracle  https://ethereum.org/en/roadmap/,https://etherscan.io\n  resolutionRule  not returned by the read API under any name — you are writing it for nobody\n\nPANTA SAYS  the draft passes their validation.\n  creation fee      50.00 USDC\n  event address     8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF\n  session expires   2026-09-25T20:17:28.943961Z\n  nothing was signed, submitted or paid by this tool.",
   "passing_verdict": "passed"
  },
+ "replay": "00:29:32  ResolveEventUsdc  5u15kVt2wz1cnLMU…\n          market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9\n          claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS\n          the catalogue says this one went to UMA\n          signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR\n          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction",
  "markets": [
   {
    "market_id": "EWiohz3LKFPmtWKF33K1wDj1xQUUP3Q3xfkj5Tsq9LTd",
@@ -132,11 +133,11 @@
   },
   {
    "market_id": "BpPmo7wHrh8bi3ea2ohiVy64sxEnSTufx67zTA9ntnfT",
-   "kind": "unstated",
-   "question": "",
+   "kind": "editorial",
+   "question": "Will $ANSEM reach a $1B market cap by December 31, 2026?",
    "oracle": "world-crypto-coinmarketcap,world-crypto-coingecko",
-   "detail": "settled by world-crypto-coinmarketcap,world-crypto-coingecko",
-   "phase": "primary",
+   "detail": "2 newsroom feed(s): world-crypto-coinmarketcap, world-crypto-coingecko",
+   "phase": "secondary",
    "volume": 11796.078434,
    "tradeable": true,
    "claims_uma": false,
@@ -146,11 +147,11 @@
   },
   {
    "market_id": "69A5oC4BXuHC1hG6EVpLZbgSH4GQGVBMgQKwHz3YhbZk",
-   "kind": "unstated",
-   "question": "",
+   "kind": "editorial",
+   "question": "Will Bitcoin drop below 58k in 2026?",
    "oracle": "world-crypto-coinmarketcap",
-   "detail": "settled by world-crypto-coinmarketcap",
-   "phase": "primary",
+   "detail": "1 newsroom feed(s): world-crypto-coinmarketcap",
+   "phase": "secondary",
    "volume": 10031.372553,
    "tradeable": true,
    "claims_uma": false,
@@ -258,17 +259,22 @@
   },
   {
    "market_id": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
-   "kind": "unknown",
+   "kind": "one-key",
    "question": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
-   "phase": "secondary",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "phase": "resolved",
    "volume": 199.983033,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
@@ -276,9 +282,9 @@
    "question": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
    "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
-   "phase": "secondary",
+   "phase": "resolved",
    "volume": 207.029212,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
    "settled_by": [],
    "settlement_seen": [],
@@ -290,9 +296,9 @@
    "question": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
    "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
-   "phase": "secondary",
+   "phase": "resolved",
    "volume": 319.688256,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
    "settled_by": [],
    "settlement_seen": [],
@@ -300,73 +306,98 @@
   },
   {
    "market_id": "1Nm7PCxoHUwGk1J9NoSfy26TQZkitwDf6mamFTZDn1r",
-   "kind": "unknown",
+   "kind": "one-key",
    "question": "Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
-   "phase": "secondary",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "phase": "resolved",
    "volume": 321.573042,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "dsaUrqmxNRtGeEhYZv4hPeWRKXQbVY6LcxgDrA6cUSe",
-   "kind": "unknown",
+   "kind": "one-key",
    "question": "Will Super Micro Computer's stock price ($SMCI) close at or above $37.00 on Monday, August 24, 2026?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
-   "phase": "primary",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "phase": "resolved",
    "volume": 223.841493,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "EqMJeJS2kHNgQAFi1afUL6MgGVjgBA3EsSa6xrQiUja6",
-   "kind": "unstated",
-   "question": "",
+   "kind": "one-key",
+   "question": "Will a full Safety Car be deployed within the first 10 laps of the 2026 Dutch Grand Prix Main Race?",
    "oracle": "world-sports-espn,world-sports-skysports,za-sports-supersport",
-   "detail": "settled by world-sports-espn,world-sports-skysports,za-sports-supersport",
-   "phase": "secondary",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "phase": "resolved",
    "volume": 514.951708,
-   "tradeable": true,
+   "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "CcknAcVuu3g7LqCwitEkj7dTWZ987VM8E36CaTezuLLd",
-   "kind": "editorial",
+   "kind": "one-key",
    "question": "Will Max Verstappen win the 2026 Dutch Grand Prix Main Race?",
    "oracle": "world-sports-espn,world-sports-skysports,za-sports-supersport",
-   "detail": "3 newsroom feed(s): world-sports-espn, world-sports-skysports, za-sports-supersport",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
    "phase": "resolved",
    "volume": 548.041909,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "BbCaTSmhbZRdNnViuaC9dZ4V3SiEjPejRKVVskEBsfdf",
-   "kind": "editorial",
+   "kind": "one-key",
    "question": "Will September 2026 WTI Crude Oil Futures (CLU26) trade at or above $85.50 at any point between August 5 and August 17, 2026?",
    "oracle": "world-stocks-bloomberg,world-finance-reuters,world-stocks-yahoo-finance,world-business-spglobal",
-   "detail": "4 newsroom feed(s): world-stocks-bloomberg, world-finance-reuters, world-stocks-yahoo-finance, world-business-spglobal",
+   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
    "phase": "resolved",
    "volume": 396.369738,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
+   "settled_by": [
+    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
+   ],
+   "settlement_seen": [
+    "ResolveEventUsdc",
+    "SubmitOracleResultUsdc"
+   ],
+   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
   },
   {
    "market_id": "D6rpryCRfJqzcbL9HGuA5u5AksSRyGLCiyH4LMY8nYn9",
@@ -408,41 +439,31 @@
   },
   {
    "market_id": "4J96MvCVb1MYMotdNbyj1yFKDXQp7UJhLYUMJLPhXRQN",
-   "kind": "one-key",
+   "kind": "editorial",
    "question": "Will Tesla (NASDAQ: TSLA) close at or above $335.00 on Friday, August 14, 2026?",
    "oracle": "world-stocks-bloomberg,world-stocks-nyse,world-finance-yahoo",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "3 newsroom feed(s): world-stocks-bloomberg, world-stocks-nyse, world-finance-yahoo",
    "phase": "resolved",
    "volume": 523.047898,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "HNdNsTczq5H5iKheVLHqfYzJn1if1ruuWviGaevnLyKp",
-   "kind": "one-key",
+   "kind": "editorial",
    "question": "Will NVIDIA (NASDAQ: NVDA) close above $230.00 on Friday, August 14, 2026?",
    "oracle": "world-finance-reuters,world-finance-yahoo",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "2 newsroom feed(s): world-finance-reuters, world-finance-yahoo",
    "phase": "resolved",
    "volume": 437.25,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "4wpsTQuVwxWtfqqsu3R7CnXVQz55xcPuBcmV8PVMAq68",
@@ -474,145 +495,69 @@
   },
   {
    "market_id": "6kNGWC39e8cvuRonc4iSWVQytJAPZWaw6BotuLQqjSPT",
-   "kind": "one-key",
+   "kind": "editorial",
    "question": "Will Davey win the frontier traders competition on NectarFi?",
    "oracle": "ng-finance-sec,ng-finance-ngx,ng-finance-cbn",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "3 newsroom feed(s): ng-finance-sec, ng-finance-ngx, ng-finance-cbn",
    "phase": "resolved",
    "volume": 42.699999,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "GeW8XZSUd4PgzChvTejAU8ybQhpRW8LtXy3G8hDwCPbB",
-   "kind": "one-key",
+   "kind": "editorial",
    "question": "Will Nigel Farage win the Clacton by-election with greater than or equal to 45.00% of the total vote share?",
    "oracle": "eu-politics-bbc,world-politics-reuters,world-politics-ap,eu-politics-reuters",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "4 newsroom feed(s): eu-politics-bbc, world-politics-reuters, world-politics-ap, eu-politics-reuters",
    "phase": "resolved",
    "volume": 393.522134,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "vQZWPdVNZPdDKnXQG822J4zKWbHthUq1ydeazaq475X",
-   "kind": "one-key",
+   "kind": "unknown",
    "question": "Will Cisco Systems (CSCO) report cumulative Fiscal Year 2026 AI infrastructure orders of $9.00 billion or greater during its Q4 FY26 earnings release or subsequent conference call?",
    "oracle": "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it",
    "phase": "resolved",
    "volume": 442.835151,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "51Si32KS2gV4Y8Wf8MxCxpsbFsHRbUDqTARRzVnGJ6o3",
-   "kind": "one-key",
+   "kind": "editorial",
    "question": "Will Bitcoin trade at or above $67,500 at any point between August 5 and August 12, 2026?",
    "oracle": "world-crypto-coingecko",
-   "detail": "one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "detail": "1 newsroom feed(s): world-crypto-coingecko",
    "phase": "resolved",
    "volume": 543.16814,
    "tradeable": false,
    "claims_uma": true,
-   "settled_by": [
-    "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR"
-   ],
-   "settlement_seen": [
-    "ResolveEventUsdc",
-    "SubmitOracleResultUsdc"
-   ],
-   "claim_versus_chain": "the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction"
+   "settled_by": [],
+   "settlement_seen": [],
+   "claim_versus_chain": null
   },
   {
    "market_id": "EEg99KwxHF7uPwyeaGjuFiRGFLpP2K4UHX7gopAND9cu",
-   "kind": "editorial",
-   "question": "Will the current top three in the NectarFi Frontier Traders Competition remain on the podium by the end of today, August 12, 2026?",
+   "kind": "unstated",
+   "question": "",
    "oracle": "world-crypto-coingecko",
-   "detail": "1 newsroom feed(s): world-crypto-coingecko",
-   "phase": "resolved",
+   "detail": "settled by world-crypto-coingecko",
+   "phase": "secondary",
    "volume": 685.224873,
-   "tradeable": false,
-   "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
-  },
-  {
-   "market_id": "6DujiVdenVrfFtznxDmm8ADESHkeoQYjbgmKMngciwL5",
-   "kind": "editorial",
-   "question": "Will Elon tweet about the United Nations today?",
-   "oracle": "world-politics-reuters",
-   "detail": "1 newsroom feed(s): world-politics-reuters",
-   "phase": "resolved",
-   "volume": 5.0,
-   "tradeable": false,
-   "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
-  },
-  {
-   "market_id": "GxSRBGzMw5Paj7M5E1hzmc5B9gYFE2sczoUiu3n7JnmM",
-   "kind": "editorial",
-   "question": "Will Solana (SOL) trade at or above $81.50 at any point from August 5th, 2026, 4:15 pm WAT to August 8th, 2026, 11.59 pm WAT (through the SuperTeam Nigeria Solana Uyo Summit)",
-   "oracle": "world-crypto-coinmarketcap,world-crypto-coingecko",
-   "detail": "2 newsroom feed(s): world-crypto-coinmarketcap, world-crypto-coingecko",
-   "phase": "resolved",
-   "volume": 302.941427,
-   "tradeable": false,
-   "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
-  },
-  {
-   "market_id": "6YxBvXWbkbS4pBU733HYcDUWpgncGD3Bkk65xWw1eZjo",
-   "kind": "editorial",
-   "question": "Will Youri Tielemans record an assist for Manchester United against PSG on Saturday, August 8, 2026?",
-   "oracle": "world-sports-espn,world-sports-skysports,world-sports-fifa,eu-sports-skysports,eu-sports-uefa",
-   "detail": "5 newsroom feed(s): world-sports-espn, world-sports-skysports, world-sports-fifa, eu-sports-skysports and 1 more",
-   "phase": "resolved",
-   "volume": 370.300206,
-   "tradeable": false,
-   "claims_uma": true,
-   "settled_by": [],
-   "settlement_seen": [],
-   "claim_versus_chain": null
-  },
-  {
-   "market_id": "8ptLaNR3tY5jkspPMr8utCxBBE3zsoLk9KF9DUeF1WjN",
-   "kind": "editorial",
-   "question": "Will Tesla (NASDAQ: TSLA) close above $330.00 on Friday, August 7, 2026?",
-   "oracle": "world-finance-reuters,world-finance-yahoo",
-   "detail": "2 newsroom feed(s): world-finance-reuters, world-finance-yahoo",
-   "phase": "resolved",
-   "volume": 505.0,
-   "tradeable": false,
+   "tradeable": true,
    "claims_uma": true,
    "settled_by": [],
    "settlement_seen": [],

@@ -76,11 +76,11 @@ a{color:var(--accent2)}
 
   <div class="split">
     <div class="card bad">
-      <div class="big">16 of 23</div>
-      <small>markets <b>you can buy right now</b> do not say what you are buying — 70%</small>
+      <div class="big">14 of 18</div>
+      <small>markets <b>you can buy right now</b> do not say what you are buying — 78%</small>
     </div>
     <div class="card good">
-      <div class="big">17 of 17</div>
+      <div class="big">18 of 18</div>
       <small>markets that are <b>already settled</b> state their question — the question appears
              once nobody can act on it</small>
     </div>
@@ -89,7 +89,7 @@ a{color:var(--accent2)}
 
 <section>
   <h2>The catalogue says UMA. The chain says one keypair.</h2>
-  <p><code>sentToUma</code> is true on 34 of the 40 markets in
+  <p><code>sentToUma</code> is true on 30 of the 36 markets in
      this snapshot.</p>
   <div class="quote">On chain, every result in this snapshot was submitted and every event resolved by <span class="addr mono">664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR</span> — an account owned by the System Program, holding no data. A person with a key, not a program. No UMA assertion appears in any of those transactions.</div>
   <p>The settlement path is <code>GraduateMarketUsdc → SubmitOracleResultUsdc →
@@ -118,7 +118,7 @@ a{color:var(--accent2)}
         → startTime must be earlier than endTime
   BLOCK resolutionTime: the market resolves before trading ends
         → resolutionTime must be at or after endTime
-  BLOCK startTime: starts in 335s; the chain requires 3600s
+  BLOCK startTime: starts in 0s; the chain requires 3600s
         → move startTime further out, or declare it a breaking market in progress
   BLOCK imageUrl: points at a private address
         → host it somewhere a reader can reach
@@ -140,15 +140,34 @@ WHAT THE CATALOGUE WILL SHOW
 PANTA SAYS  the draft passes their validation.
   creation fee      50.00 USDC
   event address     8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF
-  session expires   2026-09-25T20:04:50.815058Z
+  session expires   2026-09-25T20:17:28.943961Z
   nothing was signed, submitted or paid by this tool.</pre></div>
   </div>
 </section>
 
 <section>
+  <h2>Live: the same check, as settlements land</h2>
+  <p><code>./run.sh --watch</code> subscribes to the market program and reports each settlement the
+     moment it arrives — which market closed, what the catalogue claimed would decide it, and who
+     signed. <code>--replay</code> runs the same code over a settlement that already happened.</p>
+<pre>00:29:32  ResolveEventUsdc  5u15kVt2wz1cnLMU…
+          market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9
+          claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
+          the catalogue says this one went to UMA
+          signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction</pre>
+  <p class="dim">Measured, not asserted: Solana's public node accepts a <code>logsSubscribe</code>
+     with a program filter, acknowledges it, then closes the connection; and reading the
+     settlements already in the catalogue exhausts it at a couple of dozen markets with
+     <code>getTransaction failed after 3 attempts</code>. The watcher reconnects and, when it gives
+     up, says that is the endpoint's limit and not the venue having nothing to settle.
+     <code>SOLANA_WS</code> points the same code at one that will hold it.</p>
+</section>
+
+<section>
   <h2>The snapshot</h2>
-  <p>40 markets, 8 of them with their settlement read
-     from the chain. Taken 2026-09-25T19:59:00Z.</p>
+  <p>36 markets, 8 of them with their settlement read
+     from the chain. Taken 2026-09-25T20:12:10Z.</p>
   <table>
     <thead><tr><th>Market</th><th>Verdict</th><th class="hide-sm">Claimed source</th>
       <th>Volume</th></tr></thead>
@@ -156,22 +175,8 @@ PANTA SAYS  the draft passes their validation.
 <tr>
   <td class="q"><span class="none">no question stated</span></td>
   <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-crypto-coinmarketcap,world-crypt</td>
-  <td class="mono">$11,796<br><span style="color:var(--dim)">
-      primary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-crypto-coinmarketcap</td>
-  <td class="mono">$10,031<br><span style="color:var(--dim)">
-      primary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
-  <td class="mono">$515<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">world-crypto-coingecko</td>
+  <td class="mono">$685<br><span style="color:var(--dim)">
       secondary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
@@ -266,31 +271,24 @@ PANTA SAYS  the draft passes their validation.
       secondary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
-  <td class="q">Will Bitcoin trade at or above $67,500 at any point between August 5 and August 12, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td class="q">Will Max Verstappen win the 2026 Dutch Grand Prix Main Race?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
   <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-crypto-coingecko</td>
-  <td class="mono">$543<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
+  <td class="mono">$548<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Tesla (NASDAQ: TSLA) close at or above $335.00 on Friday, August 14, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td class="q">Will a full Safety Car be deployed within the first 10 laps of the 2026 Dutch Grand Prix Main Race?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
   <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg,world-stocks-ny</td>
-  <td class="mono">$523<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
+  <td class="mono">$515<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Cisco Systems (CSCO) report cumulative Fiscal Year 2026 AI infrastructure orders of $9.00 billion or greater during its Q4 FY26 earnings release <div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td class="q">Will September 2026 WTI Crude Oil Futures (CLU26) trade at or above $85.50 at any point between August 5 and August 17, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
   <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
-  <td class="mono">$443<br><span style="color:var(--dim)">
-      resolved</span></td>
-</tr>
-<tr>
-  <td class="q">Will NVIDIA (NASDAQ: NVDA) close above $230.00 on Friday, August 14, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-finance-reuters,world-finance-ya</td>
-  <td class="mono">$437<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">world-stocks-bloomberg,world-finance-r</td>
+  <td class="mono">$396<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
@@ -301,10 +299,10 @@ PANTA SAYS  the draft passes their validation.
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Nigel Farage win the Clacton by-election with greater than or equal to 45.00% of the total vote share?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td class="q">Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
   <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">eu-politics-bbc,world-politics-reuters</td>
-  <td class="mono">$394<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
+  <td class="mono">$322<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
@@ -315,24 +313,45 @@ PANTA SAYS  the draft passes their validation.
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Davey win the frontier traders competition on NectarFi?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td class="q">Will Super Micro Computer&#x27;s stock price ($SMCI) close at or above $37.00 on Monday, August 24, 2026?<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
   <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">ng-finance-sec,ng-finance-ngx,ng-finan</td>
-  <td class="mono">$43<br><span style="color:var(--dim)">
+  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
+  <td class="mono">$224<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will the current top three in the NectarFi Frontier Traders Competition remain on the podium by the end of today, August 12, 2026?</td>
-  <td><span class="chip warn">newsrooms</span></td>
-  <td class="mono hide-sm">world-crypto-coingecko</td>
-  <td class="mono">$685<br><span style="color:var(--dim)">
+  <td class="q">Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wedn<div class="vs">the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction</div></td>
+  <td><span class="chip bad">one keypair</span></td>
+  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
+  <td class="mono">$200<br><span style="color:var(--dim)">
       resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will $ANSEM reach a $1B market cap by December 31, 2026?</td>
+  <td><span class="chip warn">newsrooms</span></td>
+  <td class="mono hide-sm">world-crypto-coinmarketcap,world-crypt</td>
+  <td class="mono">$11,796<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+</tr>
+<tr>
+  <td class="q">Will Bitcoin drop below 58k in 2026?</td>
+  <td><span class="chip warn">newsrooms</span></td>
+  <td class="mono hide-sm">world-crypto-coinmarketcap</td>
+  <td class="mono">$10,031<br><span style="color:var(--dim)">
+      secondary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
   <td class="q">Will @debar be the outright winner of the NectarFi Frontier Traders Competition?</td>
   <td><span class="chip warn">newsrooms</span></td>
   <td class="mono hide-sm">world-crypto-coingecko</td>
   <td class="mono">$601<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Bitcoin trade at or above $67,500 at any point between August 5 and August 12, 2026?</td>
+  <td><span class="chip warn">newsrooms</span></td>
+  <td class="mono hide-sm">world-crypto-coingecko</td>
+  <td class="mono">$543<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
     </tbody>

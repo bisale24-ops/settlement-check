@@ -112,6 +112,7 @@ def render(snapshot):
     checks = snapshot.get("draft_checks", {})
     failing = html.escape(checks.get("failing", "(not recorded)"))
     passing = html.escape(checks.get("passing", "(not recorded)"))
+    replay = html.escape(snapshot.get("replay", "(not recorded)"))
     counts = snapshot["counts"]
     live, mute = counts["tradeable"], counts["tradeable_unstated"]
     done, done_mute = counts["settled"], counts["settled_unstated"]
@@ -188,6 +189,20 @@ def render(snapshot):
     <div><h3>a draft that passes</h3>
 <pre>{passing}</pre></div>
   </div>
+</section>
+
+<section>
+  <h2>Live: the same check, as settlements land</h2>
+  <p><code>./run.sh --watch</code> subscribes to the market program and reports each settlement the
+     moment it arrives — which market closed, what the catalogue claimed would decide it, and who
+     signed. <code>--replay</code> runs the same code over a settlement that already happened.</p>
+<pre>{replay}</pre>
+  <p class="dim">Measured, not asserted: Solana's public node accepts a <code>logsSubscribe</code>
+     with a program filter, acknowledges it, then closes the connection; and reading the
+     settlements already in the catalogue exhausts it at a couple of dozen markets with
+     <code>getTransaction failed after 3 attempts</code>. The watcher reconnects and, when it gives
+     up, says that is the endpoint's limit and not the venue having nothing to settle.
+     <code>SOLANA_WS</code> points the same code at one that will hold it.</p>
 </section>
 
 <section>

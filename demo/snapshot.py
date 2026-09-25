@@ -69,6 +69,29 @@ def run_draft_checks():
     return out
 
 
+def replay_one_settlement(verdicts):
+    """Run the live path over a settlement from this snapshot, and keep what it printed."""
+    from settlementcheck import watch as watcher
+    for verdict in verdicts:
+        if not verdict.settled_by:
+            continue
+        for entry in chain.recent_signatures(verdict.market_id, 12):
+            result = chain.transaction(entry["signature"])
+            if not result:
+                continue
+            names, _signer = chain.instructions_and_signer(result)
+            if watcher.is_settlement(names):
+                card = {}
+                try:
+                    card = panta.market(verdict.market_id)
+                except panta.PantaError:
+                    pass
+                event = watcher.describe(entry["signature"], names, chain.transaction,
+                                         lambda a: card if a == verdict.market_id else None)
+                return watcher.format_line(event, now=entry.get("blockTime"))
+    return "(no settlement in this snapshot to replay)"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cards", type=int, default=40)
@@ -100,6 +123,7 @@ def main():
         },
         "settlers": sorted({address for v in verdicts for address in v.settled_by}),
         "draft_checks": run_draft_checks(),
+        "replay": replay_one_settlement(verdicts),
         "markets": rows,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
