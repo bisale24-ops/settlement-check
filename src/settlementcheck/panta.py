@@ -56,6 +56,40 @@ def get(path, params=None, timeout=30, retries=3):
     raise PantaError(f"gave up on {path}")
 
 
+# The only non-GET this tool makes, and it is deliberately the one that costs nothing: the quote
+# endpoint validates a draft market and returns the creation fee from on-chain config. Panta's
+# model is quote → build → **the creator's wallet signs** → broadcast → register. This tool stops
+# at the first step. It never builds, never signs, never broadcasts, and never registers, so no
+# market is created and no fee is paid.
+def post(path, body, timeout=30, retries=2):
+    url = f"{BASE}/{path.lstrip('/')}"
+    payload = json.dumps(body).encode("utf-8")
+    request = urllib.request.Request(url, data=payload, method="POST", headers={
+        "X-Api-Key": api_key(),
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "User-Agent": "settlement-check/0.1",
+    })
+    for attempt in range(retries):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as error:
+            detail = error.read().decode("utf-8", "replace")[:400]
+            # A 400 is the endpoint doing its job — it is an answer about the draft, not a
+            # transport failure, so it is never retried and the body is handed back intact.
+            if error.code in (429, 502, 503, 504) and attempt + 1 < retries:
+                time.sleep(1.5 * (attempt + 1))
+                continue
+            raise PantaError(f"HTTP {error.code}: {detail}") from None
+        except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
+            if attempt + 1 < retries:
+                time.sleep(1.0 * (attempt + 1))
+                continue
+            raise PantaError(f"{type(error).__name__} on {path}") from None
+    raise PantaError(f"gave up on {path}")
+
+
 MAX_PAGES = 200  # a catalogue this size is someone else's server; never walk it unbounded
 
 # The documented cursor pagination does not advance: passing a page's own `nextCursor` back returns

@@ -1,0 +1,15 @@
+{
+  "wallet": "BxTgpq8cNYBjBTDHJfwbnPifmstHqhU16RYohQTu4ZcR",
+  "question": "",
+  "resolutionRule": "on-chain",
+  "sourcesOfTruth": [
+    "on-chain"
+  ],
+  "category": "sports",
+  "startTime": 1790365736,
+  "endTime": 1790365436,
+  "resolutionTime": 1790365196,
+  "marketType": "standard",
+  "imageUrl": "http://localhost:8080/market.png",
+  "region": "Global"
+}

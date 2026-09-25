@@ -1,0 +1,16 @@
+{
+  "wallet": "BxTgpq8cNYBjBTDHJfwbnPifmstHqhU16RYohQTu4ZcR",
+  "question": "Will the Ethereum Pectra upgrade activate on mainnet before 1 December 2026?",
+  "resolutionRule": "YES if the Pectra fork is active on Ethereum mainnet at block timestamp 2026-12-01T00:00:00Z, read from the beacon chain fork schedule on ethereum.org and confirmed on etherscan.io. NO otherwise. If the fork schedule is unavailable at that moment, the market resolves from the first reading taken after it returns.",
+  "sourcesOfTruth": [
+    "https://ethereum.org/en/roadmap/",
+    "https://etherscan.io"
+  ],
+  "category": "crypto",
+  "startTime": 1790372336,
+  "endTime": 1792957136,
+  "resolutionTime": 1793043536,
+  "marketType": "standard",
+  "imageUrl": "https://picsum.photos/1024",
+  "region": "Global"
+}

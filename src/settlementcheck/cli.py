@@ -1,12 +1,21 @@
 """settlement-check — what decides this market, and could anyone else have checked it?"""
 import argparse
+import json
+import pathlib
 import sys
+import time
 
-from . import chain, classify, panta, report
+from . import chain, classify, draft as draftcheck, panta, report
 
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(prog="settlement-check", description=__doc__)
+    parser.add_argument("--check-draft", metavar="FILE",
+                        help="check a market draft (JSON) before it is published, instead of "
+                             "reading the catalogue. Asks Panta to validate and price it; nothing "
+                             "is signed, submitted or paid")
+    parser.add_argument("--offline", action="store_true",
+                        help="with --check-draft: apply the local rules only, ask Panta nothing")
     parser.add_argument("--pages", type=int, default=2, help="catalogue pages to read (50 each)")
     parser.add_argument("--cards", type=int, default=40, help="how many full cards to open")
     parser.add_argument("--tradeable-first", action=argparse.BooleanOptionalAction, default=True,
@@ -76,8 +85,27 @@ def settler_facts(verdicts):
     return facts
 
 
+def check_draft(args):
+    path = pathlib.Path(args.check_draft)
+    try:
+        body = json.loads(path.read_text())
+    except (OSError, json.JSONDecodeError) as error:
+        print(f"Could not read the draft: {error}", file=sys.stderr)
+        return report.EXIT_FAILED
+    quoted = error = None
+    if not args.offline:
+        quoted, error = draftcheck.quote(body)
+    # --offline means offline: no quote, and no reachability request either.
+    reach = None if args.offline else draftcheck.image_reachable
+    text, blocks = draftcheck.report(body, int(time.time()), quoted, error, reach=reach)
+    print(text)
+    return report.EXIT_FOUND if blocks else report.EXIT_OK
+
+
 def main(argv=None):
     args = parse_args(argv)
+    if args.check_draft:
+        return check_draft(args)
     try:
         cards = collect(args)
     except panta.PantaError as error:
