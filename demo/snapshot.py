@@ -107,6 +107,17 @@ def main():
         row["claim_versus_chain"] = verdict.claim_versus_chain
         rows.append(row)
 
+    # Does an account for each market exist at all? The card cannot answer: a stripped card has
+    # no `onChain` field to read, and those are exactly the markets in question.
+    no_account = 0
+    for verdict in verdicts:
+        try:
+            info = chain.rpc("getAccountInfo", [verdict.market_id, {"encoding": "base64"}])
+        except chain.ChainError:
+            continue
+        if (info or {}).get("value") is None:
+            no_account += 1
+
     tradeable = [v for v in verdicts if v.tradeable]
     settled = [v for v in verdicts if not v.tradeable]
     mute = lambda group: sum(1 for v in group if v.kind == classify.UNSTATED)  # noqa: E731
@@ -120,6 +131,8 @@ def main():
             "settled_unstated": mute(settled),
             "settlements_read": sum(1 for v in verdicts if v.settled_by),
             "claims_uma": sum(1 for v in verdicts if v.claims_uma),
+            "no_account": no_account,
+            "stripped": sum(1 for v in verdicts if v.stripped),
         },
         "settlers": sorted({address for v in verdicts for address in v.settled_by}),
         "draft_checks": run_draft_checks(),

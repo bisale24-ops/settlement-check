@@ -109,6 +109,8 @@ def rows_html(markets, limit=26):
 
 
 def render(snapshot):
+    ghosts = snapshot.get("counts", {}).get("no_account", 0)
+    stripped = snapshot.get("counts", {}).get("stripped", 0)
     checks = snapshot.get("draft_checks", {})
     failing = html.escape(checks.get("failing", "(not recorded)"))
     passing = html.escape(checks.get("passing", "(not recorded)"))
@@ -144,45 +146,50 @@ def render(snapshot):
   <div class="brand"><div class="mark">S</div><b>Settlement Check</b></div>
   <h1>A prediction market is a claim about the future.<br>
       This asks <em>what will decide it</em> — and whether anyone can check that.</h1>
-  <p class="lede">Measured on the live Panta catalogue. Every number here comes from the snapshot
-     below it; nothing on this page is typed by hand.
-     <br><span class="dim">Three separate passes over the catalogue on 26 September 2026 —
-     reproduce them with <code>demo/census.py</code> — put the first figure at 85%, 84% and 76%,
-     and the second at 0 out of 60, 0 out of 50 and 0 out of 83.</span></p>
+  <p class="lede">Measured on the live Panta catalogue, and checked against Panta's own front end.
+     Every number here comes from the snapshot below it; nothing on this page is typed by hand.</p>
 
   <div class="split">
     <div class="card bad">
-      <div class="big">{mute} of {live}</div>
-      <small>markets <b>you can buy right now</b> do not say what you are buying — {share}</small>
+      <div class="big">{ghosts} of {counts['markets']}</div>
+      <small>markets the catalogue serves as <b>tradeable</b> have no account on Solana at all.
+             Panta's own site renders them as <i>“Market not found on-chain.”</i></small>
     </div>
-    <div class="card good">
-      <div class="big">{done - done_mute} of {done}</div>
-      <small>markets that are <b>already settled</b> state their question — the question appears
-             once nobody can act on it</small>
+    <div class="card bad">
+      <div class="big">{stripped} of {counts['markets']}</div>
+      <small>cards come back <b>stripped</b> — no question, no resolution rule, no sources, no
+             trade counts — and nothing in the response says which shape you are holding</small>
     </div>
   </div>
 </header>
 
 <section>
-  <h2>The catalogue says UMA. The chain says one keypair.</h2>
-  <p><code>sentToUma</code> is true on {counts['claims_uma']} of the {counts['markets']} markets in
-     this snapshot.</p>
+  <h2>What settles a market, read from the chain rather than from a field</h2>
+  <p>The <code>oracle</code> field reads like the account that decides a market. It is not: on
+     every market checked it names the wallet whose instruction is <code>CreateEventUsdc</code>,
+     which creates markets and does not resolve them.</p>
   <div class="quote">{settler_line}</div>
-  <p>The settlement path is <code>GraduateMarketUsdc → SubmitOracleResultUsdc →
-     ResolveEventUsdc → ClaimWinUsdc</code>. This tool reads the market account's own history and
-     reports who signed the middle two, because the catalogue's <code>oracle</code> field is a
-     claim about who decides and not the account that does: on every market checked it names the
-     wallet whose instruction is <code>CreateEventUsdc</code>.</p>
+  <p>The settlement path is <code>GraduateMarket → SubmitOracleResult → ResolveEvent →
+     ClaimWin</code>, and it arrives under two naming families: markets carrying a
+     <code>MigrateEventV2</code> settle without the <code>Usdc</code> suffix, the rest with it.
+     Matching one and not the other — which this tool did at first — reports a settled market as
+     one that nothing has settled.</p>
+  <p class="dim"><code>sentToUma</code> is true on {counts['claims_uma']} of the
+     {counts['markets']} markets here. That is a field in the API, not something the venue tells
+     its users: its page says <i>agent resolution</i>, with a confidence score, a written
+     rationale and a dispute window. The report puts the flag and the signature side by side and
+     concludes nothing further.</p>
 </section>
 
 <section>
-  <h2>What the creator wrote, and what the buyer gets</h2>
+  <h2>Before you publish: the same rules, on a draft</h2>
   <p>Panta's create API requires a <code>question</code>, a <code>resolutionRule</code> of up to
-     2048 characters, and a non-empty <code>sourcesOfTruth</code>. The read API returns none of
-     them under those names. <code>oracle</code> is <code>sourcesOfTruth</code> joined by commas —
-     which is why the most common settlement source in the catalogue is the word
-     <code>on-chain</code>, typed into that list by a creator. <code>resolutionRule</code> is in no
-     read response at all.</p>
+     2048 characters and a non-empty <code>sourcesOfTruth</code>. A complete card returns them;
+     a stripped one returns none of them. <code>oracle</code> is <code>sourcesOfTruth</code>
+     joined by commas — which is why the most common settlement source in this catalogue is the
+     word <code>on-chain</code>, typed into that list by a creator.</p>
+  <p><code>--check-draft</code> refuses a draft a buyer could not read, then hands it to Panta's
+     own validator and reports the real creation fee. Nothing is signed, submitted or paid.</p>
   <div class="cols">
     <div><h3>a draft shaped like the catalogue</h3>
 <pre>{failing}</pre></div>

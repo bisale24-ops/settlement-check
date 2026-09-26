@@ -49,6 +49,8 @@ class Verdict:
     volume: float | None
     tradeable: bool
     claims_uma: bool = False       # the catalogue's `sentToUma`
+    stripped: bool = False         # the card came back without question, rule, sources or counts
+    on_chain: bool | None = None   # does an account for this market exist? None = not checked
     settled_by: tuple = ()         # who signed the settlement on chain, read from the market
     settlement_seen: tuple = ()    # which settlement instructions were found
 
@@ -170,6 +172,8 @@ def judge(card, owner_of, is_address, settlement_of=None):
                   phase=phase, volume=volume_of(card),
                   tradeable=phase in ("primary", "secondary"),
                   claims_uma=bool(card.get("sentToUma")),
+                  stripped=is_stripped(card),
+                  on_chain=card.get("onChain") if "onChain" in card else None,
                   settled_by=tuple(sorted(found["signers"])) if looked and found else (),
                   settlement_seen=tuple(sorted(found["instructions"])) if looked and found else ())
 
