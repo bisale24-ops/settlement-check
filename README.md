@@ -147,15 +147,22 @@ signature. Doing it for a catalogue means doing it a few hundred times, and sequ
 their whole day on round-trip latency — so the number that matters is how many can be in flight at
 once. Fourteen settled markets, same code, `--workers 6`:
 
-| endpoint | read | wall clock |
-|---|---:|---:|
-| `api.mainnet-beta.solana.com` | **0 of 14** | refused everything under concurrency |
-| Solami RPC | **14 of 14** | 101s — against 206s for the same reads one at a time |
+| endpoint | lookups in flight | read | wall clock |
+|---|---:|---:|---:|
+| `api.mainnet-beta.solana.com` | 6 | **0 of 14** | refused everything under concurrency |
+| Solami, free tier | 6 | 14 of 14 | 101s |
+| Solami, Pro | 6 | 14 of 14 | 41s |
+| **Solami, Pro** | **24** | **14 of 14** | **9s** |
 
-The public node also accepts a `logsSubscribe` with a program filter, acknowledges it, and then
-closes the connection, so the live watcher cannot hold a subscription there at all. It reconnects
-and, when it gives up, says that is the endpoint's limit and not the venue having nothing to
-settle.
+Same code, same fourteen markets; 206s for the same reads one at a time. `--workers` is the knob,
+and the endpoint decides how far it can go.
+
+The public node also drops a **quiet** subscription. Measured with the market program filter over
+70 seconds: `api.mainnet-beta.solana.com` delivered 2 frames and closed the connection once;
+Solami delivered 1 and closed none. On a busy filter the public node does not drop at all — 25
+seconds on the SPL Token program gave 15,551 frames with no break — so what fails is an idle
+connection, which is exactly what watching settlements is. The watcher reconnects either way and,
+when it gives up, says that is the endpoint's limit and not the venue having nothing to settle.
 
 The endpoint is a setting either way. `SOLANA_RPC` wins if set; otherwise a key at
 `~/.config/solami.key` is used; otherwise the public node. The key is read from outside the

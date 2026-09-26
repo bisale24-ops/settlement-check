@@ -81,6 +81,12 @@ def websocket_endpoint():
     explicit = os.environ.get("SOLANA_WS")
     if explicit:
         return explicit
+    # Solami serves websockets from a different host and spells the parameter with an underscore:
+    # rpc.solami.dev answers a subscription upgrade with 405, ws.solami.dev/ws/sol with 101.
+    if SOLAMI_KEY_FILE.exists() and "solami.dev" in RPC:
+        key = SOLAMI_KEY_FILE.read_text().strip()
+        if key:
+            return f"wss://ws.solami.dev/ws/sol?api_key={key}"
     return RPC.replace("https://", "wss://", 1).replace("http://", "ws://", 1)
 
 

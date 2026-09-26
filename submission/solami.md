@@ -55,13 +55,20 @@ signature, so a catalogue means doing it a few hundred times, and sequential rea
 on round-trip latency. What matters is how many can be in flight. Fourteen settled markets,
 identical code, `--workers 6`:
 
-| endpoint | read | wall clock |
-|---|---:|---:|
-| `api.mainnet-beta.solana.com` | **0 of 14** | refused everything under concurrency |
-| Solami RPC | **14 of 14** | 101s — against 206s for the same reads one at a time |
+| endpoint | lookups in flight | read | wall clock |
+|---|---:|---:|---:|
+| `api.mainnet-beta.solana.com` | 6 | **0 of 14** | refused everything under concurrency |
+| Solami, free tier | 6 | 14 of 14 | 101s |
+| Solami, Pro | 6 | 14 of 14 | 41s |
+| **Solami, Pro** | **24** | **14 of 14** | **9s** |
 
-The public node also accepts a `logsSubscribe` with a program filter, acknowledges it, and then
-closes the connection, so a live subscription cannot be held there at all.
+Same code, same fourteen markets; 206s for the same reads one at a time. `--workers` is the knob,
+and the endpoint decides how far it can go.
+
+The public node also drops a quiet subscription. With the market program filter over 70 seconds it
+delivered 2 frames and closed once; through Solami, 1 frame and no close. On a busy filter it does
+not drop at all — 25 seconds on SPL Token, 15,551 frames — so what breaks is an idle connection,
+which is exactly what watching settlements is.
 
 ## Running live
 

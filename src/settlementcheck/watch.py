@@ -119,10 +119,12 @@ def watch(url=None, on_event=print, source=None, limit=None, look_up=None, catal
 
     `source` is injected in tests: any iterable of payload strings stands in for the socket.
 
-    Reconnecting is not a nicety here. Solana's public endpoint accepts a `logsSubscribe` with a
-    program filter, acknowledges it, and then closes the connection — measured against
-    `api.mainnet-beta.solana.com` on 2026-09-26. That is a property of the free node, not of the
-    venue being watched, so the watcher says so and comes back rather than dying with a traceback
+    Reconnecting is not a nicety here. A subscription that sees no traffic gets closed: measured on
+    2026-09-26, `api.mainnet-beta.solana.com` with the market program filter delivered 2 frames in
+    70 seconds and closed once, while the same filter through Solami closed none. On a busy filter
+    the public node holds fine — 25 seconds on the SPL Token program, 15,551 frames, no break — so
+    it is idleness that breaks it, and watching settlements is nothing but idleness punctuated by
+    the thing you came for. The watcher says so and comes back, rather than dying with a traceback
     and leaving the impression that nothing settles.
     """
     notice = on_notice or (lambda text: None)
