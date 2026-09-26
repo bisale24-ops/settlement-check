@@ -1,0 +1,20 @@
+6 thing(s) would leave a buyer unable to read this market
+  BLOCK question: no question
+        → state what is being bet on, in one sentence
+  BLOCK sourcesOfTruth: 'on-chain' is a word, not a reference
+        → name the account, the program or the outlet. A buyer sees this string and nothing else — it becomes the market's `oracle` field verbatim
+  BLOCK endTime: trading would close before it opens
+        → startTime must be earlier than endTime
+  BLOCK resolutionTime: the market resolves before trading ends
+        → resolutionTime must be at or after endTime
+  BLOCK startTime: starts in 0s; the chain requires 3600s
+        → move startTime further out, or declare it a breaking market in progress
+  BLOCK imageUrl: points at a private address
+        → host it somewhere a reader can reach
+  WARN  resolutionRule: 8 characters
+        → a rule this short rarely names both the measurement and the moment it is read; nobody can see this field after publication, so it is the creator's only record
+
+WHAT THE CATALOGUE WILL SHOW
+  title   (empty — and the listing leaves it empty anyway)
+  oracle  on-chain
+  resolutionRule  not returned by the read API under any name — you are writing it for nobody

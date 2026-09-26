@@ -1,0 +1,60 @@
+26 markets read, $12,258 of reported volume behind them.
+Of the 9 you can buy right now, 8 (89%) do not say what you are buying — $2,452 of $2,458.
+Of the 17 already settled, every one states its question.
+7 market(s) are settled by 1 wallet; $2,410 rides on those signatures.
+
+UNSTATED  the market carries no question — whatever settles it, nobody buying can know what they bought  (8, $2,452)
+  (no question stated)
+      51Si32KS…  secondary  $543  tradeable
+      settled by world-crypto-coingecko
+  (no question stated)
+      4J96MvCV…  secondary  $523  tradeable
+      settled by world-stocks-bloomberg,world-stocks-nyse,world-finance-yahoo
+  (no question stated)
+      HNdNsTcz…  secondary  $437  tradeable
+      settled by world-finance-reuters,world-finance-yahoo
+  … and 5 more
+
+ONE KEY  the question is stated and one wallet decides it. No program, no feed, no second signature  (7, $2,410)
+  Will Max Verstappen win the 2026 Dutch Grand Prix Main Race?
+      CcknAcVu…  resolved  $548
+      one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+      claim vs chain: the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction
+  Will a full Safety Car be deployed within the first 10 laps of the 2026 Dutch Grand Prix Main Ra
+      EqMJeJS2…  resolved  $515
+      one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+      claim vs chain: the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction
+  Will September 2026 WTI Crude Oil Futures (CLU26) trade at or above $85.50 at any point between 
+      BbCaTSmh…  resolved  $396
+      one keypair signed ResolveEventUsdc and SubmitOracleResultUsdc — 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+      claim vs chain: the catalogue says this went to UMA; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, with no UMA assertion in the transaction
+  … and 4 more
+
+EDITORIAL  the question is stated and named newsrooms decide it. Nobody can reproduce the call from the chain  (9, $6,631)
+  Marco Rubio to win the 2028 Presidential nomination of the Republican Party
+      AESrMoZx…  cancelled  $4,225
+      5 newsroom feed(s): world-politics-reuters, world-politics-ap, global-reuters, global-ap and 1 more
+  Will the current top three in the NectarFi Frontier Traders Competition remain on the podium by 
+      EEg99Kwx…  resolved  $685
+      1 newsroom feed(s): world-crypto-coingecko
+  Will @debar be the outright winner of the NectarFi Frontier Traders Competition?
+      3wdVRLDi…  resolved  $601
+      1 newsroom feed(s): world-crypto-coingecko
+  … and 6 more
+
+NOT CHECKED  the settlement source could not be read  (2, $764)
+  Will Cisco Systems (CSCO) report cumulative Fiscal Year 2026 AI infrastructure orders of $9.00 b
+      vQZWPdVN…  resolved  $443
+      the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it
+  Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM 
+      1Nm7PCxo…  resolved  $322
+      the catalogue names 4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS as the oracle — a keypair somebody controls. The claim is untested: its settlement was not read — raise --settlements to check it
+
+VERIFIABLE  settlement rests on an on-chain account holding program state, which anyone can read for themselves  (0)
+  Nothing in this catalogue settles from a source a reader can audit.
+
+THE WALLET THAT SETTLES THEM
+  664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+      7 market(s) in this sample, $2,410 of volume
+      317 recent signature(s); calls 6gM5afTQBq5VZCfgpGqcsqzfWd5maLSCKWtGjbEobZMp
+

@@ -1,0 +1,12 @@
+Nothing here would leave a buyer unable to read this market.
+
+WHAT THE CATALOGUE WILL SHOW
+  title   Will the Ethereum Pectra upgrade activate on mainnet before 1 December 2026?
+  oracle  https://ethereum.org/en/roadmap/,https://etherscan.io
+  resolutionRule  not returned by the read API under any name — you are writing it for nobody
+
+PANTA SAYS  the draft passes their validation.
+  creation fee      50.00 USDC
+  event address     8f6SZ3RExSKqwbVy9qoRfe7P6BXJoGrQWEdAYMZ5k6rF
+  session expires   2026-09-26T05:41:19.671212Z
+  nothing was signed, submitted or paid by this tool.

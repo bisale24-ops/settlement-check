@@ -67,11 +67,15 @@ def headline(verdicts):
             f"{len(nothing)} market(s) name their settlement source as "
             f"{', '.join(map(repr, words[:2]))} — a word, not a reference; "
             f"{money(total(nothing))} rides on it.")
-    keys = {v.oracle for v in verdicts if v.kind == ONE_KEY}
+    # The signers, not the claimed oracles. Counting `v.oracle` here said "settled by 5 wallets"
+    # for seven markets that one keypair had signed, because five different strings were claimed —
+    # the report contradicting its own wallet section three screens further down.
+    controlled = [v for v in verdicts if v.kind == ONE_KEY]
+    keys = {address for v in controlled for address in v.settled_by}
     if keys:
-        controlled = [v for v in verdicts if v.kind == ONE_KEY]
         lines.append(
-            f"{len(controlled)} market(s) are settled by {len(keys)} wallet(s); "
+            f"{len(controlled)} market(s) are settled by {len(keys)} "
+            f"{'wallet' if len(keys) == 1 else 'wallets'}; "
             f"{money(total(controlled))} rides on those signatures.")
     return lines
 

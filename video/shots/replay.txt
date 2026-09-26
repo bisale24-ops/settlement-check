@@ -1,0 +1,6 @@
+05:35:01  ResolveEventUsdc  5u15kVt2wz1cnLMU…
+          market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9
+          claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
+          the catalogue says this one went to UMA
+          signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
+          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction
