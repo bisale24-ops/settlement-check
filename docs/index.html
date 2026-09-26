@@ -73,12 +73,12 @@ a{color:var(--accent2)}
 
   <div class="split">
     <div class="card bad">
-      <div class="big">13 of 40</div>
+      <div class="big">2 of 36</div>
       <small>markets the catalogue serves as <b>tradeable</b> have no account on Solana at all.
              Panta's own site renders them as <i>“Market not found on-chain.”</i></small>
     </div>
     <div class="card bad">
-      <div class="big">20 of 40</div>
+      <div class="big">5 of 36</div>
       <small>cards come back <b>stripped</b> — no question, no resolution rule, no sources, no
              trade counts — and nothing in the response says which shape you are holding</small>
     </div>
@@ -96,8 +96,8 @@ a{color:var(--accent2)}
      <code>MigrateEventV2</code> settle without the <code>Usdc</code> suffix, the rest with it.
      Matching one and not the other — which this tool did at first — reports a settled market as
      one that nothing has settled.</p>
-  <p class="dim"><code>sentToUma</code> is true on 34 of the
-     40 markets here. That is a field in the API, not something the venue tells
+  <p class="dim"><code>sentToUma</code> is true on 27 of the
+     36 markets here. That is a field in the API, not something the venue tells
      its users: its page says <i>agent resolution</i>, with a confidence score, a written
      rationale and a dispute window. The report puts the flag and the signature side by side and
      concludes nothing further.</p>
@@ -155,12 +155,12 @@ PANTA SAYS  the draft was refused, naming the fields: HTTP 400: {&quot;code&quot
   <p><code>./run.sh --watch</code> subscribes to the market program and reports each settlement the
      moment it arrives — which market closed, what the catalogue claimed would decide it, and who
      signed. <code>--replay</code> runs the same code over a settlement that already happened.</p>
-<pre>20:16:13  ResolveEventUsdc  tCfYturQJwbRdC1E…
-          market   4J96MvCVb1MYMotdNbyj1yFKDXQp7UJhLYUMJLPhXRQN
-          claimed  world-stocks-bloomberg,world-stocks-nyse,world-finance-yahoo
-          the catalogue says this one went to UMA
+<pre>21:59:43  ResolveEventUsdc  5oZ7HjHsd3dp434s…
+          market   dsaUrqmxNRtGeEhYZv4hPeWRKXQbVY6LcxgDrA6cUSe
+          claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
+          the card carries sentToUma
           signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
-          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction</pre>
+          → the flag is in the API; the signature is on the chain, and no UMA program is in it</pre>
   <p class="dim">Measured, not asserted: Solana's public node accepts a <code>logsSubscribe</code>
      with a program filter, acknowledges it, then closes the connection; and reading the
      settlements already in the catalogue exhausts it at a couple of dozen markets with
@@ -171,61 +171,12 @@ PANTA SAYS  the draft was refused, naming the fields: HTTP 400: {&quot;code&quot
 
 <section>
   <h2>The snapshot</h2>
-  <p>40 markets, 6 of them with their settlement read
-     from the chain. Taken 2026-09-26T08:25:31Z.</p>
+  <p>36 markets, 1 of them with their settlement read
+     from the chain. Taken 2026-09-26T08:29:32Z.</p>
   <table>
     <thead><tr><th>Market</th><th>Verdict</th><th class="hide-sm">Claimed source</th>
       <th>Volume</th></tr></thead>
     <tbody>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
-  <td class="mono">$548<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
-  <td class="mono">$515<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg,world-finance-r</td>
-  <td class="mono">$396<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg,world-finance-r</td>
-  <td class="mono">$394<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-sports-espn,world-sports-skyspor</td>
-  <td class="mono">$370<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">ng-pop-pulse,ng-pop-africamagic</td>
-  <td class="mono">$316<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-crypto-coinmarketcap,world-crypt</td>
-  <td class="mono">$303<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
 <tr>
   <td class="q"><span class="none">no question stated</span></td>
   <td><span class="chip bad">no question</span></td>
@@ -243,120 +194,169 @@ PANTA SAYS  the draft was refused, naming the fields: HTTP 400: {&quot;code&quot
 <tr>
   <td class="q"><span class="none">no question stated</span></td>
   <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
+  <td class="mono hide-sm">world-crypto-coinmarketcap,world-crypt</td>
   <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
   <td class="q"><span class="none">no question stated</span></td>
   <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">eu-sports-gazzetta</td>
+  <td class="mono hide-sm">world-sports-espn,ng-sports-espnafrica</td>
   <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
   <td class="q"><span class="none">no question stated</span></td>
   <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-finance-yahoo</td>
+  <td class="mono hide-sm">on-chain</td>
   <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
+      primary · <span style="color:var(--warn)">on sale</span></span></td>
 </tr>
 <tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-crypto-coingecko</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-finance-yahoo</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q"><span class="none">no question stated</span></td>
-  <td><span class="chip bad">no question</span></td>
-  <td class="mono hide-sm">world-crypto-coingecko</td>
-  <td class="mono">—<br><span style="color:var(--dim)">
-      secondary · <span style="color:var(--warn)">on sale</span></span></td>
-</tr>
-<tr>
-  <td class="q">Will Bitcoin trade at or above $67,500 at any point between August 5 and August 12, 2026?<div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-crypto-coingecko</td>
-  <td class="mono">$543<br><span style="color:var(--dim)">
+  <td class="q">Will England score within the first 20 minutes of their Round of 32 match against DR Congo?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$7,618<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Tesla (NASDAQ: TSLA) close at or above $335.00 on Friday, August 14, 2026?<div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-stocks-bloomberg,world-stocks-ny</td>
-  <td class="mono">$523<br><span style="color:var(--dim)">
+  <td class="q">Will Lamine Yamal score the opening goal in Spain&#x27;s Round of 32 match against Austria?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$7,578<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Cisco Systems (CSCO) report cumulative Fiscal Year 2026 AI infrastructure orders of $9.00 billion or greater during its Q4 FY26 earnings release <div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdR</td>
-  <td class="mono">$443<br><span style="color:var(--dim)">
+  <td class="q">Will both Canada and Morocco score in the first half of their Round of 16 match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$5,108<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will NVIDIA (NASDAQ: NVDA) close above $230.00 on Friday, August 14, 2026?<div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">world-finance-reuters,world-finance-ya</td>
-  <td class="mono">$437<br><span style="color:var(--dim)">
+  <td class="q">Will a substitute provide a goal or assist?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$4,912<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Nigel Farage win the Clacton by-election with greater than or equal to 45.00% of the total vote share?<div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">eu-politics-bbc,world-politics-reuters</td>
-  <td class="mono">$394<br><span style="color:var(--dim)">
+  <td class="q">Will Portugal win and Cristiano Ronaldo score at least one goal in their Round of 16 match against Spain?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$3,961<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
 <tr>
-  <td class="q">Will Davey win the frontier traders competition on NectarFi?<div class="vs">the card carries sentToUma; on chain the result was submitted and the event resolved by 664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR, and no UMA program appears in that transaction</div></td>
-  <td><span class="chip bad">one keypair</span></td>
-  <td class="mono hide-sm">ng-finance-sec,ng-finance-ngx,ng-finan</td>
-  <td class="mono">$43<br><span style="color:var(--dim)">
+  <td class="q">Will Colombia defeat Switzerland and advance to the quarter-finals in their Round of 16 match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$3,931<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Kylian Mbappé score at least two goals (a brace) in France&#x27;s Round of 16 match against Paraguay?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$3,441<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will the Australia vs. Egypt Round of 32 match feature a VAR reviewed goal?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$3,343<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will a penalty kick be awarded during regulation time in the Argentina vs. Egypt Round of 16 match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$3,049<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Lionel Messi and Jude Bellingham each score at least one goal during the England vs. Argentina World Cup semi-final match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,755<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will the temperature in London reach or exceed 32°C at any time between 3:00 p.m. and 9:00 p.m. local time on July 10, 2026?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,659<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will England win more corner kicks than Norway in their 2026 FIFA World Cup quarter-final match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,608<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will there be at least three VAR reviews during the Spain vs. France semi-final match, including extra time?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,461<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Lionel Messi score at least two goals against Switzerland in Argentina&#x27;s 2026 FIFA World Cup quarter-final match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,461<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Kylian Mbappe score at least two goals in the France vs. Sweden Round of 32 match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,461<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Belgium defeat Senegal while recording at least 60% possession in their Round of 32 match?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,353<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will the Spain vs Belgium FIFA World Cup quarter-final be decided by a penalty shootout?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$2,069<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will France win against Morocco</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$1,911<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will the winning goal in the Argentina vs Cape Verde match be scored by a substitute?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$1,819<br><span style="color:var(--dim)">
+      cancelled</span></td>
+</tr>
+<tr>
+  <td class="q">Will Cristiano Ronaldo be substituted off at any point during Portugal&#x27;s Round of 32 match against Croatia?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$1,657<br><span style="color:var(--dim)">
+      resolved</span></td>
+</tr>
+<tr>
+  <td class="q">Will Brazil record at least 20 total shots in their Round of 16 match against Norway?</td>
+  <td><span class="chip bad">names nothing</span></td>
+  <td class="mono hide-sm">on-chain</td>
+  <td class="mono">$1,473<br><span style="color:var(--dim)">
       resolved</span></td>
 </tr>
     </tbody>

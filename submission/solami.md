@@ -30,8 +30,13 @@ GraduateMarket → SubmitOracleResult → ResolveEvent → ClaimWin
 
 On every settled market inspected, both were signed by the same keypair —
 `664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR`, owned by the System Program, holding no data,
-536 signatures since June. Meanwhile `sentToUma` is true on 85 of 100 markets, and no UMA
-program appears in any of those transactions. The claim lives in the API; it is not on the chain.
+536 signatures since June. `sentToUma` is true on 85 of 100 markets and no UMA program appears in
+any of those transactions — reported as two facts side by side, because the venue's own page says
+*agent resolution*, with a confidence score and a dispute window, and never mentions UMA.
+
+Solana also answers a question the API will not: **13 of 100 catalogue markets have no account at
+all**, while being served as tradeable. `getAccountInfo` returns null, and Panta's own front end
+renders them as "Market not found on-chain".
 
 Those instructions arrive under two names — markets carrying a `MigrateEventV2` settle as
 `ResolveEvent` and `SubmitOracleResult`, the rest as `ResolveEventUsdc` and
@@ -72,9 +77,9 @@ Output, from a real transaction:
 20:04:15  ResolveEventUsdc  5u15kVt2wz1cnLMU…
           market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9
           claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
-          the catalogue says this one went to UMA
+          the card carries sentToUma
           signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
-          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction
+          → the flag is in the API; the signature is on the chain, and no UMA program is in it
 ```
 
 `--poll` exists because the account this was built on sits on Free, and a WebSocket upgrade to

@@ -100,12 +100,15 @@ def format_line(event, now=None):
     if event["claimed"] is not None:
         parts.append(f"          claimed  {event['claimed']}")
     if event["claims_uma"]:
-        parts.append("          the catalogue says this one went to UMA")
+        parts.append("          the card carries sentToUma")
     if event["signer"]:
         parts.append(f"          signed   {event['signer']}")
     if event["claims_uma"] and event["signer"]:
-        parts.append("          → a claim of UMA, settled by a signature, with no UMA "
-                     "assertion in the transaction")
+        # The flag is in the API. The venue's own page says agent resolution, with a confidence
+        # score and a dispute window, and never mentions UMA — so this reports both facts and
+        # leaves the conclusion to whoever opens the transaction.
+        parts.append("          → the flag is in the API; the signature is on the chain, and no "
+                     "UMA program is in it")
     return "\n".join(parts)
 
 

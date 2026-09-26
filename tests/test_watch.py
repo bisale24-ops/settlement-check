@@ -70,8 +70,8 @@ def test_an_event_names_the_market_the_claim_and_the_signature():
                 if address == MARKET else None)
     text = events[0]
     assert MARKET in text and RESOLVER in text
-    assert "on-chain" in text and "went to UMA" in text
-    assert "no UMA assertion in the transaction" in text
+    assert "on-chain" in text and "sentToUma" in text
+    assert "no UMA program is in it" in text
 
 
 def test_without_a_lookup_the_line_says_what_it_does_not_know():
@@ -156,7 +156,7 @@ def test_polling_reports_the_same_line_a_subscription_would():
                        sleep=lambda _s: None)
     assert found == 1 and len(events) == 1
     assert MARKET in events[0] and RESOLVER in events[0]
-    assert "no UMA assertion in the transaction" in events[0]
+    assert "no UMA program is in it" in events[0]
 
 
 def test_the_backlog_on_the_first_pass_is_history_not_news():
