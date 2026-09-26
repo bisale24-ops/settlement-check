@@ -90,7 +90,7 @@ a{color:var(--accent2)}
   <p>The <code>oracle</code> field reads like the account that decides a market. It is not: on
      every market checked it names the wallet whose instruction is <code>CreateEventUsdc</code>,
      which creates markets and does not resolve them.</p>
-  <div class="quote">On chain, every result in this snapshot was submitted and every event resolved by <span class="addr mono">664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR</span> — an account owned by the System Program, holding no data. A person with a key, not a program. No UMA assertion appears in any of those transactions.</div>
+  <div class="quote">On chain, every result in this snapshot was submitted and every event resolved by <span class="addr mono">664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR</span> — an account owned by the System Program, holding no data. A person with a key, not a program. No UMA program appears in any of those transactions.</div>
   <p>The settlement path is <code>GraduateMarket → SubmitOracleResult → ResolveEvent →
      ClaimWin</code>, and it arrives under two naming families: markets carrying a
      <code>MigrateEventV2</code> settle without the <code>Usdc</code> suffix, the rest with it.

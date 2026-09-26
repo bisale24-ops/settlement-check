@@ -123,7 +123,7 @@ def render(snapshot):
     settler_line = (
         f'On chain, every result in this snapshot was submitted and every event resolved by '
         f'<span class="addr mono">{html.escape(settlers[0])}</span> — an account owned by the '
-        f'System Program, holding no data. A person with a key, not a program. No UMA assertion '
+        f'System Program, holding no data. A person with a key, not a program. No UMA program '
         f'appears in any of those transactions.'
         if len(settlers) == 1 else
         f'Settled on chain by {len(settlers)} account(s): ' +
