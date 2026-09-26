@@ -45,9 +45,13 @@ an empty string, the field is simply absent.
 
 | card | markets |
 |---|---:|
-| complete, account exists | 82 |
-| stripped, account exists | 5 |
+| complete | 83 |
+| stripped, account exists | 4 |
 | stripped, **no account** | 13 |
+
+The catalogue hands back a different slice on every read, so these move by a few between passes —
+the published snapshot in `docs/snapshot.json` is the one the page renders, and the count of
+markets with no account has been 13 on every pass so far.
 
 Nothing in the response says which shape you are holding. A client that reads `question` gets a
 question for most markets and silence for the rest, with no way to tell a market with no question
