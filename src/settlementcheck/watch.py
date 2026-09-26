@@ -56,7 +56,7 @@ def read_notification(payload):
 
 
 def is_settlement(instructions):
-    return bool(set(instructions) & set(chain.SETTLEMENT_INSTRUCTIONS))
+    return bool(chain.settlement_instructions_in(instructions))
 
 
 def describe(signature, instructions, look_up=None, catalogue=None):
@@ -76,7 +76,7 @@ def describe(signature, instructions, look_up=None, catalogue=None):
         return line
     names, signer = chain.instructions_and_signer(result)
     line["signer"] = signer
-    line["instructions"] = sorted(set(found) | (names & set(chain.SETTLEMENT_INSTRUCTIONS)))
+    line["instructions"] = sorted(set(found) | chain.settlement_instructions_in(names))
     keys = result["transaction"]["message"].get("accountKeys", [])
     writable = [k["pubkey"] for k in keys
                 if isinstance(k, dict) and k.get("writable") and not k.get("signer")]

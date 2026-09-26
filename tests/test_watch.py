@@ -206,3 +206,30 @@ def test_no_command_ever_prints_the_key(capsys, monkeypatch, tmp_path):
     printed = capsys.readouterr().out
     assert secret not in printed
     assert "<key>" in printed
+
+
+def test_both_instruction_name_families_count_as_a_settlement():
+    """Markets that carry a MigrateEventV2 settle under the unsuffixed names.
+
+    Measured 2026-09-26 on 3H2GD9PzAfxQpxqJkFLWR9BZxSe8PGbAN1NWV3goYBzg: ResolveEvent and
+    SubmitOracleResult, signed by the same keypair that signs the suffixed pair everywhere else.
+    Matching only the suffixed names reported that market as one nothing had settled.
+    """
+    assert watch.is_settlement({"ResolveEventUsdc"})
+    assert watch.is_settlement({"ResolveEvent"})
+    assert watch.is_settlement({"SubmitOracleResult"})
+    assert not watch.is_settlement({"PrimaryOrder", "ClaimWinnings", "MigrateEventV2"})
+    assert chain.base_instruction("ResolveEventUsdc") == "ResolveEvent"
+    assert chain.base_instruction("ResolveEvent") == "ResolveEvent"
+
+
+def test_a_settlement_under_the_older_names_is_described_like_any_other():
+    events = []
+    watch.watch(source=[notification("sigV1", ["ResolveEvent"])], on_event=events.append,
+                look_up=lambda _s: {"transaction": {"message": {"accountKeys": [
+                    {"pubkey": RESOLVER, "signer": True, "writable": True},
+                    {"pubkey": MARKET, "signer": False, "writable": True}]}},
+                    "meta": {"logMessages": ["Program log: Instruction: ResolveEvent"]}},
+                catalogue=lambda a: {"oracle": "on-chain", "sentToUma": True} if a == MARKET else None)
+    assert len(events) == 1
+    assert "ResolveEvent" in events[0] and RESOLVER in events[0]

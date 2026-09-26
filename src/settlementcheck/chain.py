@@ -108,10 +108,26 @@ def recent_signatures(address, limit=25):
 # the transaction logs, which is what lets this tool answer "who settled it" without an IDL.
 MARKET_PROGRAM = "6gM5afTQBq5VZCfgpGqcsqzfWd5maLSCKWtGjbEobZMp"
 
-# The two instructions that decide a market. `SubmitOracleResultUsdc` puts the outcome on chain;
-# `ResolveEventUsdc` closes the event against it. Everything else in a market's history is trading,
+# The two instructions that decide a market. `SubmitOracleResult` puts the outcome on chain;
+# `ResolveEvent` closes the event against it. Everything else in a market's history is trading,
 # creation or claiming.
-SETTLEMENT_INSTRUCTIONS = ("SubmitOracleResultUsdc", "ResolveEventUsdc")
+#
+# They appear under two names. Markets carrying a `MigrateEventV2` in their history settle as
+# `ResolveEvent` and `SubmitOracleResult`; the rest settle as `ResolveEventUsdc` and
+# `SubmitOracleResultUsdc`. Matching only the suffixed pair — which this tool did — reports a
+# market settled under the other names as one that nothing has settled, which is the false clean
+# bill this project exists to refuse. The same keypair signs both families.
+SETTLEMENT_INSTRUCTIONS = ("SubmitOracleResult", "ResolveEvent")
+
+
+def base_instruction(name):
+    """An instruction name with the quote-asset suffix removed, so both families compare equal."""
+    return name[:-4] if name.endswith("Usdc") else name
+
+
+def settlement_instructions_in(names):
+    """The settlement instructions among these, under whichever name they arrived."""
+    return {name for name in names if base_instruction(name) in SETTLEMENT_INSTRUCTIONS}
 
 
 def transaction(signature):
@@ -148,7 +164,7 @@ def settlement(market_id, limit=12):
         if not result:
             continue
         names, signer = instructions_and_signer(result)
-        settling = names.intersection(SETTLEMENT_INSTRUCTIONS)
+        settling = settlement_instructions_in(names)
         if settling:
             seen |= settling
             if signer:
