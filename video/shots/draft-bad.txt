@@ -17,4 +17,5 @@
 WHAT THE CATALOGUE WILL SHOW
   title   (empty — and the listing leaves it empty anyway)
   oracle  on-chain
-  resolutionRule  not returned by the read API under any name — you are writing it for nobody
+  resolutionRule  returned on a complete card — but 31 of 100 cards come back stripped of it,
+                  with no field saying which shape you are holding

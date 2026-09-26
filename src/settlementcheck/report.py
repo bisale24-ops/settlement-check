@@ -34,32 +34,28 @@ def share(part, whole):
 
 
 def headline(verdicts):
-    """Open with the split, because the split is the finding.
+    """Open with what a client building on this API would get wrong.
 
-    A market that states its question only once it is over has told nobody anything: the people who
-    could act on it have already acted. So the two populations are counted apart, and the report
-    says plainly when one of them is clean.
+    An earlier version of these lines said that markets "do not say what you are buying". Opening
+    a market page disproved it: the venue shows the question, the resolution criteria and the
+    sources. What is true is narrower and is about the API — a card arrives either complete or
+    stripped, and nothing in the response says which.
     """
+    stripped = [v for v in verdicts if v.stripped]
     tradeable = [v for v in verdicts if v.tradeable]
-    settled = [v for v in verdicts if not v.tradeable]
-    mute = lambda group: [v for v in group if v.kind == UNSTATED]  # noqa: E731
     quiet = silent(verdicts)
     lines = [
         f"{len(verdicts)} markets read, {money(total(verdicts))} of reported volume behind them"
         + (f" ({quiet} reported none)." if quiet else "."),
     ]
+    if stripped:
+        lines.append(
+            f"{len(stripped)} of {len(verdicts)} cards came back stripped — no question, no "
+            f"resolution rule, no sources — with nothing in the response saying so.")
     if tradeable:
-        blind = mute(tradeable)
         lines.append(
-            f"Of the {len(tradeable)} you can buy right now, {len(blind)} "
-            f"({share(len(blind), len(tradeable))}) do not say what you are buying — "
-            f"{money(total(blind))} of {money(total(tradeable))}.")
-    if settled:
-        blind = mute(settled)
-        lines.append(
-            f"Of the {len(settled)} already settled, "
-            + (f"every one states its question." if not blind
-               else f"{len(blind)} ({share(len(blind), len(settled))}) still do not."))
+            f"{len(tradeable)} are served as tradeable. Check each against the chain before "
+            f"listing it: some have no account at all.")
     nothing = [v for v in verdicts if v.kind == NAMED_NOTHING]
     if nothing:
         words = sorted({v.oracle for v in nothing})

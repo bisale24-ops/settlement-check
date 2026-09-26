@@ -84,7 +84,8 @@ somewhere else.
 
 ## The five verdicts
 
-- **unstated** — no question at all. Whatever settles it, nobody buying can know what they bought.
+- **stripped** — the card carries no question and no resolution rule. A client reading the
+  API cannot show one, and the response does not say why.
 - **named nothing** — the settlement source is a word rather than a reference. Nothing to open.
 - **one key** — read from the market's own history: one keypair signed the result and the
   resolution.

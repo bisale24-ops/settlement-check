@@ -3,10 +3,11 @@ from settlementcheck import report
 from settlementcheck.classify import EDITORIAL, ONE_KEY, UNSTATED, VERIFIABLE, Verdict
 
 
-def verdict(kind, volume=0.0, tradeable=False, question="Will X?", oracle="global-ap"):
+def verdict(kind, volume=0.0, tradeable=False, question="Will X?", oracle="global-ap",
+            stripped=False):
     return Verdict(market_id="M" * 44, kind=kind, question=question, oracle=oracle,
                    detail="detail", phase="primary" if tradeable else "resolved",
-                   volume=volume, tradeable=tradeable)
+                   volume=volume, tradeable=tradeable, stripped=stripped)
 
 
 def test_an_unreported_volume_is_said_in_words_not_printed_as_zero():
@@ -20,25 +21,22 @@ def test_the_headline_counts_how_many_markets_reported_nothing():
     assert "(1 reported none)" in text
 
 
-def test_the_headline_splits_what_is_on_sale_from_what_is_over():
-    """The finding is the split, so the headline has to carry both halves.
+def test_the_headline_says_the_card_was_stripped_not_that_nobody_wrote_a_question():
+    """The claim this replaces was disproved by opening a market page.
 
-    Counting the two populations together hides it: 34% of this catalogue states no question,
-    which sounds like sloppy listings. Counted apart it is 85% of what you can still buy against
-    0% of what is already settled — the question appears once it is too late to use it.
+    Panta shows the question, the RESOLUTION CRITERIA and the sources to buyers. What a client
+    building on the API actually faces is a card that arrives complete or stripped, with nothing
+    in the response saying which — so that is what the first line says now.
     """
-    text = report.render([verdict(UNSTATED, 4225.49, True, question=""),
+    text = report.render([verdict(UNSTATED, 4225.49, True, question="", stripped=True),
                           verdict(EDITORIAL, 10.0)])
-    first = text.splitlines()[0]
-    assert "2 markets read" in first and "$4,235" in first
-    assert "Of the 1 you can buy right now, 1 (100%) do not say what you are buying" in text
-    assert "$4,225" in text
-    assert "Of the 1 already settled, every one states its question." in text
-
+    assert "1 of 2 cards came back stripped" in text
+    assert "nothing in the response saying so" in text
+    assert "do not say what you are buying" not in text
 
 def test_findings_come_before_the_good_news():
     text = report.render([verdict(EDITORIAL, 5.0), verdict(UNSTATED, 1.0, question="")])
-    assert text.index("UNSTATED") < text.index("EDITORIAL")
+    assert text.index("STRIPPED") < text.index("EDITORIAL")
 
 
 def test_an_empty_verifiable_group_is_still_printed():

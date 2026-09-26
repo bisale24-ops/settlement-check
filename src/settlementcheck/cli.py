@@ -89,8 +89,13 @@ def settler_facts(verdicts):
     settlers = {address for verdict in verdicts for address in verdict.settled_by}
     for address in settlers:
         theirs = [v for v in verdicts if address in v.settled_by]
-        signatures = chain.recent_signatures(address, 1000)
-        programs = chain.programs_touched(signatures[0]["signature"]) if signatures else set()
+        # A network hiccup while describing the settler must not lose the whole report: the
+        # verdicts above are already computed, and this section is colour on top of them.
+        try:
+            signatures = chain.recent_signatures(address, 1000)
+            programs = chain.programs_touched(signatures[0]["signature"]) if signatures else set()
+        except chain.ChainError:
+            signatures, programs = [], set()
         facts[address] = {"markets": len(theirs),
                           "volume": sum(v.volume or 0 for v in theirs),
                           "signatures": len(signatures), "programs": programs}

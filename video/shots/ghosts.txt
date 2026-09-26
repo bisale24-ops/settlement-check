@@ -1,0 +1,13 @@
+catalogue: 100 markets
+served as tradeable, no account on Solana: 13
+
+market                                         API says     getAccountInfo   panta.market says
+EWiohz3LKFPmtWKF33K1wDj1xQUUP3Q3xfkj5Tsq9LTd   primary      null             Market not found on-chain.
+8qCSNAz6nxtWbB4TPuzM6RTq8Bsum1ssPZzgnqpQyF2t   primary      null             Market not found on-chain.
+9T6xMV2P2D3GPnqn9Gh9HYYp3p579ZRPgunT1143qM7Z   secondary    null             Market not found on-chain.
+3Y4Y6oCjJXVJbUZHYAt5r1BGsLbGumJb1KfP789vWJbs   secondary    null             Market not found on-chain.
+4KThhCYZNidgBNG1RaHpXSEfysytHFWEgdewPS1vNM15   secondary    null             Market not found on-chain.
+FDfj2uDWLV8uCe8PLwwKT9Yjzp9kuW6nUJFJQ9tEDU2v   secondary    null             Market not found on-chain.
+                                               … and 7 more
+
+A client reading the public API lists every one of these as buyable.

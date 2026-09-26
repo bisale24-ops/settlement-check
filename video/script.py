@@ -1,13 +1,14 @@
 """Settlement Check — the demo video.
 
     ~/.venvs/video/bin/python ~/Desktop/KHLab/hack-nation/kit/video/render.py \
-        video/script.py --length-only
-    ~/.venvs/video/bin/python ~/Desktop/KHLab/hack-nation/kit/video/render.py \
         video/script.py --out video/demo.mp4 --max-seconds 178
 
-Every terminal frame under shots/ is real captured output, written by running the tool against the
-live catalogue and mainnet. Nothing is retyped for the camera, and nothing in these files names a
-path, a user or a key — there is a test that fails if a command ever prints the key.
+Second version. The first told a story that opening one market page disproved — that buyers cannot
+see what decides a market. They can: the venue shows the question, the criteria and the sources.
+What is true is about the API, and this is that story instead.
+
+Every terminal frame under shots/ is real captured output. The one screenshot is panta.market
+loaded without an account, so nothing personal is in frame, and no command here prints a key.
 """
 import pathlib
 
@@ -16,124 +17,129 @@ VOICE = "en-US-AndrewNeural"
 
 SCENES = [
     ("card:open",
-     "A prediction market is a claim about the future. Before you buy into one, there are two "
-     "things you would want to know. What question am I betting on, and what will decide it."),
+     "If you build on a prediction market's API, you are deciding what your users can buy. So "
+     "here are two questions worth asking of that API before you ship: does this market exist, "
+     "and can I tell what settles it?"),
 
-    ("card:split",
-     "On the live Panta catalogue, neither is reliably there. Of the markets already settled, "
-     "every single one states its question. Of the ones you can still buy, three to four out of "
-     "five state none. The question appears once nobody can act on it."),
+    ("term:ghosts",
+     "On the live Panta catalogue, thirteen markets out of a hundred are served as tradeable and "
+     "have no account on Solana at all. One call to any node returns null for every one of them."),
+
+    ("shot:notfound",
+     "And here is the same market on Panta's own site. The venue knows. A client reading the "
+     "public API does not, and will offer all thirteen to its users."),
 
     ("term:report",
-     "This is the tool reading the catalogue. Twenty six markets, the two populations counted "
-     "apart, and one line that matters more than the rest. Seven markets settled by a single "
-     "wallet."),
+     "The second question is harder, because the card arrives in two shapes. A complete one "
+     "carries the question, the resolution rule, the sources and the trade counts. A stripped one "
+     "carries none of them, and nothing in the response says which you are holding."),
 
-    ("term:claim",
-     "Here is that line. The catalogue says this market was settled by U M A, the optimistic "
-     "oracle. On Solana, the result was submitted and the event closed by one keypair, with no "
-     "U M A assertion in the transaction. The claim is in the interface, not on the chain."),
-
-    ("shot:page_uma",
-     "That verdict is not read from a field. It comes from the market's own history: who signed "
-     "submit oracle result, and who signed resolve event. The oracle field names a different "
-     "wallet — the one that creates markets."),
+    ("card:shapes",
+     "So a client that reads the question field gets a question for most markets and silence for "
+     "the rest, and cannot tell a market with no question from a card that arrived empty. This "
+     "tool reports the difference instead of guessing at it."),
 
     ("term:replay",
-     "Replay runs the same path over one settlement that already happened. Which market closed, "
-     "what was promised, who actually signed it."),
+     "For what actually settles a market, it reads the chain rather than a field. The oracle field "
+     "names the wallet that creates markets, not the one that resolves them. This is one "
+     "settlement, decoded: which market closed, what the card claimed, and who signed."),
 
-    ("card:live",
-     "And it runs live. Watch subscribes to the market program and reports each settlement as it "
-     "lands. Where a plan has no websocket, poll mode follows the signature list instead — a few "
-     "seconds behind a stream, and it works anywhere."),
+    ("card:chain",
+     "On every settled market inspected, the result was submitted and the event closed by the "
+     "same keypair, under both of the instruction naming families this program uses. Matching one "
+     "and not the other reports a settled market as one that nothing has settled — which this "
+     "tool did, until it was caught."),
 
     ("card:endpoint",
-     "The endpoint is a setting, and the difference is measured. Fourteen settled markets, six "
-     "lookups in flight: the public node returned none of them, Solami returned all fourteen."),
-
-    ("shot:page_creator",
-     "And here is why any of this happens. The create A P I requires a question, a resolution "
-     "rule, and a list of sources. The read A P I returns none of them. Oracle is that source "
-     "list joined by commas — which is why the commonest settlement source in the catalogue is "
-     "the word on chain, typed in by a person."),
+     "It runs live, and which endpoint you read from is a setting. Fourteen settled markets, the "
+     "same code: the public node returns none of them under concurrency, Solami returns all "
+     "fourteen in nine seconds. A quiet subscription is where the free node gives up, and "
+     "watching settlements is nothing but a quiet subscription."),
 
     ("term:draft_bad",
-     "So the same rules run before a market exists. This draft is shaped like the catalogue, and "
-     "the check refuses it: no question, a source that is a word, and times that close trading "
-     "before it opens."),
+     "The same rules run before a market exists. This draft is shaped like the catalogue and the "
+     "check refuses it: a source of truth that is a word rather than a reference, and times that "
+     "close trading before it opens."),
 
     ("term:draft_good",
-     "A draft that passes goes to Panta's own validator and comes back priced: fifty U S D C. "
-     "Nothing is signed, submitted or paid — their model is quote, build, then the creator's "
-     "wallet signs, and this stops at the first step."),
+     "A draft that passes goes to Panta's own validator and comes back priced. Fifty U S D C to "
+     "create. Nothing is signed, submitted or paid — their model is quote, build, then the "
+     "creator's wallet signs, and this stops at the first step."),
+
+    ("card:wrong",
+     "One more thing, because it is the point. Five claims this project made were wrong, and all "
+     "five are in the readme with their corrections. The largest was disproved by opening a "
+     "market page. A tool that asks for receipts has to show its own."),
 
     ("card:close",
-     "Sixty four tests, no network, no dependencies. Two numbers this project got wrong are "
-     "still in the readme with their corrections, because a tool that demands receipts has to "
-     "show its own."),
+     "Seventy tests, no network, no dependencies, green on two versions of Python. Everything "
+     "here reproduces from a clone."),
 ]
 
 CARDS = {
     "open": """<h1>Settlement Check</h1>
-    <p class=sub>What decides this prediction market — and could anyone else have checked that?</p>
+    <p class=sub>Two questions to ask a prediction market's API before you ship on it.</p>
     <table>
-      <tr><th>before you buy</th><th>the catalogue tells you</th></tr>
-      <tr><td>what am I betting on</td><td>often nothing at all</td></tr>
-      <tr><td>what will settle it</td><td>a string, and not the one that signs</td></tr>
+      <tr><th>question</th><th>what the API answers</th></tr>
+      <tr><td>does this market exist?</td><td>it says <code>primary</code> either way</td></tr>
+      <tr><td>what settles it?</td><td>a field that names the wrong account</td></tr>
     </table>""",
 
-    "split": """<h1>The question appears once it is too late</h1>
-    <p class=sub>Three passes over the live catalogue, every card opened.
-       Reproduce with <code>demo/census.py</code>.</p>
+    "shapes": """<h1>Two shapes, no label</h1>
     <table>
-      <tr><th>pass</th><th>on sale</th><th>no question</th><th>settled</th><th>no question</th></tr>
-      <tr><td>1</td><td>40</td><td>34 &nbsp;(85%)</td><td>60</td><td><b>0</b></td></tr>
-      <tr><td>2</td><td>50</td><td>42 &nbsp;(84%)</td><td>50</td><td><b>0</b></td></tr>
-      <tr><td>3</td><td>17</td><td>13 &nbsp;(76%)</td><td>83</td><td><b>0</b></td></tr>
-    </table>""",
-
-    "live": """<h1>Live, on either transport</h1>
-    <table>
-      <tr><th>mode</th><th>how</th><th>needs</th></tr>
-      <tr><td><code>--watch</code></td><td>logsSubscribe on the market program</td>
-          <td>a plan with websockets</td></tr>
-      <tr><td><code>--watch --poll</code></td><td>the signature list, every few seconds</td>
-          <td>RPC only — any plan</td></tr>
-      <tr><td><code>--replay</code></td><td>one settlement that already landed</td>
-          <td>RPC only</td></tr>
+      <tr><th>complete card</th><th>stripped card</th></tr>
+      <tr><td><code>question</code></td><td>absent</td></tr>
+      <tr><td><code>resolutionRule</code></td><td>absent</td></tr>
+      <tr><td><code>sources</code></td><td>absent</td></tr>
+      <tr><td><code>totalTrades</code>, <code>onChain</code></td><td>absent</td></tr>
     </table>
-    <p class=sub>Same <code>describe()</code>, same line, whichever way the event arrives.</p>""",
+    <p class=sub>Nothing in the response distinguishes them. 17 of 100 arrive stripped.</p>""",
 
-    "endpoint": """<h1>The endpoint is a setting, and the difference is measured</h1>
-    <p class=sub>Fourteen settled markets, <code>--workers 6</code>, identical code.</p>
+    "chain": """<h1>Read the chain, not the field</h1>
     <table>
-      <tr><th>endpoint</th><th>read</th><th>wall clock</th></tr>
-      <tr><td>api.mainnet-beta.solana.com</td><td><b>0 of 14</b></td>
-          <td>refused everything under concurrency</td></tr>
-      <tr><td>Solami RPC</td><td><b>14 of 14</b></td>
-          <td>101s — against 206s one at a time</td></tr>
+      <tr><td><code>oracle</code> says</td><td>the wallet that runs <code>CreateEventUsdc</code></td></tr>
+      <tr><td>the chain says</td><td><code>664h8sZvGwUx4hfq…</code> signed every settlement</td></tr>
+      <tr><td>that account is</td><td>System-owned, no data — a key, not a program</td></tr>
+    </table>
+    <p class=sub>Two naming families: <code>ResolveEvent</code> and
+       <code>ResolveEventUsdc</code>. Match one and a settled market looks unsettled.</p>""",
+
+    "endpoint": """<h1>The endpoint is a setting</h1>
+    <p class=sub>Fourteen settled markets, identical code.</p>
+    <table>
+      <tr><th>endpoint</th><th>in flight</th><th>read</th><th>time</th></tr>
+      <tr><td>api.mainnet-beta.solana.com</td><td>6</td><td><b>0 of 14</b></td><td>refused</td></tr>
+      <tr><td>Solami</td><td>6</td><td>14 of 14</td><td>41s</td></tr>
+      <tr><td><b>Solami</b></td><td><b>24</b></td><td><b>14 of 14</b></td><td><b>9s</b></td></tr>
+    </table>""",
+
+    "wrong": """<h1>Five things this project got wrong</h1>
+    <table>
+      <tr><td>“91 of 100 state no question”</td><td>measured on the wrong field</td></tr>
+      <tr><td>“one key decides”</td><td>read from the wallet that creates markets</td></tr>
+      <tr><td>“the rule reaches nobody”</td><td>the venue shows it to buyers</td></tr>
+      <tr><td>“the catalogue promises UMA”</td><td>it is a flag, not a promise</td></tr>
+      <tr><td>“the public node can’t subscribe”</td><td>only when the stream is idle</td></tr>
     </table>""",
 
     "close": """<h1>Check it yourself</h1>
     <table>
       <tr><td>repository</td><td>github.com/bisale24-ops/settlement-check</td></tr>
       <tr><td>page</td><td>bisale24-ops.github.io/settlement-check</td></tr>
-      <tr><td>tests</td><td>64, on Python 3.9 and 3.13, no network</td></tr>
+      <tr><td>tests</td><td>70, no network, Python 3.9 and 3.13</td></tr>
       <tr><td>dependencies</td><td>none — <code>run.sh</code> works from a clone</td></tr>
     </table>
     <p class=sub>Read-only throughout: nothing is signed, broadcast or paid.</p>""",
 }
 
 SHELL = {
-    "report": ("$ ./run.sh --cards 26 --settlements 10 --workers 6", "report.txt", 0, 16),
-    "claim": ("", "report.txt", 17, 26),
+    "ghosts": ("$ .venv/bin/python demo/ghosts.py", "ghosts.txt"),
+    "report": ("$ ./run.sh --cards 20 --settlements 8 --workers 20", "report.txt", 0, 16),
     "replay": ("$ ./run.sh --replay 5u15kVt2wz1cnLMU…", "replay.txt"),
     "draft_bad": ("$ ./run.sh --check-draft draft.json", "draft-bad.txt", 0, 14),
     "draft_good": ("$ ./run.sh --check-draft draft.json", "draft-good.txt"),
 }
 
 IMAGES = {
-    "page_uma": "shots/page-uma.png",
-    "page_creator": "shots/page-creator.png",
+    "notfound": "shots/panta-notfound.png",
 }

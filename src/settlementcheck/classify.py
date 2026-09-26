@@ -24,8 +24,8 @@ ORDER = [UNSTATED, NAMED_NOTHING, ONE_KEY, EDITORIAL, UNKNOWN, VERIFIABLE]
 NOT_LOOKED = object()
 
 HEADINGS = {
-    UNSTATED: ("UNSTATED  the market carries no question — whatever settles it, nobody buying "
-               "can know what they bought"),
+    UNSTATED: ("STRIPPED  this card carries no question and no resolution rule — a client "
+               "reading the API cannot show one, and the response does not say why"),
     NAMED_NOTHING: ("NAMED NOTHING  the settlement source is a word, not a reference: no address "
                     "to look up, no program to read, no outlet to ask"),
     ONE_KEY: ("ONE KEY  the question is stated and one wallet decides it. No program, no feed, "
@@ -190,11 +190,11 @@ def judge(card, owner_of, is_address, settlement_of=None):
 
     if not question:
         if not oracle:
-            detail = "no settlement source named either"
+            detail = "no settlement source in the card either"
         elif not is_address(oracle) and not any(map(names_a_source, feeds_of(oracle))):
-            detail = f"settled by {oracle!r} — a word, not a reference"
+            detail = f"card names {oracle!r} as the source — a word, not a reference"
         else:
-            detail = f"settled by {oracle}"
+            detail = f"card names {oracle} as the source"
         return Verdict(kind=UNSTATED, detail=detail, **common)
 
     if not oracle:
