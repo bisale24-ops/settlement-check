@@ -50,6 +50,34 @@ holding no data, 536 signatures since June. A person with a key, not a program. 
 appears in any of those transactions**: no assertion, no dispute window, no second signature. The
 claim lives in the API and not on the chain.
 
+### $163,148 of volume on markets that never traded here
+
+The number a buyer looks at first is volume. It can be checked against the market's own account,
+and for most of this catalogue it cannot be made to agree.
+
+Measured 26 September 2026, over the 100 markets the API will hand over. Complete histories only:
+`getSignaturesForAddress` returns the most **recent** n, so a count that hits the limit says
+nothing about what came before it — read with a limit of 1000, a count below it is the whole life
+of the account.
+
+| | |
+|---|---:|
+| markets | 100 |
+| whose entire on-chain history is 4 transactions or fewer | **58** |
+| of those, reporting volume with no order instruction ever | **43** |
+| volume riding on them | **$163,148** |
+
+Almost all of them have exactly two transactions, and both are `MigrateEventV2`. Among them are
+markets reporting $10,256, $10,008 and $12,952. Seven markets have no on-chain activity at all.
+
+This does not say the volume is invented. It may have been traded on a predecessor program. It
+says something narrower and checkable: **the migration transaction names no source** — it touches
+four accounts, the signer, the market, the System Program and the market program — so where that
+volume was traded is not discoverable from the chain, and neither is whether it happened.
+
+Reproduce it: take a market id from the table on the page, ask any RPC for its signatures, and
+count. `demo/census.py` does it for the whole catalogue.
+
 ### What the creator wrote, and what the buyer gets
 
 Panta's create API **requires** a `question`, a `resolutionRule` of up to 2048 characters, and a

@@ -48,6 +48,22 @@ def main():
         vol = sum(v.volume or 0 for v in verdicts if v.kind == kind)
         print(f"  {kind:14} {kinds[kind]:3}  ${vol:,.0f}")
 
+    print("\nvolume against the market's own history "
+          "(complete histories only — a truncated one proves nothing):")
+    silent = silent_volume = checked = unknown = 0
+    for verdict in verdicts:
+        traded = chain.traded_on_chain(verdict.market_id)
+        if traded is None:
+            unknown += 1
+            continue
+        checked += 1
+        if not traded and (verdict.volume or 0) > 0:
+            silent += 1
+            silent_volume += verdict.volume
+    print(f"  histories read in full : {checked}   too long to read: {unknown}")
+    print(f"  never had an order here but report volume: {silent}")
+    print(f"  volume riding on those: ${silent_volume:,.0f}")
+
     oracles = collections.Counter((v.oracle or "(empty)") for v in verdicts)
     print("\nmost common settlement sources:")
     for value, count in oracles.most_common(5):

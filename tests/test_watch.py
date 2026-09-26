@@ -233,3 +233,37 @@ def test_a_settlement_under_the_older_names_is_described_like_any_other():
                 catalogue=lambda a: {"oracle": "on-chain", "sentToUma": True} if a == MARKET else None)
     assert len(events) == 1
     assert "ResolveEvent" in events[0] and RESOLVER in events[0]
+
+
+def test_a_history_that_hits_the_limit_is_not_a_complete_history():
+    """The methodological trap that nearly produced a false finding.
+
+    getSignaturesForAddress returns the most recent n. A market showing no orders in its last 25
+    transactions had eight in its last 40, so "never traded" can only be said when the whole
+    history fits under the limit — otherwise the answer is None, never False.
+    """
+    from settlementcheck import chain as c
+    calls = []
+
+    def fake(address, limit=10):
+        calls.append(limit)
+        return [{"signature": f"s{i}"} for i in range(limit)]     # always fills the limit
+
+    original = c.recent_signatures
+    c.recent_signatures = fake
+    try:
+        assert c.traded_on_chain("M" * 44, limit=25) is None
+    finally:
+        c.recent_signatures = original
+
+
+def test_a_short_history_with_only_a_migration_means_it_never_traded_here():
+    from settlementcheck import chain as c
+    original_sigs, original_tx = c.recent_signatures, c.transaction
+    c.recent_signatures = lambda _a, limit=10: [{"signature": "m1"}, {"signature": "m2"}]
+    c.transaction = lambda _s: {"transaction": {"message": {"accountKeys": []}},
+                                "meta": {"logMessages": ["Program log: Instruction: MigrateEventV2"]}}
+    try:
+        assert c.traded_on_chain("M" * 44, limit=1000) is False
+    finally:
+        c.recent_signatures, c.transaction = original_sigs, original_tx

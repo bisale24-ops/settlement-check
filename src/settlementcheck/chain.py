@@ -144,6 +144,47 @@ def instructions_and_signer(result):
     return names, signer
 
 
+# A market's whole life on this program, when that life is short enough to see all of it.
+FULL_HISTORY = 1000
+
+
+def history(market_id, limit=FULL_HISTORY):
+    """Every signature on a market account, and whether that is genuinely all of them.
+
+    `getSignaturesForAddress` returns the most RECENT n, so a count that hits the limit says
+    nothing about what came before it. Only a count below the limit is a complete history — and
+    only then can "this market has never had an order" be said at all. Getting that wrong is easy:
+    a market showing no orders in its last 25 transactions had eight in its last 40.
+
+    Returns `(signatures, complete)`.
+    """
+    signatures = recent_signatures(market_id, limit)
+    return signatures, len(signatures) < limit
+
+
+ORDER_INSTRUCTIONS = ("PrimaryOrder", "SecondaryLimitOrder", "SecondaryMarketOrder")
+
+
+def traded_on_chain(market_id, limit=FULL_HISTORY):
+    """Has an order ever been placed on this market, here?
+
+    True, False, or None when the history is too long to read in full — never a guess. A market
+    whose entire history is a `MigrateEventV2` has not traded on this program, whatever volume
+    the catalogue reports against it.
+    """
+    signatures, complete = history(market_id, limit)
+    if not complete:
+        return None
+    for entry in signatures:
+        result = transaction(entry["signature"])
+        if not result:
+            continue
+        names, _signer = instructions_and_signer(result)
+        if any(base_instruction(name) in ORDER_INSTRUCTIONS for name in names):
+            return True
+    return False
+
+
 def settlement(market_id, limit=12):
     """Who actually settled this market, read from the market account's own history.
 
