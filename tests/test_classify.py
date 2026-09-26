@@ -167,11 +167,19 @@ def test_who_settled_it_is_read_from_the_chain_not_from_the_oracle_field():
     assert verdict.settled_by == (RESOLVER,)
 
 
-def test_a_uma_claim_is_reported_against_what_the_chain_shows():
+def test_the_uma_flag_is_reported_beside_the_signature_and_nothing_more():
+    """This assertion used to read "says this went to UMA", and that overstated the venue.
+
+    `sentToUma` is a field in the API. Panta's own market page never mentions UMA: it says agent
+    resolution, shows the result with a confidence score and a written rationale, and names a
+    dispute window. So the line reports the flag and the signature side by side, and draws no
+    conclusion about what anyone was promised.
+    """
     verdict = judge_chain(card(oracle=CREATOR, sentToUma=True), settled([RESOLVER]))
     compared = verdict.claim_versus_chain
-    assert "says this went to UMA" in compared
-    assert "no UMA assertion in the transaction" in compared
+    assert "carries sentToUma" in compared
+    assert "no UMA program appears in that transaction" in compared
+    assert "says this went to UMA" not in compared
     assert RESOLVER in compared
 
 
@@ -209,3 +217,25 @@ def test_a_settlement_never_looked_at_is_not_reported_as_no_settlement():
     assert "not read" in skipped.detail and "--settlements" in skipped.detail
     assert "nothing has settled this market on chain yet" in looked.detail
     assert "nothing has settled" not in skipped.detail
+
+
+def test_the_question_comes_from_the_question_field_first():
+    """The fourth and last wrong reading of this card.
+
+    A complete card carries `question` and `resolutionRule` outright. This tool read `title` and
+    `description` and concluded that most of the catalogue states no question. It does not: 69 of
+    100 cards carry both fields, 31 are stripped of them, and 13 of those 31 have no Solana
+    account at all.
+    """
+    complete = card(question="Will Ronaldo score against Uzbekistan?",
+                    resolutionRule="Yes if he scores at least one goal in the match.",
+                    title="", description="")
+    assert classify.stated_question(complete) == "Will Ronaldo score against Uzbekistan?"
+    assert classify.stated_rule(complete).startswith("Yes if he scores")
+    assert not classify.is_stripped(complete)
+
+
+def test_a_stripped_card_is_recognised_as_stripped():
+    stripped = card(question="", resolutionRule="", title="", description="", sources=None)
+    assert classify.is_stripped(stripped)
+    assert classify.stated_question(stripped) == ""

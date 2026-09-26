@@ -307,8 +307,9 @@ def report(draft, now, quoted=None, verdict=None, detail="", reach=None):
     lines.append("WHAT THE CATALOGUE WILL SHOW")
     lines.append(f"  title   {seen['title'] or '(empty — and the listing leaves it empty anyway)'}")
     lines.append(f"  oracle  {seen['oracle'] or '(empty)'}")
-    lines.append("  resolutionRule  not returned by the read API under any name — you are writing "
-                 "it for nobody")
+    lines.append("  resolutionRule  returned on a complete card — but 31 of 100 cards come back "
+                 "stripped of it,")
+    lines.append("                  with no field saying which shape you are holding")
 
     if verdict == REFUSED:
         lines += ["", f"PANTA SAYS  the draft was refused, naming the fields: {detail}"]

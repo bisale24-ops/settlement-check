@@ -67,26 +67,47 @@ class Verdict:
             return None
         who = ", ".join(sorted(self.settled_by))
         if self.claims_uma:
-            return (f"the catalogue says this went to UMA; on chain the result was submitted and "
-                    f"the event resolved by {who}, with no UMA assertion in the transaction")
+            # `sentToUma` is a flag in the API, not a promise the venue makes to its users: its
+            # own page says agent resolution, with a confidence score and a dispute window. So
+            # this reports the flag and the signature side by side and draws no conclusion the
+            # reader cannot check.
+            return (f"the card carries sentToUma; on chain the result was submitted and the event "
+                    f"resolved by {who}, and no UMA program appears in that transaction")
         if self.oracle and self.oracle not in self.settled_by:
             return f"the catalogue names {self.oracle} as the oracle; on chain it was {who}"
         return f"settled on chain by {who}"
 
 
 def stated_question(card):
-    """The question, from wherever the catalogue happens to be keeping it.
+    """The question, from wherever this card happens to carry it.
 
-    The listing rows leave `title` empty on every market without exception, which is what made an
-    earlier measurement of this catalogue read `description` alone and conclude that almost nothing
-    states a question. That was wrong: open the market's own card and the question is in `title` on
-    56 of 100 markets. Both fields are read here, and the card is what gets classified.
+    Three drafts of this function were wrong, each in the same way: a field was read, a sample was
+    taken, and a claim about the venue was made from it.
+
+    What is actually there. A complete card carries `question` and `resolutionRule` outright. A
+    stripped card carries neither, and also loses `sources`, `totalTrades`, `totalVolume`,
+    `isResolved` and a field named `onChain`. Measured 26 September 2026 over the hundred markets
+    the API will hand over: 69 complete, 31 stripped — and 13 of the stripped ones have no Solana
+    account at all, which Panta's own site renders as "Market not found on-chain".
+
+    So the question is read from `question` first, and a market without one is a market whose card
+    was stripped, not a market whose author wrote nothing.
     """
-    for field in ("title", "description"):
+    for field in ("question", "title", "description"):
         text = (card.get(field) or "").strip()
         if text:
             return text
     return ""
+
+
+def stated_rule(card):
+    """The resolution criteria, when this card carries them at all."""
+    return (card.get("resolutionRule") or "").strip()
+
+
+def is_stripped(card):
+    """A card with none of the fields that say what the market is or how it settles."""
+    return not (stated_question(card) or stated_rule(card) or card.get("sources"))
 
 
 # Tokens that assert a mechanism instead of naming a publisher. `on-chain` is the single most

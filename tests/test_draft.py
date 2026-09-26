@@ -153,21 +153,17 @@ def test_an_image_probe_that_fails_to_connect_is_not_a_finding():
     assert found == []
 
 
-def test_the_report_says_plainly_that_the_resolution_rule_reaches_nobody():
-    text, _ = draft.report(good(), NOW)
-    assert "not returned by the read API under any name" in text
+def test_the_report_describes_the_two_card_shapes_rather_than_claiming_a_field_is_lost():
+    """The claim this replaces — "you are writing it for nobody" — was wrong.
 
-
-class _Response:
-    def __init__(self, status, content_type="image/png"):
-        self.status = status
-        self.headers = {"Content-Type": content_type}
-
-    def __enter__(self):
-        return self
-
-    def __exit__(self, *_):
-        return False
+    A complete card returns `resolutionRule`, and Panta's own market page shows it to buyers as
+    RESOLUTION CRITERIA. What is true is narrower: 31 of 100 cards come back stripped of it, and
+    nothing in the response says which shape you are holding.
+    """
+    text, _blocks = draft.report(good(), NOW)
+    assert "returned on a complete card" in text
+    assert "stripped" in text
+    assert "for nobody" not in text
 
 
 def test_a_host_that_refuses_HEAD_but_serves_GET_is_reachable():

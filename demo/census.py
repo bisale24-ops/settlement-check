@@ -48,21 +48,24 @@ def main():
         vol = sum(v.volume or 0 for v in verdicts if v.kind == kind)
         print(f"  {kind:14} {kinds[kind]:3}  ${vol:,.0f}")
 
-    print("\nvolume against the market's own history "
-          "(complete histories only — a truncated one proves nothing):")
-    silent = silent_volume = checked = unknown = 0
+    print("\nwhat a card actually carries, against whether the market exists on chain:")
+    complete = stripped_on = stripped_off = 0
     for verdict in verdicts:
-        traded = chain.traded_on_chain(verdict.market_id)
-        if traded is None:
-            unknown += 1
+        try:
+            info = chain.rpc("getAccountInfo", [verdict.market_id, {"encoding": "base64"}])
+            exists = (info or {}).get("value") is not None
+        except chain.ChainError:
             continue
-        checked += 1
-        if not traded and (verdict.volume or 0) > 0:
-            silent += 1
-            silent_volume += verdict.volume
-    print(f"  histories read in full : {checked}   too long to read: {unknown}")
-    print(f"  never had an order here but report volume: {silent}")
-    print(f"  volume riding on those: ${silent_volume:,.0f}")
+        full = bool(verdict.question)
+        if full and exists: complete += 1
+        elif exists: stripped_on += 1
+        else: stripped_off += 1
+    total = complete + stripped_on + stripped_off
+    print(f"  complete card, on chain      : {complete}")
+    print(f"  stripped card, on chain      : {stripped_on}")
+    print(f"  stripped card, NO account    : {stripped_off}"
+          f"   <- Panta's own site: 'Market not found on-chain'")
+    print(f"  checked                      : {total}")
 
     oracles = collections.Counter((v.oracle or "(empty)") for v in verdicts)
     print("\nmost common settlement sources:")

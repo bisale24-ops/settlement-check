@@ -19,84 +19,64 @@ trade, never builds a transaction it signs, never broadcasts, and never spends a
 
 ## What it found
 
-### The question appears once nobody can act on it
+Measured 26 September 2026 over the hundred markets the API will hand over. Every number
+reproduces with `demo/census.py`.
 
-Three passes over the catalogue on 26 September 2026, every card opened, reproducible with
-`demo/census.py`:
+### The catalogue offers markets that do not exist
 
-| Pass | On sale | of those, no question | Settled | of those, no question |
-|---|---:|---:|---:|---:|
-| 1 | 40 | 34 (85%) | 60 | **0 (0%)** |
-| 2 | 50 | 42 (84%) | 50 | **0 (0%)** |
-| 3 | 17 | 13 (76%) | 83 | **0 (0%)** |
+**13 of 100** markets are served by `GET /markets/` as `primary` or `secondary` — tradeable — and
+have **no account on Solana at all**. `getAccountInfo` on the market id returns null. Panta's own
+front end renders exactly these as:
 
-Every one of the 193 settled markets states its question. Three to four out of five of the markets
-still on sale state none. The two populations have to be counted apart, because counted together
-this reads as untidy listings rather than as the one fact a buyer needs, withheld for exactly as
-long as it is worth something.
+> **Market not found on-chain.**
 
-### The catalogue says UMA. The chain says one keypair.
+So the venue already knows. Anyone building on the public API does not, and will list markets
+their users cannot trade. The fix is a filter, or the `onChain` flag the complete cards already
+carry.
 
-`sentToUma` is true on 85 of 100 markets, including markets still trading, and false on every
-cancelled one. On chain, the settlement path is:
+Check one yourself: take `EWiohz3LKFPmtWKF33K1wDj1xQUUP3Q3xfkj5Tsq9LTd` from the catalogue, ask
+any RPC for its account, then open `panta.market/market/<id>` and compare.
 
-```
-GraduateMarketUsdc → SubmitOracleResultUsdc → ResolveEventUsdc → ClaimWinUsdc
-```
+### The card comes back in two different shapes
 
-On all 12 settled markets inspected, `SubmitOracleResultUsdc` and `ResolveEventUsdc` were signed by
-the same account — `664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR`, owned by the System Program,
-holding no data, 536 signatures since June. A person with a key, not a program. **No UMA program
-appears in any of those transactions**: no assertion, no dispute window, no second signature. The
-claim lives in the API and not on the chain.
+A complete card carries `question`, `resolutionRule`, `sources`, `totalTrades`, `totalVolume`,
+`isResolved`, `oracleResultSubmitted` and `onChain`. A stripped card carries none of them — not
+an empty string, the field is simply absent.
 
-### $163,148 of volume on markets that never traded here
-
-The number a buyer looks at first is volume. It can be checked against the market's own account,
-and for most of this catalogue it cannot be made to agree.
-
-Measured 26 September 2026, over the 100 markets the API will hand over. Complete histories only:
-`getSignaturesForAddress` returns the most **recent** n, so a count that hits the limit says
-nothing about what came before it — read with a limit of 1000, a count below it is the whole life
-of the account.
-
-| | |
+| card | markets |
 |---|---:|
-| markets | 100 |
-| whose entire on-chain history is 4 transactions or fewer | **58** |
-| of those, reporting volume with no order instruction ever | **43** |
-| volume riding on them | **$163,148** |
+| complete, account exists | 82 |
+| stripped, account exists | 5 |
+| stripped, **no account** | 13 |
 
-Almost all of them have exactly two transactions, and both are `MigrateEventV2`. Among them are
-markets reporting $10,256, $10,008 and $12,952. Seven markets have no on-chain activity at all.
+Nothing in the response says which shape you are holding. A client that reads `question` gets a
+question for most markets and silence for the rest, with no way to tell a market with no question
+from a market whose card was stripped. Both look identical.
 
-This does not say the volume is invented. It may have been traded on a predecessor program. It
-says something narrower and checkable: **the migration transaction names no source** — it touches
-four accounts, the signer, the market, the System Program and the market program — so where that
-volume was traded is not discoverable from the chain, and neither is whether it happened.
+### What settles a market, read from the chain rather than from a field
 
-Reproduce it: take a market id from the table on the page, ask any RPC for its signatures, and
-count. `demo/census.py` does it for the whole catalogue.
+The `oracle` field reads like the account that decides a market. It is not: on every market
+checked it names the wallet whose instruction is `CreateEventUsdc`, which creates markets and
+does not resolve them.
 
-### What the creator wrote, and what the buyer gets
+The account that does is found in the market's own history:
 
-Panta's create API **requires** a `question`, a `resolutionRule` of up to 2048 characters, and a
-non-empty `sourcesOfTruth`. The read API returns none of them under those names:
+```
+GraduateMarket → SubmitOracleResult → ResolveEvent → ClaimWin
+```
 
-| create API demands | read API returns |
-|---|---|
-| `question` | `title`, on the card only — every listing row leaves it empty |
-| `resolutionRule` (≤ 2048 chars) | **nothing, under any name** |
-| `sourcesOfTruth` (≤ 20) | `oracle`, the list joined by commas |
+On every settled market inspected, both settlement instructions were signed by the same account —
+`664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR`, owned by the System Program, holding no data, 536
+signatures since June — under **both** instruction naming families. Markets carrying a
+`MigrateEventV2` settle as `ResolveEvent` and `SubmitOracleResult`; the rest add a `Usdc` suffix.
+Matching one family and not the other, which this tool did at first, reports a settled market as
+one that nothing has settled.
 
-Which is why the most common settlement source in the whole catalogue is the word `on-chain` — 34
-of 100 markets, more than any newsroom and more than any wallet. Somebody typed it into that list.
-It is not an address, not a program and not a masthead, and it is the one claim here that refutes
-itself: a settlement that really is on-chain has an account, and the identifier has to carry it.
-
-Every author was made to write down what decides their market. Nobody can read a word of it.
-
----
+What this is not: the venue does not tell users an external oracle decides their market. Its page
+says *agent resolution*, shows the result with a confidence score and a written rationale, and
+names a dispute window. The finding is narrower than it first looked, and it is about what a
+developer can verify: the settlement is one signature, and the API's `oracle` field points
+somewhere else.
 
 ## The five verdicts
 
@@ -129,7 +109,8 @@ something a buyer can read.
 WHAT THE CATALOGUE WILL SHOW
   title   …
   oracle  on-chain
-  resolutionRule  not returned by the read API under any name — you are writing it for nobody
+  resolutionRule  returned on a complete card — but 31 of 100 cards come back stripped of it,
+                  with no field saying which shape you are holding
 ```
 
 It ends by asking Panta's own `POST /markets/create/quote/` to validate and price the draft. That
@@ -148,9 +129,8 @@ what was claimed, who signed:
 20:04:15  ResolveEventUsdc  5u15kVt2wz1cnLMU…
           market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9
           claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
-          the catalogue says this one went to UMA
           signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
-          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction
+          the card carries sentToUma; no UMA program appears in that transaction
 ```
 
 `--replay <signature>` runs the same code over a settlement that already happened, so it can be
@@ -205,7 +185,7 @@ repository, never committed and never printed — anything that names the endpoi
 
 ---
 
-## Two numbers this project got wrong
+## Four things this project got wrong
 
 Left in on purpose. A tool that demands receipts has to show its own.
 
@@ -220,7 +200,17 @@ markets, it does not resolve them. The verdict now comes from the market account
 it names the account that actually signed. Both mistakes were the same mistake: believing a field
 instead of reading what happened.
 
-A third was caught before it shipped. When the settlement budget ran out, the report said "nothing
+**The wrong field, and then the wrong conclusion.** The question was read from `title` and
+`description`, which produced "three to four of five markets on sale state no question". A
+complete card carries `question` outright, and Panta's own page shows both the question and the
+resolution criteria to buyers. What is true is narrower and is above: 31 of 100 cards come back
+stripped, and nothing says which shape you are holding.
+
+**An overclaim about UMA.** `sentToUma` is a field in the API. The venue's page never mentions
+UMA — it says agent resolution, with a confidence score, a rationale and a dispute window. The
+report now puts the flag and the signature side by side and concludes nothing beyond them.
+
+A fifth was caught before it shipped. When the settlement budget ran out, the report said "nothing
 has settled this market on chain yet" about markets whose history it had never opened. A lookup
 that did not run is now `NOT_LOOKED`, never `None`, and there is a test that fails without it.
 
