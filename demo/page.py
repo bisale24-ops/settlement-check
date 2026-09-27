@@ -148,6 +148,10 @@ def render(snapshot):
       This asks <em>what will decide it</em> — and whether anyone can check that.</h1>
   <p class="lede">Measured on the live Panta catalogue, and checked against Panta's own front end.
      Every number here comes from the snapshot below it; nothing on this page is typed by hand.</p>
+  <p class="lede"><a href="https://youtu.be/1Jcf13HvrcQ">Demo, 2:53</a> ·
+     <a href="https://youtu.be/VQFsG9_4DWI">Pitch, 1:58</a> ·
+     <a href="{REPO}#five-things-this-project-got-wrong">Five things this project got wrong</a>,
+     with their corrections · <a href="{REPO}">source</a></p>
 
   <div class="split">
     <div class="card bad">
@@ -204,12 +208,14 @@ def render(snapshot):
      moment it arrives — which market closed, what the catalogue claimed would decide it, and who
      signed. <code>--replay</code> runs the same code over a settlement that already happened.</p>
 <pre>{replay}</pre>
-  <p class="dim">Measured, not asserted: Solana's public node accepts a <code>logsSubscribe</code>
-     with a program filter, acknowledges it, then closes the connection; and reading the
-     settlements already in the catalogue exhausts it at a couple of dozen markets with
-     <code>getTransaction failed after 3 attempts</code>. The watcher reconnects and, when it gives
-     up, says that is the endpoint's limit and not the venue having nothing to settle.
-     <code>SOLANA_WS</code> points the same code at one that will hold it.</p>
+  <p class="dim">The endpoint is a setting, and the difference is measured rather than asserted.
+     Fourteen settled markets, identical code, six lookups in flight: Solana's public node read
+     <b>0 of 14</b> and refused everything under concurrency; through Solami, 14 of 14 in 41s —
+     and 14 of 14 in 9s at 24 in flight. The public node also drops an <i>idle</i> subscription
+     (2 frames and one close over 70s on the market-program filter, while a busy filter held
+     15,551 frames without a break), and idle is exactly what watching settlements is. Solami
+     holds it. <code>~/.config/solami.key</code> or <code>SOLANA_RPC</code> chooses; the key is
+     never printed.</p>
 </section>
 
 <section>
