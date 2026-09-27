@@ -1,0 +1,9 @@
+watching 6gM5afTQBq5VZCfgpGqcsqzfWd5maLSCKWtGjbEobZMp
+  through wss://ws.solami.dev/mirage/stream/VDO-BSozfYgJZpI7?api_key=***
+  Mirage: Yellowstone SubscribeUpdate frames, filtered server-side, decoded here without a protobuf library
+  settlements are rare; market traffic is printed so an idle venue looks idle
+
+
+0 settlement(s) seen.
+./run.sh --watch 15 --mirage  0.09s user 0.03s system 0% cpu 20.663 total
+

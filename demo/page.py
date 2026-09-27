@@ -215,7 +215,10 @@ def render(snapshot):
      (2 frames and one close over 70s on the market-program filter, while a busy filter held
      15,551 frames without a break), and idle is exactly what watching settlements is. Solami
      holds it. <code>~/.config/solami.key</code> or <code>SOLANA_RPC</code> chooses; the key is
-     never printed.</p>
+     never printed. <code>--mirage</code> reads the same settlements from Solami's Mirage stream
+     — the Yellowstone geyser firehose over a plain WebSocket, filtered on the server — and
+     decodes the protobuf frames by hand, since this project has no dependencies: 40 transactions
+     in 0.9&nbsp;s on a busy filter, and the quiet market-program stream held on pings.</p>
 </section>
 
 <section>
@@ -232,6 +235,9 @@ def render(snapshot):
 </section>
 
 <footer>
+  <p>The other half, for anyone building on the API: <a href="catalogue.json">catalogue.json</a>
+     — the listing with every market a buyer cannot read taken out, and what was left out counted
+     by reason.</p>
   <p>Read-only throughout: no wallet, no signature, no transaction, nothing spent. Reproduce with
      <code>./run.sh</code>, <code>demo/census.py</code> and <code>demo/snapshot.py</code> —
      <a href="{REPO}">{REPO.replace('https://', '')}</a>. Built for the Colosseum Crypto World's

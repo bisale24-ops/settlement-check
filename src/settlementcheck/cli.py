@@ -1,11 +1,12 @@
 """settlement-check — what decides this market, and could anyone else have checked it?"""
 import argparse
 import json
+import os
 import pathlib
 import sys
 import time
 
-from . import chain, classify, draft as draftcheck, panta, report, watch as watcher
+from . import chain, classify, draft as draftcheck, mirage, panta, report, watch as watcher, ws
 
 
 def parse_args(argv=None):
@@ -19,6 +20,13 @@ def parse_args(argv=None):
                              "subscription. A few seconds behind a stream, and it works on any "
                              "plan — Solami refuses a WebSocket without one that includes it, and "
                              "the public node closes the subscription it just acknowledged")
+    parser.add_argument("--mirage", metavar="SUBSCRIPTION", nargs="?", const="",
+                        help="with --watch: read Solami's Mirage stream — the Yellowstone geyser "
+                             "firehose over a plain WebSocket, filtered on the server to the "
+                             "market program — instead of a logsSubscribe. Takes the subscription "
+                             "id from the Solami dashboard; with no id, SOLAMI_MIRAGE or "
+                             "~/.config/solami.mirage. Frames are protobuf and are decoded here "
+                             "without a protobuf library")
     parser.add_argument("--replay", metavar="SIGNATURE",
                         help="run the live path over one settlement that already happened, so the "
                              "same code can be demonstrated without waiting for the next one")
@@ -121,9 +129,25 @@ def check_draft(args):
 
 def live(args):
     """The live path. Everything it prints is parsed by the same code the tests exercise."""
-    endpoint = chain.websocket_endpoint()
+    connect = None
+    if args.mirage is not None and not args.poll:
+        subscription = args.mirage or mirage_subscription()
+        key = solami_key()
+        if not subscription or not key:
+            print("--mirage needs a Solami key in ~/.config/solami.key and a Mirage subscription "
+                  "id (the dashboard creates one: filter the transaction firehose on "
+                  f"{chain.MARKET_PROGRAM}); pass the id, or set SOLAMI_MIRAGE, or write it to "
+                  "~/.config/solami.mirage", file=sys.stderr)
+            return report.EXIT_FAILED
+        endpoint = mirage.stream_url(subscription, key)
+        connect = lambda: ws.WebSocket(endpoint)  # noqa: E731 — no subscribe message: the filter lives on the server
+    else:
+        endpoint = chain.websocket_endpoint()
     # chain.safe() and nothing else: this line ends up in terminal recordings.
     print(f"watching {chain.MARKET_PROGRAM}\n  through {chain.safe(endpoint)}")
+    if connect:
+        print("  Mirage: Yellowstone SubscribeUpdate frames, filtered server-side, decoded here "
+              "without a protobuf library")
     if "api.mainnet-beta.solana.com" in endpoint:
         print("  (the public node. SOLANA_WS points this at a real endpoint — a Solami key "
               "raises the ceiling this measured at, not the code)")
@@ -143,9 +167,27 @@ def live(args):
     else:
         seen = watcher.watch(on_event=print, seconds=args.watch or None, on_traffic=traffic,
                              look_up=chain.transaction, catalogue=_card_if_market,
-                             on_notice=notice)
+                             on_notice=notice, connect=connect)
     print(f"\n{seen} settlement(s) seen.")
     return report.EXIT_OK
+
+
+def solami_key():
+    try:
+        return chain.SOLAMI_KEY_FILE.read_text().strip()
+    except OSError:
+        return ""
+
+
+def mirage_subscription():
+    """The saved Mirage filter to stream: `SOLAMI_MIRAGE`, else `~/.config/solami.mirage`."""
+    explicit = os.environ.get("SOLAMI_MIRAGE", "").strip()
+    if explicit:
+        return explicit
+    try:
+        return pathlib.Path.home().joinpath(".config/solami.mirage").read_text().strip()
+    except OSError:
+        return ""
 
 
 def _card_if_market(address):

@@ -18,7 +18,7 @@ the live view possible at all.
 import json
 import time
 
-from . import chain, ws
+from . import chain, mirage, ws
 
 # Every settlement passes through the market program, so one subscription sees all of them.
 SUBSCRIBE = {
@@ -53,6 +53,21 @@ def read_notification(payload):
     if not signature:
         return None
     return signature, instructions_in(value.get("logs")), value.get("err") is not None
+
+
+def read_payload(payload):
+    """One message from either wire: JSON-RPC text, or a Mirage protobuf frame as bytes.
+
+    Both come back as `(signature, instructions, failed)` or None, so the watcher never needs to
+    know which endpoint it is holding.
+    """
+    if isinstance(payload, (bytes, bytearray)):
+        update = mirage.read_update(payload)
+        if not update:
+            return None
+        signature, logs, failed = update
+        return signature, instructions_in(logs), failed
+    return read_notification(payload)
 
 
 def is_settlement(instructions):
@@ -147,8 +162,12 @@ def watch(url=None, on_event=print, source=None, limit=None, look_up=None, catal
                     if deadline and time.time() > deadline:
                         return seen
                     continue
-                parsed = read_notification(payload)
+                parsed = read_payload(payload)
                 if not parsed:
+                    # Pings, slots, votes: a Mirage stream that is nothing but pings every ten
+                    # seconds still has to honour the deadline.
+                    if deadline and time.time() > deadline:
+                        return seen
                     continue
                 signature, instructions, failed = parsed
                 if on_traffic:

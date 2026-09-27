@@ -70,6 +70,26 @@ delivered 2 frames and closed once; through Solami, 1 frame and no close. On a b
 not drop at all — 25 seconds on SPL Token, 15,551 frames — so what breaks is an idle connection,
 which is exactly what watching settlements is.
 
+## Mirage: the firehose, filtered on the server, decoded without a protobuf library
+
+`./run.sh --watch --mirage` reads the same settlements from Solami's Mirage stream — the
+Yellowstone geyser firehose over a plain WebSocket, with the filter (the market program, no votes,
+no failed transactions) saved as a subscription on Solami's side, so the client ships a URL and
+nothing else. Frames are binary protobuf `SubscribeUpdate` messages. This project has no
+dependencies, so it does not pull in `yellowstone-grpc-proto`: `mirage.py` walks the protobuf
+wire format by hand and stops at the three fields the watcher needs — signature, log lines, and
+whether the transaction failed — skipping every other field by its length. `watch.read_payload()`
+gives the same `(signature, instructions, failed)` from a Mirage frame as from a `logsNotification`,
+so the watcher does not know which wire it is on.
+
+Measured 27 September 2026 on a temporary subscription to the SPL Token program: 41 frames,
+280 KB, **40 transactions decoded in 0.9 seconds**, instruction names read straight from the logs,
+no failures and no undecodable frames. On the market program the stream is quiet — the last fifty
+transactions span more than three days — and Mirage holds the idle connection with a ping every
+ten seconds, which is precisely the connection the public node drops. Seven tests cover the
+decoder, including a truncated frame and a ping, so a bad frame is skipped rather than killing
+the watcher.
+
 ## Running live
 
 ```bash
@@ -100,7 +120,7 @@ tool says which path it took rather than pretending it streamed.
 
 - No runtime dependencies, including a small RFC 6455 WebSocket client written for this project,
   so `./run.sh` works from a fresh clone with nothing installed.
-- 70 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
+- 77 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
 - Read-only: it never builds, signs or sends a transaction.
 - A settlement that was not looked at is `NOT_LOOKED`, never `None` — the first live run said
   "nothing has settled this market" about markets whose history it had never opened, and there is

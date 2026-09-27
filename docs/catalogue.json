@@ -1,0 +1,525 @@
+{
+ "taken_at": "2026-09-27T13:15:04Z",
+ "source": "GET /markets/ and GET /markets/{id}/ on live-api.panta.market, getAccountInfo on Solana mainnet",
+ "rule": "tradeable phase, an account on chain, and a card carrying a question and a rule",
+ "read": 54,
+ "kept": 42,
+ "left_out": {
+  "not tradeable": 0,
+  "no account on chain": 0,
+  "card stripped": 12
+ },
+ "markets": [
+  {
+   "marketId": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
+   "question": "Will ICE Brent Crude Oil Futures (December 2026 Contract) settle at or above $104.00 per barrel on Thursday, October 1, 2026, at 6:30 PM BST?",
+   "resolutionRule": "Resolve YES, if the official daily settlement price published by the Intercontinental Exchange (ICE) for the front-month December 2026 Brent Crude contract on Thursday, October 1, 2026, is exactly $104.00 or higher. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-finance-reuters",
+    "world-stocks-yahoo-finance"
+   ],
+   "phase": "primary",
+   "endTime": 1790875800,
+   "url": "https://panta.market/market/4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG"
+  },
+  {
+   "marketId": "ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6",
+   "question": "Over 38.5 combined score in the Pittsburgh Steelers vs. Cleveland Browns game on Thursday, October 1, 2026?",
+   "resolutionRule": "Resolve YES, if the final combined score of both teams at the conclusion of the game is 39 points or higher. Else resolve NO.",
+   "sources": [
+    "world-sports-espn"
+   ],
+   "phase": "primary",
+   "endTime": 1790913600,
+   "url": "https://panta.market/market/ALio3GkarKxXy8qLdZwiUJo6XhS5QvuKw4bZKzruYdP6"
+  },
+  {
+   "marketId": "F2nK5f6NTgVA8zVT2CzRYRNaMcntv3njEkNCozGMs2Sj",
+   "question": "Will SpaceX’s Starship (Flight 14) successfully achieve its target Earth orbit and deploy at least one Starlink V3 satellite on or before Wednesday, September 30, 2026, at 11:59 PM BST?",
+   "resolutionRule": "Resolve YES, if the official SpaceX Mission Broadcast or official telemetry data confirms that the Starship upper stage reached orbital velocity and successfully released at least one Starlink V3 payload into space before Wednesday, September 30, 2026, at exactly 5:59:00 PM CT. Else resolve NO.",
+   "sources": [
+    "world-space-nasa"
+   ],
+   "phase": "primary",
+   "endTime": 1790809140,
+   "url": "https://panta.market/market/F2nK5f6NTgVA8zVT2CzRYRNaMcntv3njEkNCozGMs2Sj"
+  },
+  {
+   "marketId": "5fhzcovNvTnWgUMZbPSgFxJwcgRCSFemjiu5DLsvsosT",
+   "question": "Will bitcoin hit $100,000 by 31 Dec 2026",
+   "resolutionRule": "Resolve YES, if If Bitcoin is hit $100,00 by December 31, 12:00pm on Coinmarketcap. Else resolve NO.",
+   "sources": [
+    "world-crypto-coinbase",
+    "world-crypto-coinmarketcap",
+    "world-crypto-coingecko"
+   ],
+   "phase": "secondary",
+   "endTime": 1798671600,
+   "url": "https://panta.market/market/5fhzcovNvTnWgUMZbPSgFxJwcgRCSFemjiu5DLsvsosT"
+  },
+  {
+   "marketId": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
+   "question": "Will Berkshire Hathaway Inc. Class B (BRK.B) close at or above $510.00 on Wednesday, September 23, 2026, at 3:00 PM CT?\"",
+   "resolutionRule": "Resolve YES, if the official New York Stock Exchange (NYSE) closing price for Berkshire Hathaway Inc. Class B (BRK.B) on Wednesday, September 23, 2026, at exactly 3:00:00 PM CT is $510.00 or higher. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-stocks-nyse"
+   ],
+   "phase": "secondary",
+   "endTime": 1790193900,
+   "url": "https://panta.market/market/4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh"
+  },
+  {
+   "marketId": "FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9",
+   "question": "Will Prime Minister Andy Burnham formally announce a delay, reduction, or full cancellation of the planned October defense spending review before Wednesday, September 23, 2026, at 11:59 PM BST?",
+   "resolutionRule": "",
+   "sources": [
+    "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS"
+   ],
+   "phase": "secondary",
+   "endTime": 1790204340,
+   "url": "https://panta.market/market/FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9"
+  },
+  {
+   "marketId": "5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN",
+   "question": "Will Zcash (ZEC) close at or above $1,550.00 on Wednesday, September 23, 2026, at 11:59 PM BST?",
+   "resolutionRule": "Resolve YES, if the price of Zcash is recorded at exactly $1,550.00 or higher at 11:59 BST on Wednesday Sept 23.. Else resolve NO.",
+   "sources": [
+    "world-crypto-coingecko"
+   ],
+   "phase": "secondary",
+   "endTime": 1790204340,
+   "url": "https://panta.market/market/5z7TxmJuBngEFcBWT2GfWBmmQvzcP3cH3Vs54HPkaeUN"
+  },
+  {
+   "marketId": "8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY",
+   "question": "Will Arsenal drop points against Brighton at the AMEX?",
+   "resolutionRule": "Resolve YES, if Arsenal officially do not win the match against Brighton ( if the result is a draw or Brighton win) scheduled for Sept 19, 2026 .. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1789833600,
+   "url": "https://panta.market/market/8R5sx7Ms8BfYZz1na6ZLuh39JVMQgi6eNnNASj5pVjAY"
+  },
+  {
+   "marketId": "AWesFhQ1uQXwsMBE2EPRVqKD6iG8GqiU2KMSkAeFqrb4",
+   "question": "Will Bitcoin (BTC) be at or above 1000 USD at resolution time? [Panta API playground test]",
+   "resolutionRule": "Resolves YES if BTC/USD spot per CoinGecko is at or above 1000 USD at resolution. Automated API test market.",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1789200748,
+   "url": "https://panta.market/market/AWesFhQ1uQXwsMBE2EPRVqKD6iG8GqiU2KMSkAeFqrb4"
+  },
+  {
+   "marketId": "27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM",
+   "question": "Will U.S. Initial Jobless Claims be reported at or above 206,000 on Thursday, September 17, 2026?",
+   "resolutionRule": "",
+   "sources": [
+    "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS"
+   ],
+   "phase": "secondary",
+   "endTime": 1789653600,
+   "url": "https://panta.market/market/27ZuF9VF6Tz1HcuwsW4ys4jAshNciFqYPSsmU3z4AMJM"
+  },
+  {
+   "marketId": "2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp",
+   "question": "Will Ethereum (ETH) daily transaction volume be less than Arbitrum (ARB) on September 16, 2026?",
+   "resolutionRule": "",
+   "sources": [
+    "4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS"
+   ],
+   "phase": "secondary",
+   "endTime": 1789600200,
+   "url": "https://panta.market/market/2g8qvVB4UzdhbWqmdzzoXJf2QojPvpAF16etenCqT5kp"
+  },
+  {
+   "marketId": "EhehvNMYdPsJFy288rqHySX4hK6kY6Z6WZ21YKhncdXQ",
+   "question": "Will the marketcap of SOLANA drop to $11 billion ?",
+   "resolutionRule": "RESOLVE YES IF, the marketcap of SOLANA drops to $11 billion ,WITHIN THE NEXT 2 HOURS. ELSE RESOLVE NO.",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1789160340,
+   "url": "https://panta.market/market/EhehvNMYdPsJFy288rqHySX4hK6kY6Z6WZ21YKhncdXQ"
+  },
+  {
+   "marketId": "4PXNDkRxNEbVrp6gRx9gs3zqkA8XgmHNfVEJ1jCwNpEt",
+   "question": "WILL $LAPTOP cross 20 billion dollars from now until the next 1 hour ?",
+   "resolutionRule": "RESOLVE YES IF, HUNTER BIDEN'S $LAPTOP TOKEN CROSSES 20 BILLION DOLLARS BETWEEN NOW AND THE NEXT 1 HOUR. ELSE RESOLVE NO.",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1788978120,
+   "url": "https://panta.market/market/4PXNDkRxNEbVrp6gRx9gs3zqkA8XgmHNfVEJ1jCwNpEt"
+  },
+  {
+   "marketId": "GeBYoNa966zcF1oJ2w8h2WkCLsjwyzsg7iy88kzju2hK",
+   "question": "Will ETH be above $5,000 within the next 1hr ?",
+   "resolutionRule": "",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1788907200,
+   "url": "https://panta.market/market/GeBYoNa966zcF1oJ2w8h2WkCLsjwyzsg7iy88kzju2hK"
+  },
+  {
+   "marketId": "GKebvYjZPe7QPrHPnNSsBL4t62JYBzhRdb2qB1dACS8e",
+   "question": "Will BTC drop to $5,000 in the next 1 hour?",
+   "resolutionRule": "RESOLVE YES IF, BTC DROPS OR WICKS TO $5,000 WITHIN THE NEXT 1 HOUR. ELSE, RESOLVE NO.",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1788878400,
+   "url": "https://panta.market/market/GKebvYjZPe7QPrHPnNSsBL4t62JYBzhRdb2qB1dACS8e"
+  },
+  {
+   "marketId": "3oAkiYpE2H7gJRok3w3YcGWfhrsM4kXAXnKYH7iLokaC",
+   "question": "Will $zcat memecoin surpass $500million in the next 1hour ?",
+   "resolutionRule": "RESOLVE YES IF, $ZCAT SURPASSES $500MILLION within the next 1hour. ELSE, RESOLVE NO.",
+   "sources": [
+    "https://www.coingecko.com"
+   ],
+   "phase": "secondary",
+   "endTime": 1788873540,
+   "url": "https://panta.market/market/3oAkiYpE2H7gJRok3w3YcGWfhrsM4kXAXnKYH7iLokaC"
+  },
+  {
+   "marketId": "A9oqLG2YFxd9REbkzvdxSQWa1dVC1RoY84moKwSBJ2Zy",
+   "question": "Chelsea to concede 2 or more goals in the first Half Against Arsenal on Sunday",
+   "resolutionRule": "Resolve YES, if If Chelsea concedes 2 or more goals in the first half against Arsenal on Sunday. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa"
+   ],
+   "phase": "secondary",
+   "endTime": 1788712200,
+   "url": "https://panta.market/market/A9oqLG2YFxd9REbkzvdxSQWa1dVC1RoY84moKwSBJ2Zy"
+  },
+  {
+   "marketId": "EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY",
+   "question": "Will Kimi Antonelli finish in the Top 6 (6th place or higher) in the Italian Grand Prix?",
+   "resolutionRule": "Resolve YES, if Kimi Antonelli is officially classified in 1st, 2nd, 3rd, 4th, 5th, or 6th place in the final, official post-race classification published by the FIA (Fédération Internationale de l'Automobile).. Else resolve NO.",
+   "sources": [
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788714000,
+   "url": "https://panta.market/market/EarxUvuGTwMs5nKvAgkenYAdTa9kvXibjiNSQcTRxdFY"
+  },
+  {
+   "marketId": "HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K",
+   "question": "Will Brent Crude Oil futures (Front-Month) settle at or above $94.50 per barrel on Wednesday, September 9, 2026?",
+   "resolutionRule": "Resolve YES, if the official daily settlement price for the front-month Brent Crude Oil futures contract is strictly greater than or equal to $94.50 USD on September 9, 2026. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-finance-reuters",
+    "world-stocks-yahoo-finance"
+   ],
+   "phase": "secondary",
+   "endTime": 1788979500,
+   "url": "https://panta.market/market/HeZfxnRXKZup67xdrP9V7pTacHvUZWkhwt8zfYPYBG9K"
+  },
+  {
+   "marketId": "GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h",
+   "question": "Will Apple Inc. (AAPL) close at or above $320.00 USD on Wednesday, September 9, 2026?",
+   "resolutionRule": "Resolve YES, if the official closing price of AAPL on the Nasdaq Stock Market is strictly greater than or equal to $320.00 USD on September 9, 2026. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-stocks-nasdaq"
+   ],
+   "phase": "secondary",
+   "endTime": 1788984900,
+   "url": "https://panta.market/market/GXwpfBfnuftdr9JTm1iydKyCKCXCYjzTefqksG78cR3h"
+  },
+  {
+   "marketId": "FdLsiSVG58sLSLbJ85dP3CaHvXGGbke8nsbMHgY8yt1T",
+   "question": "Will Zcash (ZEC) be priced at $1,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
+   "resolutionRule": "Resolve YES, if the price of ZEC is strictly greater than or equal to $1,000.00 USD at exactly 12:00 PM UTC on September 8, 2026.. Else resolve NO.",
+   "sources": [
+    "world-crypto-coingecko"
+   ],
+   "phase": "secondary",
+   "endTime": 1788869700,
+   "url": "https://panta.market/market/FdLsiSVG58sLSLbJ85dP3CaHvXGGbke8nsbMHgY8yt1T"
+  },
+  {
+   "marketId": "1Nm7PCxoHUwGk1J9NoSfy26TQZkitwDf6mamFTZDn1r",
+   "question": "Will Bitcoin (BTC) be priced at $81,000.00 or higher on Tuesday, September 8, 2026, at 12:00 PM UTC?",
+   "resolutionRule": "Resolve YES, if the price of BTC is strictly greater than or equal to $81,000.00 USD at exactly 12:00 PM UTC on September 8, 2026. Else resolve NO.",
+   "sources": [
+    "world-crypto-coingecko"
+   ],
+   "phase": "secondary",
+   "endTime": 1788869700,
+   "url": "https://panta.market/market/1Nm7PCxoHUwGk1J9NoSfy26TQZkitwDf6mamFTZDn1r"
+  },
+  {
+   "marketId": "ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5",
+   "question": "Will Juventus beat A.C Milan?",
+   "resolutionRule": "Resolve YES, if Juventus officially wins the match against A.C Milan scheduled for Sept 6, 2026. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788727500,
+   "url": "https://panta.market/market/ErqQGGFrw3ebJVqPQXHis31Y8JqWgmBKdJDKGkJKCzH5"
+  },
+  {
+   "marketId": "5YGopsWfLdS8XV7gWjVNdtd6iioZVC5L9pWDV7a4yZX4",
+   "question": "Will Bukayo Saka record more total shots on target than Cole Palmer in the Arsenal vs Chelsea match scheduled for Sept 6, 2026 ?",
+   "resolutionRule": "Resolve YES, if Bukayo Saka finishes the match with a higher official shot-on-target count than Cole Palmer in the Arsenal vs Chelsea match scheduled for Sept 6, 2026.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788715800,
+   "url": "https://panta.market/market/5YGopsWfLdS8XV7gWjVNdtd6iioZVC5L9pWDV7a4yZX4"
+  },
+  {
+   "marketId": "HmR1wos9wThXnG96kraX2CkxVEMT5t9qEEtZ3VYosV5s",
+   "question": "Will Man Utd make it back to back wins vs Everton?",
+   "resolutionRule": "Resolve YES, if Manchester Utd officially wins the match against Everton scheduled for Sept 6, 2026.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788706800,
+   "url": "https://panta.market/market/HmR1wos9wThXnG96kraX2CkxVEMT5t9qEEtZ3VYosV5s"
+  },
+  {
+   "marketId": "BicZZk9N4QsWP6acd8MX2c6ybsdsofMkx9KZRgCiqYJB",
+   "question": "Will Nottingham Forest F.C. score a goal before the 60th minute (59:59 or earlier) of their match against Liverpool F.C. on Saturday, August 29, 2026?",
+   "resolutionRule": "Resolve YES, if Nottingham Forest F.C. scores an officially sanctioned goal at any point from the opening kickoff until the match clock reads exactly 59 minutes and 59 seconds. Own goals count.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788010200,
+   "url": "https://panta.market/market/BicZZk9N4QsWP6acd8MX2c6ybsdsofMkx9KZRgCiqYJB"
+  },
+  {
+   "marketId": "GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3",
+   "question": "Will the total number of goals scored in the Chelsea F.C. vs. Brighton & Hove Albion F.C. match on Sunday, August 30, 2026 be Over 3.5?",
+   "resolutionRule": "Resolve YES, if the combined score of both teams at full-time is 4 or more goals.. Else resolve NO.",
+   "sources": [
+    "me-sports-bein",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788102000,
+   "url": "https://panta.market/market/GZYBuLrmy7aRJZUxFj2Bquebv3gAVcP1sgtXtLnygnQ3"
+  },
+  {
+   "marketId": "DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9",
+   "question": "Will Erling Haaland score 2 or more goals against Crystal Palace on Friday?",
+   "resolutionRule": "Resolve YES, if Erling Haaland scores at least two goals against Crystal Palace on Friday. August 28th, 2026.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "world-sports-espn",
+    "world-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1787952600,
+   "url": "https://panta.market/market/DhJHjBziVqw9DyPxw6GiLAqh97QmZzcALsT6jyFSJuv9"
+  },
+  {
+   "marketId": "3U1rqTX2SYK11jbHi19CAB2siYCoBcuybHKxVNztymis",
+   "question": "Will 4 or more teams score 3 or more goals in Matchweek 2 of the 2026/27 English Premier League season?",
+   "resolutionRule": "Resolve YES, if 4 or more teams score 3 or more goals in Matchweek 2 of the 2026/27 English Premier League season. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "world-sports-espn",
+    "world-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788211800,
+   "url": "https://panta.market/market/3U1rqTX2SYK11jbHi19CAB2siYCoBcuybHKxVNztymis"
+  },
+  {
+   "marketId": "Fcf63RXGBUhjjpD5NgP7tf9zWmULfndvWsspNcjf6TLB",
+   "question": "Will 18.5% or more of all scheduled commercial flight arrivals at London Heathrow Airport (LHR) be delayed by 30+ minutes on Bank Holiday Monday, 31 August 2026?",
+   "resolutionRule": "Resolve YES, if the final calculated percentage of delayed commercial passenger flight arrivals at LHR on August 31,2026 (end time 11.59 PM BST) is strictly greater than or equal to 18.50%. Else resolve NO.",
+   "sources": [
+    "world-politics-ap",
+    "world-politics-reuters"
+   ],
+   "phase": "secondary",
+   "endTime": 1788246000,
+   "url": "https://panta.market/market/Fcf63RXGBUhjjpD5NgP7tf9zWmULfndvWsspNcjf6TLB"
+  },
+  {
+   "marketId": "CHuV3Fq34PBd1eFWGVkamY55fCjXTgdcAxyqiuXpxYyP",
+   "question": "Will there be 3 or more total goals scored in the Real Madrid vs Real Sociedad match tonight?",
+   "resolutionRule": "Resolve YES, if the combined final score of both teams at the end of full-time is strictly greater than or equal to 3 goals (e.g., 2-1, 3-0, 2-2, etc.).. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "me-sports-bein",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1787778000,
+   "url": "https://panta.market/market/CHuV3Fq34PBd1eFWGVkamY55fCjXTgdcAxyqiuXpxYyP"
+  },
+  {
+   "marketId": "GfZPiYnCHrhnCZLaGUKh5uZ18FrsvZec6MQvfvNXt9Gp",
+   "question": "Will the S&P 500 Index (SPX) close at or above 7,675.00 on Friday, 28 August 2026?",
+   "resolutionRule": "Resolve YES, if the official S&P 500 Index closing value on Friday, 28 August 2026, is strictly greater than or equal to 7,675.0000. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-stocks-nasdaq",
+    "world-stocks-spglobal"
+   ],
+   "phase": "secondary",
+   "endTime": 1787948100,
+   "url": "https://panta.market/market/GfZPiYnCHrhnCZLaGUKh5uZ18FrsvZec6MQvfvNXt9Gp"
+  },
+  {
+   "marketId": "BgLmyp8DK9BiQnCqkrfZN4EpF2hFBswEbuxhwnixizMq",
+   "question": "Will Arsenal drop points against Aston Villa on August 31, 2026?",
+   "resolutionRule": "Resolve YES, if Arsenal do not win ( meaning if they get a draw or lose) in the match against Aston Villa on August 31, 2026. Else resolve NO.",
+   "sources": [
+    "me-sports-bein",
+    "eu-sports-skysports",
+    "za-sports-supersport"
+   ],
+   "phase": "secondary",
+   "endTime": 1788210000,
+   "url": "https://panta.market/market/BgLmyp8DK9BiQnCqkrfZN4EpF2hFBswEbuxhwnixizMq"
+  },
+  {
+   "marketId": "GdraCBrevEiCtDnBbVmXb9UVYdsntPuM7dLF54umVnyi",
+   "question": "Will Manchester Utd get back to winning ways vs Ipswich town on August 30th, 2026?",
+   "resolutionRule": "Resolve YES, if Manchester Utd officially wins the match against Ipswich scheduled for August 30, 2026. Else resolve NO.",
+   "sources": [
+    "me-sports-bein",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1788111000,
+   "url": "https://panta.market/market/GdraCBrevEiCtDnBbVmXb9UVYdsntPuM7dLF54umVnyi"
+  },
+  {
+   "marketId": "BjdkEhvz59XX5dof2xCP5rpLFSt3huSyoBh9pbRJRo2H",
+   "question": "Will Jurassic Finance or HiveBits win the Grand Prize at the Solana Summit Serbia Demo Day?",
+   "resolutionRule": "Resolve YES, if either Jurassic Finance or HiveBits is officially announced as the single Grand Prize winner of the Solana Summit Serbia Demo Day competition on 26 August 2026. Announcement via official SuperTeam Balkans sources, @SolanaMarko on X, or official press or blog releases published directly via Solana Summit Serbia.. Else resolve NO.",
+   "sources": [
+    "world-crypto-coingecko"
+   ],
+   "phase": "secondary",
+   "endTime": 1787772600,
+   "url": "https://panta.market/market/BjdkEhvz59XX5dof2xCP5rpLFSt3huSyoBh9pbRJRo2H"
+  },
+  {
+   "marketId": "8BYF4yhEfqXW4Q4EihhK7nxdgeBoBSjw8HMNqkTT5nc8",
+   "question": "Will Arsenal defeat Chelsea at Emirates Stadium on September 6, 2026?",
+   "resolutionRule": "Resolve YES, if Arsenal wins the Premier League match against Chelsea at Emirates Stadium on September 6, 2026, as confirmed by the official Premier League match report (premierleague.com). A draw or Chelsea win resolves NO.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa"
+   ],
+   "phase": "secondary",
+   "endTime": 1788606000,
+   "url": "https://panta.market/market/8BYF4yhEfqXW4Q4EihhK7nxdgeBoBSjw8HMNqkTT5nc8"
+  },
+  {
+   "marketId": "3h2nSdkjW8nWFYesEyipaCwtMAAj1nFkoGfu6deuzQbk",
+   "question": "Will Erling Haaland score against Bournemouth on Sunday?",
+   "resolutionRule": "Resolve YES, if Erling Haaland scores at least one goal against Bournemouth on Sunday. August 23, 2026.. Else resolve NO.",
+   "sources": [
+    "world-sports-fifa",
+    "me-sports-bein",
+    "world-sports-espn",
+    "ng-sports-espnafrica",
+    "za-sports-supersport"
+   ],
+   "phase": "secondary",
+   "endTime": 1787499000,
+   "url": "https://panta.market/market/3h2nSdkjW8nWFYesEyipaCwtMAAj1nFkoGfu6deuzQbk"
+  },
+  {
+   "marketId": "5MJdHutzv3Nq6jzcAamd4fewYj17BMnK8fxKppNNqi9k",
+   "question": "Will Logan Paul and IShowSpeed announce a formal, sanctioned influencer boxing match by Thursday, September 10, 2026?",
+   "resolutionRule": "Resolve YES, if at any time on or before 11:59 PM ET on Thursday, September 10, 2026, Logan Paul and IShowSpeed jointly or independently announce a formal, legally binding, or platform-sanctioned influencer boxing match or exhibition bout against each other.. Else resolve NO.",
+   "sources": [
+    "world-entertainment-variety",
+    "world-entertainment-billboard",
+    "world-gaming-polygon",
+    "world-gaming-ign"
+   ],
+   "phase": "secondary",
+   "endTime": 1789099140,
+   "url": "https://panta.market/market/5MJdHutzv3Nq6jzcAamd4fewYj17BMnK8fxKppNNqi9k"
+  },
+  {
+   "marketId": "Fi3Tr3NNfxKcAWYELFX6yrf6kJy5F2Uwya6D4eA9c3Xd",
+   "question": "Will Copper futures close at or above $6.50 per pound on Friday, August 28, 2026?",
+   "resolutionRule": "Resolve YES, if the official daily closing settlement price for the front-month Copper futures contract (Ticker: HG) on Friday, August 28, 2026, is strictly greater than or equal to $6.50. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-finance-reuters",
+    "world-stocks-yahoo-finance",
+    "world-business-bloomberg"
+   ],
+   "phase": "secondary",
+   "endTime": 1787938200,
+   "url": "https://panta.market/market/Fi3Tr3NNfxKcAWYELFX6yrf6kJy5F2Uwya6D4eA9c3Xd"
+  },
+  {
+   "marketId": "9bVnskoqskq41qnuhXzqanK1vJ2huLqC39Tk7BGMQGvX",
+   "question": "Will the official settlement price of Brent Crude Oil futures be at or above $90.00 per barrel on Thursday, September 10, 2026?",
+   "resolutionRule": "Resolve YES, if the official daily settlement price for the front-month Brent Crude Oil futures contract (Ticker: CO1) on Thursday, September 10, 2026, is strictly greater than or equal to $90.00 per barrel. Else resolve NO.",
+   "sources": [
+    "world-stocks-bloomberg",
+    "world-finance-yahoo",
+    "world-business-bloomberg",
+    "world-business-spglobal"
+   ],
+   "phase": "secondary",
+   "endTime": 1789068600,
+   "url": "https://panta.market/market/9bVnskoqskq41qnuhXzqanK1vJ2huLqC39Tk7BGMQGvX"
+  },
+  {
+   "marketId": "B9J6VZUUywaqb5GdJqF45HCrKkGMdfKBRVrZ6Y4Kc99Y",
+   "question": "Liverpool to beat Newcastle and start the season with a win?",
+   "resolutionRule": "Resolve YES, if Liverpool F.C. officially wins the match against Newcastle United F.C. scheduled for Sunday, August 23, 2026. Else resolve NO.",
+   "sources": [
+    "world-sports-espn",
+    "world-sports-skysports",
+    "za-sports-supersport"
+   ],
+   "phase": "secondary",
+   "endTime": 1787506200,
+   "url": "https://panta.market/market/B9J6VZUUywaqb5GdJqF45HCrKkGMdfKBRVrZ6Y4Kc99Y"
+  },
+  {
+   "marketId": "FMiMqbs4jc1b9G3haHLGebiLWEFbLhMWYwT1hR56Vaki",
+   "question": "Will Manchester Utd beat Hull City by 2 or more goals in their season opening game on August 22, 2026?",
+   "resolutionRule": "Resolve YES, if Manchester United F.C. wins the match against Hull City A.F.C. on August 22, 2026, by a goal margin of two (2) or more goals (e.g., 2-0, 3-1, 4-0, etc.).. Else resolve NO.",
+   "sources": [
+    "me-sports-bein",
+    "world-sports-espn",
+    "eu-sports-skysports"
+   ],
+   "phase": "secondary",
+   "endTime": 1787405400,
+   "url": "https://panta.market/market/FMiMqbs4jc1b9G3haHLGebiLWEFbLhMWYwT1hR56Vaki"
+  }
+ ]
+}

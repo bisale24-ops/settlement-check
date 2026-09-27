@@ -16,7 +16,7 @@ when this resolves, what decided it, and could anybody else have checked that de
 - **Demo video** — https://youtu.be/1Jcf13HvrcQ
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
-No dependencies; `./run.sh` works from a fresh clone. 70 tests on Python 3.9 and 3.13, no
+No dependencies; `./run.sh` works from a fresh clone. 77 tests on Python 3.9 and 3.13, no
 network. Read-only throughout: it never builds, signs or sends a transaction.
 
 ## How the Panta API is used
@@ -86,6 +86,15 @@ gone, and the README lists them with their corrections.
 
 What survived is the part that matters to an API sidetrack: the gap is between your API and your
 own product, and it is a gap a developer falls into.
+
+## The other half: a catalogue a client can consume
+
+`docs/catalogue.json` is the listing with everything a buyer cannot read taken out — markets the
+API serves as tradeable, that exist on Solana, and whose card carries a question and a resolution
+rule — with everything left out counted by reason (`not tradeable`, `no account on chain`,
+`card stripped`). `python3 demo/catalogue.py` rebuilds it from four merged reads of the live
+listing, one card and one `getAccountInfo` per market. It is the filter your `onChain` flag would
+make unnecessary, published so that anyone building on the API today has it.
 
 ## Seven API defects, reported to the team before this submission
 

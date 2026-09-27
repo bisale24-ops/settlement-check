@@ -157,19 +157,19 @@ class WebSocket:
             if opcode == CLOSE:
                 self._send_control(CLOSE, payload[:2])
                 return
-            if opcode == BINARY:
-                raise WebSocketError("binary frame — this client speaks JSON text only")
-            if opcode in (TEXT, CONTINUATION):
-                if opcode == TEXT:
-                    pending, pending_opcode = [payload], TEXT
+            if opcode in (TEXT, BINARY, CONTINUATION):
+                # Text frames are JSON-RPC and come out as str; binary frames are Mirage's
+                # protobuf and come out as bytes, so a reader can tell the two wires apart by type.
+                if opcode in (TEXT, BINARY):
+                    pending, pending_opcode = [payload], opcode
                 else:
-                    if pending_opcode != TEXT:
-                        raise WebSocketError("continuation without a text frame to continue")
+                    if pending_opcode not in (TEXT, BINARY):
+                        raise WebSocketError("continuation without a frame to continue")
                     pending.append(payload)
                 if fin:
                     joined = b"".join(pending)
-                    pending, pending_opcode = [], None
-                    yield joined.decode("utf-8")
+                    kind, pending, pending_opcode = pending_opcode, [], None
+                    yield joined.decode("utf-8") if kind == TEXT else joined
                 continue
             raise WebSocketError(f"opcode {opcode:#x} is not one this client handles")
 

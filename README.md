@@ -9,7 +9,7 @@ git clone https://github.com/bisale24-ops/settlement-check && cd settlement-chec
 ./run.sh --check-draft fixtures/draft-like-the-catalogue.json   # a market, before it is published
 ./run.sh --replay <settlement-signature>     # one settlement, read from the chain
 ./run.sh --watch 300                         # settlements as they land
-./check.sh                                    # 70 tests on Python 3.9 and 3.13, no network (needs pytest)
+./check.sh                                    # 77 tests on Python 3.9 and 3.13, no network (needs pytest)
 ```
 
 No dependencies. `run.sh` works from a fresh clone with the `python3` on your path (3.9 or newer); `check.sh` is the one thing that wants a package, `pytest`. The catalogue commands need a Panta API key — `PANTA_API_KEY` or `~/.config/panta.key`, issued once when you create a Panta account; `--replay` and `--watch` read the chain alone and need no key at all. Read-only throughout: this tool never quotes a
@@ -141,6 +141,27 @@ what was claimed, who signed:
 `--replay <signature>` runs the same code over a settlement that already happened, so it can be
 shown without waiting for the next one.
 
+### `--mirage`: the geyser firehose, filtered on the server
+
+`./run.sh --watch --mirage` reads the same settlements from Solami's **Mirage** stream instead of
+a `logsSubscribe`: the Yellowstone geyser firehose over a plain WebSocket, with the filter — the
+market program, no votes, no failed transactions — saved on the server as a subscription, so the
+client ships a URL rather than a gRPC toolchain. Frames are binary protobuf `SubscribeUpdate`
+messages. This project has no dependencies, so it does not decode them with
+`yellowstone-grpc-proto`; `mirage.py` walks the protobuf wire format by hand and stops at the
+three fields the watcher needs — the signature, the log lines and whether the transaction failed —
+skipping everything else by length. `watch.read_payload()` returns the same
+`(signature, instructions, failed)` from either wire, so the watcher does not know which one it is
+on.
+
+Measured 27 September 2026 against a temporary subscription on the SPL Token program: 41 frames,
+280 KB and **40 transactions decoded in 0.9 seconds**, instruction names read straight out of the
+logs (`Swap`, `SwapV2`, `TransferChecked`, …), no failures, no undecodable frames. On the market
+program itself the stream is quiet — the last fifty transactions span more than three days — and
+Mirage holds it, sending a ping every ten seconds or so; that is the idle connection the public
+node drops. The subscription id comes from the Solami dashboard and lives in
+`~/.config/solami.mirage` or `SOLAMI_MIRAGE`, next to the key and never in the repository.
+
 ### Why this wants a real endpoint, measured rather than asserted
 
 Reading who settled a market costs one `getSignaturesForAddress` plus a `getTransaction` per
@@ -171,6 +192,24 @@ repository, never committed and never printed — anything that names the endpoi
 `chain.safe()` first.
 
 ---
+
+## The clean catalogue: `docs/catalogue.json`
+
+The report says what is wrong with the catalogue. This is the half a client can consume: the
+same listing with everything a buyer cannot read taken out. A market stays in only if the
+catalogue serves it as tradeable, an account exists at its id on Solana, and the card arrived
+complete — a question and a resolution rule. Everything else is counted by reason, so the file
+says what it left out rather than silently shrinking:
+
+```json
+"read": 54, "kept": 42,
+"left_out": {"not tradeable": 0, "no account on chain": 0, "card stripped": 12}
+```
+
+Each entry carries `marketId`, `question`, `resolutionRule`, `sources`, `phase`, `endTime` and
+the market's URL. `python3 demo/catalogue.py` rebuilds it from four merged reads of the live
+listing (each read hands back a different slice), one card and one `getAccountInfo` per market.
+Read-only, like everything else here.
 
 ## Defects found, reproducible with `curl`
 
