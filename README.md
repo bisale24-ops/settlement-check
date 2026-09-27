@@ -9,10 +9,10 @@ git clone https://github.com/bisale24-ops/settlement-check && cd settlement-chec
 ./run.sh --check-draft fixtures/draft-like-the-catalogue.json   # a market, before it is published
 ./run.sh --replay <settlement-signature>     # one settlement, read from the chain
 ./run.sh --watch 300                         # settlements as they land
-./check.sh                                    # 70 tests on Python 3.9 and 3.13, no network
+./check.sh                                    # 70 tests on Python 3.9 and 3.13, no network (needs pytest)
 ```
 
-No dependencies. `run.sh` works from a fresh clone. Read-only throughout: this tool never quotes a
+No dependencies. `run.sh` works from a fresh clone with the `python3` on your path (3.9 or newer); `check.sh` is the one thing that wants a package, `pytest`. The catalogue commands need a Panta API key — `PANTA_API_KEY` or `~/.config/panta.key`, issued once when you create a Panta account; `--replay` and `--watch` read the chain alone and need no key at all. Read-only throughout: this tool never quotes a
 trade, never builds a transaction it signs, never broadcasts, and never spends anything.
 
 ---
@@ -197,7 +197,7 @@ repository, never committed and never printed — anything that names the endpoi
 
 ---
 
-## Four things this project got wrong
+## Five things this project got wrong
 
 Left in on purpose. A tool that demands receipts has to show its own.
 
@@ -222,7 +222,12 @@ stripped, and nothing says which shape you are holding.
 UMA — it says agent resolution, with a confidence score, a rationale and a dispute window. The
 report now puts the flag and the signature side by side and concludes nothing beyond them.
 
-A fifth was caught before it shipped. When the settlement budget ran out, the report said "nothing
+**"The public node cannot hold a subscription."** An earlier draft said the free Solana RPC drops
+`logsSubscribe`. Measured properly, it drops an *idle* one — 2 frames and one close over 70 seconds on
+the market-program filter — and holds a busy one without a break: 25 seconds on the SPL Token
+program, 15,551 frames. The claim narrowed to what was measured, and the section above says which.
+
+A sixth was caught before it shipped. When the settlement budget ran out, the report said "nothing
 has settled this market on chain yet" about markets whose history it had never opened. A lookup
 that did not run is now `NOT_LOOKED`, never `None`, and there is a test that fails without it.
 
