@@ -16,7 +16,7 @@ when this resolves, what decided it, and could anybody else have checked that de
 - **Demo video** — https://youtu.be/1aEPWAT_960
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
-No dependencies; `./run.sh` works from a fresh clone. 66 tests on Python 3.9 and 3.13, no
+No dependencies; `./run.sh` works from a fresh clone. 70 tests on Python 3.9 and 3.13, no
 network. Read-only throughout: it never builds, signs or sends a transaction.
 
 ## How the Panta API is used

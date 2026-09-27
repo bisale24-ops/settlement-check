@@ -89,17 +89,18 @@ Output, from a real transaction:
           → the flag is in the API; the signature is on the chain, and no UMA program is in it
 ```
 
-`--poll` exists because the account this was built on sits on Free, and a WebSocket upgrade to
-`wss://ws.solami.dev/ws/sol` returns *"WebSocket access requires a plan that includes WebSocket
-access"*. Rather than have no live view, polling follows the market program's signature list
-through RPC alone — a few seconds behind a stream, same `describe()`, same output line. With a
-plan that includes WebSockets, `--watch` holds the subscription instead; nothing else changes.
+`--watch` holds a real subscription on this account: `wss://ws.solami.dev/ws/sol` accepts the
+handshake and the market-program filter (re-checked 27 September 2026). On Free the same call is
+answered with *"WebSocket access requires a plan that includes WebSocket access"*, so `--poll`
+follows the market program's signature list through RPC alone instead — a few seconds behind a
+stream, same `describe()`, same output line. Whoever clones this runs live on either plan, and the
+tool says which path it took rather than pretending it streamed.
 
 ## Build quality
 
 - No runtime dependencies, including a small RFC 6455 WebSocket client written for this project,
   so `./run.sh` works from a fresh clone with nothing installed.
-- 66 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
+- 70 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
 - Read-only: it never builds, signs or sends a transaction.
 - A settlement that was not looked at is `NOT_LOOKED`, never `None` — the first live run said
   "nothing has settled this market" about markets whose history it had never opened, and there is
