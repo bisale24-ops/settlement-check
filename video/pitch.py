@@ -3,9 +3,13 @@
     ~/.venvs/video/bin/python ~/Desktop/KHLab/hack-nation/kit/video/render.py \
         video/pitch.py --out video/pitch.mp4 --max-seconds 118
 
+Second cut. The first was built on findings that collapsed when the venue's own market page was
+opened — the question, the criteria and the sources are shown there. This one carries only what
+survived that check, which is about the API rather than the venue.
+
 Colosseum asks the pitch video to introduce the builder, say what is being built, and say why
-this is the person to build it. It is narrated rather than spoken to camera; everything claimed
-here is either in the repository or reproducible from it.
+this is the person to build it. Narrated rather than spoken to camera; everything claimed here is
+in the repository or reproducible from it.
 """
 import pathlib
 
@@ -15,41 +19,41 @@ VOICE = "en-US-AndrewNeural"
 SCENES = [
     ("card:who",
      "I'm Aleksandr Khrukalo. I build software on my own, from Bishkek, under the name K H Lab. "
-     "Seven Android apps live on the Amazon Appstore, plus Python tools and agents. No team, no "
-     "funding, and everything I ship is public."),
+     "Seven Android apps on the Amazon Appstore, Python tools and agents. No team, no funding, "
+     "everything public."),
 
     ("card:why_me",
-     "A store once rejected one of my apps for a file I could not see was missing. Three days to "
-     "get back to a published app. So I wrote the tool that reads a build the way the reviewer "
-     "does. That is the only thing I build: something makes a claim, and I write the part that "
-     "asks it for the receipt."),
+     "A store once rejected one of my apps for a file I could not see was missing. So I wrote the "
+     "tool that reads a build the way the reviewer does, and that habit is all I build: something "
+     "makes a claim, and I write the part that asks it for the receipt."),
 
     ("card:problem",
-     "A prediction market is a claim with money behind it. It says what it will pay out on, and "
-     "who will decide. Both of those are worth checking before you buy, and almost nobody does."),
+     "A prediction market is a claim with money behind it. Build on its API — a wallet, an "
+     "aggregator, an agent — and you decide what your users can buy. Two questions are worth "
+     "asking first: does this market exist, and can I tell what settles it?"),
 
     ("card:finding",
-     "So I measured it on a live venue. Every settled market states its question. Three to four "
-     "out of five still on sale state none — the question appears once nobody can act on it. "
-     "Eighty five of a hundred are flagged as settled by an optimistic oracle; on chain one "
-     "keypair submitted every result, with no assertion from it anywhere."),
+     "I measured it on a live venue. Thirteen of a hundred catalogue markets are served as "
+     "tradeable and have no account on Solana; the venue's own page says market not found. The "
+     "card arrives complete or stripped, and nothing says which. And the field that names the "
+     "settler names the wallet that creates markets; the chain says one keypair signs every "
+     "result."),
 
     ("card:product",
-     "Settlement Check is the tool that says so, in three places. For a buyer, the catalogue "
+     "Settlement Check says so, in three places. For a buyer, the catalogue "
      "sorted by whether you can tell what you are buying. For a creator, a check that runs before "
      "the market is published and refuses one nobody could read. And live, each settlement as it "
-     "lands, naming what was promised and who actually signed."),
+     "lands, naming what was promised and who signed."),
 
     ("card:market",
-     "The people who need this are the venues themselves. Every market here was created through "
-     "an interface that demanded a question, a resolution rule and sources — and the interface "
-     "buyers read returns none of them. The data exists, it is just not shown. That is fixable, "
-     "and it is the same at every venue that follows."),
+     "Who needs it: anyone building on a prediction market's API, and the venues themselves. "
+     "Their product already knows which markets do not exist; their API does not say. The gap is "
+     "a filter and a flag away, and it is the same at every venue that follows."),
 
     ("card:how_i_work",
-     "One last thing, because it is how I work rather than what I built. Two numbers in this "
-     "project were wrong, and both corrections are still in the readme next to them. A tool that "
-     "demands receipts has to show its own."),
+     "One last thing, about how I work. Five claims in this "
+     "project were wrong, and all five are in the readme with their corrections. The largest was "
+     "disproved by opening a market page. A tool that demands receipts has to show its own."),
 ]
 
 CARDS = {
@@ -70,20 +74,20 @@ CARDS = {
     </table>""",
 
     "problem": """<h1>A market is a claim with money behind it</h1>
+    <p class=sub>Build on its API and you decide what your users can buy.</p>
     <table>
-      <tr><th>before you buy, you want to know</th><th>can you find out?</th></tr>
-      <tr><td>what am I betting on</td><td>often: no</td></tr>
-      <tr><td>what will decide it</td><td>a string — and not the one that signs</td></tr>
+      <tr><th>ask the API</th><th>what it answers</th></tr>
+      <tr><td>does this market exist?</td><td>it says <code>primary</code> either way</td></tr>
+      <tr><td>what settles it?</td><td>a field that names the wrong account</td></tr>
     </table>""",
 
     "finding": """<h1>Measured, on a live venue</h1>
     <table>
-      <tr><th></th><th>markets</th><th>state no question</th></tr>
-      <tr><td>already settled</td><td>193</td><td><b>0</b></td></tr>
-      <tr><td>still on sale</td><td>107</td><td>76–85%</td></tr>
+      <tr><td><b>13 of 100</b></td><td>served as tradeable, no account on Solana — the venue's own page: <i>Market not found</i></td></tr>
+      <tr><td><b>2 shapes</b></td><td>a card comes back complete or stripped; nothing says which</td></tr>
+      <tr><td><b>1 keypair</b></td><td>signs every settlement; the <code>oracle</code> field names the creator</td></tr>
     </table>
-    <p class=sub>85 of 100 flagged as settled by an optimistic oracle.
-       On chain: one keypair, no assertion, no dispute window.</p>""",
+    <p class=sub>Every number reproduces from <code>demo/census.py</code>.</p>""",
 
     "product": """<h1>Three places, one rule</h1>
     <table>
@@ -93,21 +97,24 @@ CARDS = {
     </table>""",
 
     "market": """<h1>Who needs it</h1>
-    <p class=sub>The venues. The create API demands a question, a resolution rule and sources.
-       The read API returns none of them.</p>
+    <p class=sub>Anyone building on a prediction market's API — and the venues, whose product
+       already knows what their API does not say.</p>
     <table>
-      <tr><th>creator must write</th><th>buyer can read</th></tr>
-      <tr><td>question</td><td>on the card only, never in the listing</td></tr>
-      <tr><td>resolution rule, up to 2048 chars</td><td><b>nothing</b></td></tr>
-      <tr><td>sources of truth</td><td>joined into one string</td></tr>
+      <tr><th>the product shows</th><th>the API returns</th></tr>
+      <tr><td>“Market not found on-chain”</td><td><code>phase: primary</code></td></tr>
+      <tr><td>question, criteria, sources</td><td>present on some cards, absent on others, unlabelled</td></tr>
+      <tr><td>agent resolution, dispute window</td><td>an <code>oracle</code> field naming the creator</td></tr>
     </table>""",
 
     "how_i_work": """<h1>How I work</h1>
     <table>
-      <tr><th>two numbers this project got wrong</th></tr>
+      <tr><th>five claims this project got wrong</th></tr>
       <tr><td>“91 of 100 state no question” — measured on the wrong field</td></tr>
       <tr><td>“one key decides” — read from the wallet that creates markets</td></tr>
+      <tr><td>“the rule reaches nobody” — the venue shows it to buyers</td></tr>
+      <tr><td>“the catalogue promises UMA” — it is a flag, not a promise</td></tr>
+      <tr><td>“the public node can’t subscribe” — only when the stream is idle</td></tr>
     </table>
-    <p class=sub>Both corrections are in the README, next to the numbers.<br>
+    <p class=sub>All five corrections are in the README.<br>
        github.com/bisale24-ops/settlement-check</p>""",
 }

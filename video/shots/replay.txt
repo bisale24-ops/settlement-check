@@ -1,6 +1,6 @@
-05:35:01  ResolveEventUsdc  5u15kVt2wz1cnLMU…
+12:32:05  ResolveEventUsdc  5u15kVt2wz1cnLMU…
           market   FFFcvy12DfhFMQTPieuGFHgzdXwkk24oXTRpbpXJPF9
           claimed  4VGFQKGanc5oaLf51mee9m45HmiXRhKruh5mdRaMjipS
-          the catalogue says this one went to UMA
+          the card carries sentToUma
           signed   664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR
-          → a claim of UMA, settled by a signature, with no UMA assertion in the transaction
+          → the flag is in the API; the signature is on the chain, and no UMA program is in it
