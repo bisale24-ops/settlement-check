@@ -13,7 +13,7 @@ when this resolves, what decided it, and could anybody else have checked that de
 
 - **Repository** — https://github.com/bisale24-ops/settlement-check
 - **Live report** — https://bisale24-ops.github.io/settlement-check/
-- **Demo video** — https://youtu.be/1aEPWAT_960
+- **Demo video** — https://youtu.be/1Jcf13HvrcQ
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
 No dependencies; `./run.sh` works from a fresh clone. 70 tests on Python 3.9 and 3.13, no

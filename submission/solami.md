@@ -12,7 +12,7 @@ answer against the chain rather than against the venue's own field.
 
 - **Repository** — https://github.com/bisale24-ops/settlement-check
 - **Live report** — https://bisale24-ops.github.io/settlement-check/
-- **Demo video** — https://youtu.be/1aEPWAT_960
+- **Demo video** — https://youtu.be/1Jcf13HvrcQ
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
 ## Why Solana is where the answer is
