@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 video/build/
 video/*.mp4
+runs/
