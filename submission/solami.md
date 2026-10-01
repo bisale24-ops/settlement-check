@@ -120,7 +120,7 @@ tool says which path it took rather than pretending it streamed.
 
 - No runtime dependencies, including a small RFC 6455 WebSocket client written for this project,
   so `./run.sh` works from a fresh clone with nothing installed.
-- 77 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
+- 79 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
 - Read-only: it never builds, signs or sends a transaction.
 - A settlement that was not looked at is `NOT_LOOKED`, never `None` — the first live run said
   "nothing has settled this market" about markets whose history it had never opened, and there is

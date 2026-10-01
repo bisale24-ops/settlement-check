@@ -16,7 +16,7 @@ when this resolves, what decided it, and could anybody else have checked that de
 - **Demo video** — https://youtu.be/1Jcf13HvrcQ
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
-No dependencies; `./run.sh` works from a fresh clone. 77 tests on Python 3.9 and 3.13, no
+No dependencies; `./run.sh` works from a fresh clone. 79 tests on Python 3.9 and 3.13, no
 network. Read-only throughout: it never builds, signs or sends a transaction.
 
 ## How the Panta API is used
@@ -36,9 +36,27 @@ own validator and reports the real creation fee. It stops at the first step of y
 quote, build, **the creator's wallet signs**, broadcast, register — so nothing is signed,
 submitted or paid.
 
+## Re-measured on 1 October — what changed after the report
+
+The seven defects below were posted to Panta HQ on 27 and 29 September. Re-reading the API on
+1 October:
+
+- **Fixed:** cursor pagination now advances (87 secondary markets over two pages), and repeated
+  reads return the same rows instead of a different slice each time. Settlement Check now follows
+  the cursor (`panta.markets()`, with a test that it still stops on a cursor that repeats rows).
+- **Fixed in the listing, not in the card:** none of the 13 markets with no Solana account is in
+  the listing any more (0 of 88), but `GET /markets/{id}/` still serves every one of them as
+  `primary` or `secondary`. `python3 demo/ghosts.py` reads the listing; the card check is one call.
+- **Sharper than we reported:** the stripped card is not a property of the market but of the
+  response. Asking for the same card four times in a row, **14 of 30 markets changed shape** —
+  complete, stripped, complete. A client cannot fix this with a cache keyed by market; it has to
+  check every response. `python3 demo/flips.py 30 4` prints the F/s sequence per market.
+- **Still open:** `GET /markets/categories/` returns `MARKET_NOT_FOUND`; `status=resolved` and
+  `status=cancelled` return zero rows.
+
 ## What it found, and what it withdrew
 
-Measured 26 September 2026 over the hundred markets the API will hand over, and **checked against
+Measured 26 September 2026 over the hundred markets the API handed over then, and **checked against
 panta.market itself**. Every number reproduces with `demo/census.py`.
 
 ### The catalogue offers markets that do not exist

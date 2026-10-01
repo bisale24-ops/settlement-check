@@ -42,4 +42,4 @@ Five claims this project made were wrong, and all five are in the README with th
 
 ## Repo context (Media and code)
 
-The whole product is in this repository, written during the hackathon window. No runtime dependencies: ./run.sh works from a fresh clone with nothing installed, and ./check.sh runs 77 tests on Python 3.9 and 3.13 without network. demo/census.py reproduces every number in the README, including the five the project got wrong and corrected. docs/ is the published page, generated from docs/snapshot.json.
+The whole product is in this repository, written during the hackathon window. No runtime dependencies: ./run.sh works from a fresh clone with nothing installed, and ./check.sh runs 79 tests on Python 3.9 and 3.13 without network. demo/census.py reproduces every number in the README, including the five the project got wrong and corrected. docs/ is the published page, generated from docs/snapshot.json.

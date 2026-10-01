@@ -109,17 +109,29 @@ def page(limit=50, status="", cursor=None):
     return payload.get("items", []), payload.get("nextCursor")
 
 
-def markets(limit=50, pages=None, sleep=0.15, max_markets=None, slices=SLICES):
+def markets(limit=50, pages=None, sleep=0.15, max_markets=None, slices=SLICES, max_pages=40):
     """Every row the catalogue will actually hand over, de-duplicated by `marketId`.
 
-    Each slice is one request, because a second request with the returned cursor brings the same
-    rows back. If the cursor is ever fixed upstream, `page()` already accepts one.
+    Each slice follows `nextCursor` for as long as a page brings rows not seen before. Until late
+    September 2026 the cursor brought the same rows back, so a slice was one request; since then it
+    advances, and stopping on the first page that adds nothing handles both behaviours.
     """
     found = {}
     for status in slices:
-        rows, _cursor = page(limit=limit, status=status)
-        for row in rows:
-            found.setdefault(row["marketId"], row)
+        cursor, seen_pages = None, 0
+        while True:
+            rows, cursor = page(limit=limit, status=status, cursor=cursor)
+            seen_pages += 1
+            fresh = 0
+            for row in rows:
+                if row["marketId"] not in found:
+                    found[row["marketId"]] = row
+                    fresh += 1
+            if max_markets is not None and len(found) >= max_markets:
+                break
+            if not cursor or not fresh or seen_pages >= (pages or max_pages):
+                break
+            time.sleep(sleep)
         if max_markets is not None and len(found) >= max_markets:
             break
         time.sleep(sleep)

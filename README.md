@@ -9,7 +9,7 @@ git clone https://github.com/bisale24-ops/settlement-check && cd settlement-chec
 ./run.sh --check-draft fixtures/draft-like-the-catalogue.json   # a market, before it is published
 ./run.sh --replay <settlement-signature>     # one settlement, read from the chain
 ./run.sh --watch 300                         # settlements as they land
-./check.sh                                    # 77 tests on Python 3.9 and 3.13, no network (needs pytest)
+./check.sh                                    # 79 tests on Python 3.9 and 3.13, no network (needs pytest)
 ```
 
 No dependencies. `run.sh` works from a fresh clone with the `python3` on your path (3.9 or newer); `check.sh` is the one thing that wants a package, `pytest`. Reading the catalogue (`--cards`) needs a Panta API key — `PANTA_API_KEY` or `~/.config/panta.key`, issued once when you create a Panta account; without one it stops with "no API key" and exit code 3. `--check-draft` asks Panta to validate the draft with the same key; without it the local rules still run and the Panta half says it got no answer, and `--offline` skips that half. `--replay` and `--watch` read the chain alone and need no key at all.
@@ -29,6 +29,12 @@ trade, never builds a transaction it signs, never broadcasts, and never spends a
 
 Measured 26 September 2026 over the hundred markets the API will hand over. Every number
 reproduces with `demo/census.py`.
+
+> **Re-measured 1 October 2026.** After the defects were reported to Panta (27 and 29 September),
+> the listing's cursor now advances and repeated reads agree; the 13 markets below are gone from
+> the listing (0 of 88) but their cards still say `primary`/`secondary`. The stripped card turned
+> out to be per response, not per market: 14 of 30 markets changed shape across four identical
+> requests (`demo/flips.py 30 4`). Details in `submission/panta.md`.
 
 ### The catalogue offers markets that do not exist
 
