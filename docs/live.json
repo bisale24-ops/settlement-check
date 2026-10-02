@@ -585,10 +585,10 @@
   "3pjCvzjm8yigUHPVcAMDx6AAkmHrQLPRdo2CiQpnK11rhogiuzyXsiHvg77vdkP6bcU5NgQxziHSLiHAo9rDWR8i",
   "26gwn1kmRhKobiw3eXhNKZ6Rq4BWRRWr8gDZ6EGjfLFBFYVrEKvoFB6nDaUu5ZqDJWYgYEWk5avUqm9wnKG9FWNi"
  ],
- "runs": 2,
+ "runs": 3,
  "transactions_read": 198,
- "checked_at": "2026-10-02T08:22:22+00:00",
- "endpoint": "public Solana node",
+ "checked_at": "2026-10-02T10:48:11+00:00",
+ "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 0,
   "settlements": 0
