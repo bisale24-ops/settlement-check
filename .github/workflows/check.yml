@@ -1,5 +1,8 @@
 name: check
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ["docs/live.json"]   # the hourly feed commit is data, not code
+  pull_request:
 
 jobs:
   tests:

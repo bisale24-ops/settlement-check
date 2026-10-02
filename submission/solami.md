@@ -116,11 +116,20 @@ follows the market program's signature list through RPC alone instead — a few 
 stream, same `describe()`, same output line. Whoever clones this runs live on either plan, and the
 tool says which path it took rather than pretending it streamed.
 
+## Running on its own, every hour
+
+The report page now carries a live feed. Every hour a GitHub Actions run of `demo/live.py`
+lists the market program's newest signatures through Solami's RPC, opens only the ones it has
+not seen, and publishes each settlement with the account that signed it and what the market's
+card claims, as `docs/live.json`; every row links to the transaction on Solscan. Its first read
+(2 October 2026): 198 transactions over two weeks, **32 settlements, all 32 signed by the same
+keypair, and every one of those markets' cards carrying `sentToUma`**.
+
 ## Build quality
 
 - No runtime dependencies, including a small RFC 6455 WebSocket client written for this project,
   so `./run.sh` works from a fresh clone with nothing installed.
-- 79 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
+- 85 tests, no network, green on Python 3.9 and 3.13 in CI and in `./check.sh`.
 - Read-only: it never builds, signs or sends a transaction.
 - A settlement that was not looked at is `NOT_LOOKED`, never `None` — the first live run said
   "nothing has settled this market" about markets whose history it had never opened, and there is

@@ -1,7 +1,7 @@
 """Render docs/index.html from docs/snapshot.json.
 
 The page is a file, not a service: no key ever reaches a browser, and anyone can open the HTML and
-check that it talks to nothing. Everything on it comes out of the snapshot, so a number on the page
+check that it talks to nothing but live.json, the file next to it. Everything on it comes out of the snapshot, so a number on the page
 that is not in the snapshot is a bug, not a claim.
 
     .venv/bin/python demo/page.py
@@ -207,7 +207,13 @@ def render(snapshot):
   <p><code>./run.sh --watch</code> subscribes to the market program and reports each settlement the
      moment it arrives — which market closed, what the catalogue claimed would decide it, and who
      signed. <code>--replay</code> runs the same code over a settlement that already happened.</p>
+<div class="card" id="live" style="margin:18px 0"><p class="dim" style="margin:0">Loading the live feed…</p></div>
 <pre>{replay}</pre>
+  <p class="dim">The feed above is <a href="live.json">live.json</a>, refreshed every hour by a
+     GitHub Actions run of <code>demo/live.py</code> through Solami's RPC: it lists the market
+     program's newest signatures, opens only the ones it has not seen, and keeps each settlement
+     with the account that signed it and what the market's card claims. Every row links to the
+     transaction on Solscan, so none of it has to be taken on trust.</p>
   <p class="dim">The endpoint is a setting, and the difference is measured rather than asserted.
      Fourteen settled markets, identical code, six lookups in flight: Solana's public node read
      <b>0 of 14</b> and refused everything under concurrency; through Solami, 14 of 14 in 41s —
@@ -244,6 +250,39 @@ def render(snapshot):
      Fair, Panta API and Solami sidetracks. MIT.</p>
 </footer>
 
+<script>
+(async () => {{
+  const box = document.getElementById("live");
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}})[c]);
+  const short = a => a ? a.slice(0, 6) + "…" + a.slice(-4) : "—";
+  try {{
+    const live = await (await fetch("live.json", {{cache: "no-store"}})).json();
+    const ago = Math.max(0, Math.round((Date.now() - Date.parse(live.checked_at)) / 60000));
+    const rows = live.settlements || [];
+    const byKey = rows.filter(r => r.signer_is_the_known_key).length;
+    const uma = rows.filter(r => r.claims_uma).length;
+    const when = t => t ? new Date(t * 1000).toISOString().replace("T", " ").slice(0, 16) + " UTC" : "—";
+    box.innerHTML = `
+      <p style="margin:0 0 6px"><span class="chip good">live</span>
+        checked <b>${{ago < 1 ? "just now" : ago + " min ago"}}</b> via ${{esc(live.endpoint)}} ·
+        ${{esc(live.transactions_read)}} transactions read over ${{esc(live.runs)}} ${{live.runs === 1 ? "run" : "runs"}}</p>
+      <p style="margin:0" class="dim"><b style="color:var(--ink)">${{byKey}} of ${{rows.length}}</b> settlements in the feed
+        were signed by <span class="addr">664h8s…ghbR</span>; ${{uma}} of their cards carry <code>sentToUma</code>.
+        ${{live.last_error ? "Last refresh failed (" + esc(live.last_error.what) + "); showing the last good feed." : ""}}</p>
+      <div class="tablewrap"><table><thead><tr><th>When</th><th>What happened</th><th>Market</th>
+        <th class="hide-sm">Card says UMA</th><th>Signed by</th></tr></thead><tbody>
+      ${{rows.slice(0, 12).map(r => `<tr>
+        <td class="mono"><a href="https://solscan.io/tx/${{esc(r.signature)}}">${{when(r.block_time)}}</a></td>
+        <td title="${{esc((r.instructions || []).join(" + "))}}">${{(r.instructions || []).map(n => /^SubmitOracleResult/.test(n) ? "result submitted" : /^ResolveEvent/.test(n) ? "event resolved" : esc(n)).join(" + ")}}</td>
+        <td class="mono">${{r.market ? `<a href="https://solscan.io/account/${{esc(r.market)}}">${{short(r.market)}}</a>` : "—"}}</td>
+        <td class="hide-sm">${{r.claims_uma ? "yes" : (r.claims_uma === false ? "no" : "—")}}</td>
+        <td class="mono">${{short(r.signer)}}</td></tr>`).join("")}}
+      </tbody></table></div>`;
+  }} catch (e) {{
+    box.innerHTML = '<p class="dim" style="margin:0">The live feed could not be read; <a href="live.json">live.json</a> has the raw data.</p>';
+  }}
+}})();
+</script>
 </div></body></html>
 """
 

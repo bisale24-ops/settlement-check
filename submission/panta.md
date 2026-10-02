@@ -16,7 +16,7 @@ when this resolves, what decided it, and could anybody else have checked that de
 - **Demo video** — https://youtu.be/1Jcf13HvrcQ
 - **Colosseum submission** — https://colosseum.com/arena/projects/settlement-check
 
-No dependencies; `./run.sh` works from a fresh clone. 79 tests on Python 3.9 and 3.13, no
+No dependencies; `./run.sh` works from a fresh clone. 85 tests on Python 3.9 and 3.13, no
 network. Read-only throughout: it never builds, signs or sends a transaction.
 
 ## How the Panta API is used
@@ -53,6 +53,15 @@ The seven defects below were posted to Panta HQ on 27 and 29 September. Re-readi
   check every response. `python3 demo/flips.py 30 4` prints the F/s sequence per market.
 - **Still open:** `GET /markets/categories/` returns `MARKET_NOT_FOUND`; `status=resolved` and
   `status=cancelled` return zero rows.
+
+## Running on its own, every hour
+
+The report page now carries a live feed. Every hour a GitHub Actions run of `demo/live.py`
+lists the market program's newest signatures through Solami's RPC, opens only the ones it has
+not seen, and publishes each settlement with the account that signed it and what the market's
+card claims, as `docs/live.json`; every row links to the transaction on Solscan. Its first read
+(2 October 2026): 198 transactions over two weeks, **32 settlements, all 32 signed by the same
+keypair, and every one of those markets' cards carrying `sentToUma`**.
 
 ## What it found, and what it withdrew
 

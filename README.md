@@ -9,7 +9,7 @@ git clone https://github.com/bisale24-ops/settlement-check && cd settlement-chec
 ./run.sh --check-draft fixtures/draft-like-the-catalogue.json   # a market, before it is published
 ./run.sh --replay <settlement-signature>     # one settlement, read from the chain
 ./run.sh --watch 300                         # settlements as they land
-./check.sh                                    # 79 tests on Python 3.9 and 3.13, no network (needs pytest)
+./check.sh                                    # 85 tests on Python 3.9 and 3.13, no network (needs pytest)
 ```
 
 No dependencies. `run.sh` works from a fresh clone with the `python3` on your path (3.9 or newer); `check.sh` is the one thing that wants a package, `pytest`. Reading the catalogue (`--cards`) needs a Panta API key — `PANTA_API_KEY` or `~/.config/panta.key`, issued once when you create a Panta account; without one it stops with "no API key" and exit code 3. `--check-draft` asks Panta to validate the draft with the same key; without it the local rules still run and the Panta half says it got no answer, and `--offline` skips that half. `--replay` and `--watch` read the chain alone and need no key at all.
@@ -19,6 +19,13 @@ No dependencies. `run.sh` works from a fresh clone with the `python3` on your pa
 on purpose: it is shaped like the catalogue's stripped cards) and `./run.sh --watch 300` on the
 public node. For the catalogue itself without a key, `docs/snapshot.json` is the last full read
 and `docs/catalogue.json` the clean listing; both are on the published page.
+
+**Running on its own:** every hour a GitHub Actions run of `demo/live.py` reads what landed on
+the market program through Solami's RPC and publishes it as [docs/live.json](docs/live.json),
+which the [report page](https://bisale24-ops.github.io/settlement-check/) renders with a Solscan
+link per transaction. Its first read (2 October 2026): 198 transactions over two weeks, **32
+settlements, all 32 signed by the same keypair**, and every one of those markets' cards carrying
+`sentToUma`.
 
 Read-only throughout: this tool never quotes a
 trade, never builds a transaction it signs, never broadcasts, and never spends anything.
