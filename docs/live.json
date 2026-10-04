@@ -434,6 +434,11 @@
   }
  ],
  "seen": [
+  "3dWgZvPUfVLsoNP7kTUxumJPdX4o6GigUMwAQfZ6uGBuUvh63VPXkTYgiEfBRW8sKSFnpXCaSf8dYrKjXiYJ8shb",
+  "4tWjgee11SP7aFQCsCg5yaW2hriEnArs4zpALFc3B9i6DnyEoLBNxZpGkVZDbJdDESEEVK6iCUnjxGEMCjdC4EC9",
+  "6ajX12RzygbRwY4GsVWcySHxcA5jByHa7MhGUZWLFDCYrMFdyYq9tADV7tnhvjshUyPyPmKUQqsnpX71NpHERcL",
+  "3iy45FPp36UUKJQ2L9JE5yov5E9QgyGFmPK1VsKLXUfrD6aAbzKjv1EFYUpHyF5eAfg422PgRreRX6PMCzmPhNhb",
+  "548bNow1xprzxLJkBx5VXQumHZt72fVMtc24EeHwwXg7jpeu282wAcaXJkCMQQTkvWbag6pBxX3Tt8cifHdTagKo",
   "2Ssk5nVrv73aayjzDMjvR1dzCzfpZvhBqiteXHu9mrGh7JzcBmCCtYZKw6s6Z5oyUXATECNMEjodwzYYjNykPav6",
   "5Hv5fQWUf7YSCR16xMMcTfBE5pzVN9p5wnM2NWFfGf5UuaU6ocW8Biat7dTEs4KuhGLpiciVfU3B6RXcXuZkMdEv",
   "579M9xqPmJb9oBj8Nn7B2ptXBPiZ8v4Zv95TikbcQswmTpPeVng3VUfeYCtnrcpn81Lbxjfg3Sv1xV8JRBgDMP1k",
@@ -625,19 +630,14 @@
   "3vvgZYTzsKj4zE9eWb8AZcwhkgGeYUVJRgj8brdNUWciEsdq1H94LsnLupcxgqKSfgZY9DpJLe1UwZD8jCGGiNxm",
   "4JWiPzSZFpcbgUJMM89tLpvYqvHfzcVRJpjca2HnXaLzsYa1quiLaZiHejnfkPLW62KqMkmbUgrrzwmoxdJ9PeMz",
   "2DPucwdMqemXWGe7rm9Gn35ttui7j8hdvtxyeLxsxCActuJUUsvB2K5mAHmnHZNfJ6pmmPoLAfrRufkbxURQLYcL",
-  "2W6Y7g8Fq4zsZgyydkbAnvfLBav9c4ia4eJDLLb2knmu2YXfVthNLjhk3r9wEjNvwCGVd18oKhm23tUaY84TEuc4",
-  "vCTN9pqy831PJhXHKbRmmkBfDV3CcSqeSL2H4tD21MzDDaKG51NJv6BzKXV2ByUeVZHdoXCHsfXfcGkihZaLb8X",
-  "ErRUfPmaEFHqEiGPwSinTnbHx4J6PVU3uMsgiyVNEWyuYwZQxUg2kNMt4bSHA9vTEv157bYqD4BXECPLP6qipgJ",
-  "2SF6JUWxNHapGzEUsPWtGP8LvrgiBUa993T9rcjrWromVpbkAyzyjtZwrPkgNNckvzPMy8Nb4G4uJaDMQiy4N9tT",
-  "x47QuYN8cXC1NPpPpy1ikZkf1DGYj1b8ypSamTqYR3RPHJwXtVdNCLxwiebLdsZJYxyxvL4Jp9HsoLbzKseBpdX",
-  "4QKkYxgJamjyydrffWE7YYsFMLakTBFrFu6VorkNoq4MD9KkWxnT1XnwvRwioQezGEuK2oVarXECt2stCVi4dMw7"
+  "2W6Y7g8Fq4zsZgyydkbAnvfLBav9c4ia4eJDLLb2knmu2YXfVthNLjhk3r9wEjNvwCGVd18oKhm23tUaY84TEuc4"
  ],
- "runs": 13,
- "transactions_read": 224,
- "checked_at": "2026-10-04T06:59:09+00:00",
+ "runs": 14,
+ "transactions_read": 229,
+ "checked_at": "2026-10-04T13:14:06+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 3,
-  "settlements": 2
+  "transactions": 5,
+  "settlements": 0
  }
 }
