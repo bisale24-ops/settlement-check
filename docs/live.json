@@ -1,6 +1,54 @@
 {
  "settlements": [
   {
+   "signature": "3TgWhmbR2MTSDUdCW8X8ihHkRgh5Xz3QAXDWfxxayHeXda9HAhKP36pJH1HY6utTknigU6Jpsk9PnRL4um23QiDr",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "ng-pop-africamagic",
+   "claims_uma": true,
+   "block_time": 1791156602,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "32Tk9Z1kUH2gn7jHkSgRVgpapwoTPT8NZtyECLfBvoD9z7LJ6mKCQAfQHSfau3TsWxLDdrMThRpuWgTq3VQ2QnfF",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "6yEBmxJu2oWdubFVKZshVVUpLLsXd61csSfmf8y4Qtwd",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "ng-pop-africamagic",
+   "claims_uma": true,
+   "block_time": 1791156601,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5onNuch9R5JN8nVrR3hLdFMub8HLgyoWQLEuDWrW6XGpSPFy4jWL9TEGBR2XbwMAKJKcHrUejQRT1gfz3GZepbg7",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "DW1G3gChuFpMJDCURtkQ6K6Ye2ihyv3Vsob1QE8Tivq7",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "ng-pop-africamagic",
+   "claims_uma": true,
+   "block_time": 1791156575,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "WX2SgXoiWvse2sj5Ny5FgEF3fxaMikEYVWeNA1XLi9jWhp9PhgubUjfmJBiEoKWC56Aox679jgJdxTiJetkbjRE",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "DW1G3gChuFpMJDCURtkQ6K6Ye2ihyv3Vsob1QE8Tivq7",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "ng-pop-africamagic",
+   "claims_uma": true,
+   "block_time": 1791152974,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "5Hv5fQWUf7YSCR16xMMcTfBE5pzVN9p5wnM2NWFfGf5UuaU6ocW8Biat7dTEs4KuhGLpiciVfU3B6RXcXuZkMdEv",
    "instructions": [
     "ResolveEventUsdc"
@@ -434,6 +482,14 @@
   }
  ],
  "seen": [
+  "45FLNGtf5s5Pg7p8HwTdbJ6mUTCtrxr8ibVb5VypTYWoP6UxA32effrJoNg1hgvgDcFy6vvfCPZsv4cPytEszU6m",
+  "iaDdh7QJQABrZsJpDUTjAxy6CB7vfmQE8dvN2FMdRJ7exaBKXMvdDQyyKLnsgosGedDQADgni9rHyH9xPYiAW3c",
+  "5LUHjH62fGJWgEa5Cd9JTW3gLTE1gxTf4AsPvkQJt3ojuFzB27f45MMW6HXB8cDPEzw5MTQsuBJHz3PAZwqBSbKi",
+  "3TgWhmbR2MTSDUdCW8X8ihHkRgh5Xz3QAXDWfxxayHeXda9HAhKP36pJH1HY6utTknigU6Jpsk9PnRL4um23QiDr",
+  "32Tk9Z1kUH2gn7jHkSgRVgpapwoTPT8NZtyECLfBvoD9z7LJ6mKCQAfQHSfau3TsWxLDdrMThRpuWgTq3VQ2QnfF",
+  "5onNuch9R5JN8nVrR3hLdFMub8HLgyoWQLEuDWrW6XGpSPFy4jWL9TEGBR2XbwMAKJKcHrUejQRT1gfz3GZepbg7",
+  "27okmR7KBJUChr5QMfnFRPTeRA3PWpmSR6RQDfAHcN5gitcSqZtBQshU8ynokoaM2ZjVT2co6TZHpBWjCkcrTSQB",
+  "WX2SgXoiWvse2sj5Ny5FgEF3fxaMikEYVWeNA1XLi9jWhp9PhgubUjfmJBiEoKWC56Aox679jgJdxTiJetkbjRE",
   "4TGRojf937tHgZEsyUJNXSKPh2L659CrMSQfWJwuKR6qyf6sFodndXVgYBugze5NseFnRzBxDwwpGUvXa23T3qwX",
   "4m5eWnDHpDDjyfTQJbCAECqE3zkmNPRzPQPAot1WEVda8EQ6xDsrKRqQgmnZMyY8exAWsFySi5suxxbHVCtVwM2t",
   "3dWgZvPUfVLsoNP7kTUxumJPdX4o6GigUMwAQfZ6uGBuUvh63VPXkTYgiEfBRW8sKSFnpXCaSf8dYrKjXiYJ8shb",
@@ -622,22 +678,14 @@
   "5nXeNpLNfdqV76UaxDaApmH3VEt1cYp1bxWEzzWH4tYdus4YgQRXE6JQmqWDYamB6UygWrUMCEvyuGNk3tqA3pyM",
   "4txTWbhTxCqYdzvVqTimuG8rseLAGjHmQ3ULaLT52wM8tMEVyJHkLqQuwp8SUukGs1Z6cfHECEChfKP117fsY3eY",
   "61icMoLuj764ACDE89gVVUCgQFHxD2q9x8FQP61m1f4k7Sg8e3rKaDgTvrmUbfd2p2rgoNjgAa9wokJXG5BihhXG",
-  "RpavnhLG9iqNji5PrKmwfpkaos3istd39X3z7qeAzUwWg4uWvTpCewTFX7W5nTPghEA5RXdKUZdGsYZvGT892fW",
-  "3HCYaRz1QcHv12X2dgNC1RM2Uoud31vcGdnTT3h6zRSzAacGpqDku8uY32s16r4zwrtLXLYGVevd1mZ6M82WKTLC",
-  "3qHKKjnxAkBZ6GsQMENBn6PHhpr18bafuFrfeheomrWZxeUE41JSYhsbs5yhUfNyDxXcWHsHH5asRrFswWRvCPaj",
-  "CeXG4RXRyxT4HYCEWV7q1VjdbzeaTuxJkLJfAGbRLYdaBeFi55EuZXV6Yj2ezeoy9xaB1sLvfVdLoud5w5W5SAG",
-  "2FVtAWbPKCtxLmSY39Pcnqv1oZNSnbfKV4cSzttdNA8EJV8Zz7UGuEnejrmR8ShYLQEatKP6TeffKw6vr3cHQcfF",
-  "5BUztZP1ZD6s9MuBrfoTZCDA7HnS67yGpgubXp9ukZofyvkXpVaf7a1xXDEEPpeYjm93SbXNddodZPrnUFqyBv7f",
-  "2B2ipcwn5mYcJoFXtFLNLmJzwtwCuxXPiNE3AdizEg9r8VGE6ovmB3btQVaijUGPu5Mnq7rUMuTfpR7J8AfWNCkg",
-  "3vvgZYTzsKj4zE9eWb8AZcwhkgGeYUVJRgj8brdNUWciEsdq1H94LsnLupcxgqKSfgZY9DpJLe1UwZD8jCGGiNxm",
-  "4JWiPzSZFpcbgUJMM89tLpvYqvHfzcVRJpjca2HnXaLzsYa1quiLaZiHejnfkPLW62KqMkmbUgrrzwmoxdJ9PeMz"
+  "RpavnhLG9iqNji5PrKmwfpkaos3istd39X3z7qeAzUwWg4uWvTpCewTFX7W5nTPghEA5RXdKUZdGsYZvGT892fW"
  ],
- "runs": 16,
- "transactions_read": 231,
- "checked_at": "2026-10-04T21:32:35+00:00",
+ "runs": 17,
+ "transactions_read": 239,
+ "checked_at": "2026-10-05T00:59:02+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 1,
-  "settlements": 0
+  "transactions": 8,
+  "settlements": 4
  }
 }
