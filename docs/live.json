@@ -678,12 +678,12 @@
   "2mK5uFU1YDY917B3YSJTgfDpuzYNLNqdgW9x4qSXugbqJFesFY2MAtNxfh1m6KfrtiCjGopZieJZb4ziq2oY5ZXn",
   "5KrBbq7XzT6CyCqWCbGp97nZ5i5ynaUjoymiwuLjLY2HrWHMbqoC5DzS9svBiPpvx3eaVFrRyik2atCxWYYrgNF"
  ],
- "runs": 28,
+ "runs": 29,
  "transactions_read": 289,
- "checked_at": "2026-10-07T22:01:27+00:00",
+ "checked_at": "2026-10-08T01:59:22+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 20,
+  "transactions": 0,
   "settlements": 0
  }
 }
