@@ -1,6 +1,30 @@
 {
  "settlements": [
   {
+   "signature": "4njhgfdpBUaKEedvC3cYxuhoeYPjpW166Em9E24SQ1YDuT6RbVKNcLBCbTQUjYLQLFEqE2P5DqFwQ2kjdiPaa4nx",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "4J6WxFGuCw9deMJ6pQ7gwpVXCvLorMrz28icSnCYWeGB",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.espn.com,https://www.bbc.com/sport,https://www.premierleague.com",
+   "claims_uma": true,
+   "block_time": 1791667790,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "36FXTUgCVtvvEMf9EY79RcVVtNyya8rTohdp6RMYXMugmKFgfiABXVHaXees854QLPaNQv6cEUqdZDYsaRS56eCr",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "4J6WxFGuCw9deMJ6pQ7gwpVXCvLorMrz28icSnCYWeGB",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.espn.com,https://www.bbc.com/sport,https://www.premierleague.com",
+   "claims_uma": true,
+   "block_time": 1791664188,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "viNGqZ1YL8kfv3T5rxSeEcCE94PywmsvKgKGtg9e99uMdpTVdhcKFdAqu5hY2qmkofd6BwuuveCKmgSoe9ASCk6",
    "instructions": [
     "ResolveEventUsdc"
@@ -455,33 +479,12 @@
    "claims_uma": true,
    "block_time": 1789703912,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "x47QuYN8cXC1NPpPpy1ikZkf1DGYj1b8ypSamTqYR3RPHJwXtVdNCLxwiebLdsZJYxyxvL4Jp9HsoLbzKseBpdX",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-entertainment-variety",
-   "claims_uma": true,
-   "block_time": 1789692319,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4QKkYxgJamjyydrffWE7YYsFMLakTBFrFu6VorkNoq4MD9KkWxnT1XnwvRwioQezGEuK2oVarXECt2stCVi4dMw7",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "F5RSyCPuS4KLiUtzvRai5uaVAMLD9aAt22bSxgDK3z1C",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-entertainment-variety",
-   "claims_uma": true,
-   "block_time": 1789688718,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "4njhgfdpBUaKEedvC3cYxuhoeYPjpW166Em9E24SQ1YDuT6RbVKNcLBCbTQUjYLQLFEqE2P5DqFwQ2kjdiPaa4nx",
+  "5D5NWvxvaHYBAKfYf77gKA7JdU9CJrUdrwgkA8YEUWCRs4i4ZmJ17BgR4SChDzqaBDTt2CGxvcw2YngecQrYjsp1",
+  "36FXTUgCVtvvEMf9EY79RcVVtNyya8rTohdp6RMYXMugmKFgfiABXVHaXees854QLPaNQv6cEUqdZDYsaRS56eCr",
   "viNGqZ1YL8kfv3T5rxSeEcCE94PywmsvKgKGtg9e99uMdpTVdhcKFdAqu5hY2qmkofd6BwuuveCKmgSoe9ASCk6",
   "3EH7FWHArkP3RwJNxrjtvhxNg1JtwnJMufneZJsFZXanVwYmv7mCTtePFjkqZ7SLu1vGrgqUwnve4BsLw7sc4YQL",
   "2qy7rK5s7s9kvQYAY1xB5Rtgfrf8JnaUFuvfRp9DyZ4k5bG7zYvcUf7df9oWq75V5HoXzkcxyPMRmEKPZayNhm5d",
@@ -672,17 +675,14 @@
   "5HBTyrNBYzTue5Ht2hfTeYjV57YvN4uQ6S78xMxKLEWgnALBY5D9N9U2aWC5hvofZCNdLeTBLnfZ6br5BicSjZrt",
   "5d5985agcDChHpfLsakPaNzHQ2s76nXmaajLeJRu8PpT11nAx8w5rebWuKDWmtDHXdpTvwLqszsEspBXg6QxWEh7",
   "2171KL3LGGDhowzaXDFujLSN97y6CRM6jEp7j4i6HrngjtFXsah8QXizbBoqM7tD7y4SFv9SHAgEYd2bAPucwwwQ",
-  "43Q4umzTEhFUvLMUV3mpgXtcGhom9NPVMaBZaVS3VF1LAVKUSzCQtu5RdoPmCXxDeaWmfaTu9KTmWaFqPrH2PbBw",
-  "Pf4SxYEoR6xYuxB8kqjAGgGnUfwmXK6tJUA6PCrdv7c48hxwoxr3CpSSzk6JbBDQMGzv1mc8cCapwf9umLPkW5P",
-  "46McuHdioSxhymJYsGqTX7brwpnRJ6A69Xhr3J8NhV29oSZFf3UwxjDDTnxyMaXFCKsviy8FLSrKxXqfMyknha7V",
-  "3FK4YfZuBv2c6j4R9z3MtHXKP4PvVdZ1L2tZnYSGmKD2UWybqZX54PGgD9FBQk3bKZ5jQcJymoSXwuSFoKC2JymV"
+  "43Q4umzTEhFUvLMUV3mpgXtcGhom9NPVMaBZaVS3VF1LAVKUSzCQtu5RdoPmCXxDeaWmfaTu9KTmWaFqPrH2PbBw"
  ],
- "runs": 40,
- "transactions_read": 333,
- "checked_at": "2026-10-10T20:05:54+00:00",
+ "runs": 41,
+ "transactions_read": 336,
+ "checked_at": "2026-10-10T23:35:47+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 8,
-  "settlements": 4
+  "transactions": 3,
+  "settlements": 2
  }
 }
