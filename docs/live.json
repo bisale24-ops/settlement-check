@@ -482,6 +482,10 @@
   }
  ],
  "seen": [
+  "3w6VkFKKC312AdDy5MG6CcQJQrvyvHwp1XRtCjqS3fFoQdzrs9Bww5XGbMz5gPBMCjKCWbGWZySYeWHoNgLkwuBp",
+  "3avfhNeyR7zM8wqPPJmvpvobLXooHu2EZ1iZu9XrBd1YHG235Vgrv25BwU4RNwrvg2xJBCyk2JM9aNDKGtBXKCnS",
+  "52oFggj7oz8rxyc4AjRjZgBqt8i4T5pUWY3GWxXgW4UDVAtMA9pcdLMynUayW9GotJdVqqrJVmharJFHNFi1o3qF",
+  "2CHyD5Xtg359guG2DhZS5z11DWae2zFvsR5T7iuwyphZZ8tj4uwyKvwgyztuhRujmt9RcaaSzd9e4RtefUk6VWag",
   "4njhgfdpBUaKEedvC3cYxuhoeYPjpW166Em9E24SQ1YDuT6RbVKNcLBCbTQUjYLQLFEqE2P5DqFwQ2kjdiPaa4nx",
   "5D5NWvxvaHYBAKfYf77gKA7JdU9CJrUdrwgkA8YEUWCRs4i4ZmJ17BgR4SChDzqaBDTt2CGxvcw2YngecQrYjsp1",
   "36FXTUgCVtvvEMf9EY79RcVVtNyya8rTohdp6RMYXMugmKFgfiABXVHaXees854QLPaNQv6cEUqdZDYsaRS56eCr",
@@ -671,18 +675,14 @@
   "5RJsJnkGRtFehut8bhgGnvHkyTr8ZAw8hTyJKKbDSZgGVAvpG4WPJbv1tyivo2SAr32uyPHKK5Q8NERy8hWdqCcr",
   "MXtGw4wjfsZktuggxgYhE3c1FE7WjtQgjjyjPjMtmn4EahPUV3JcfvunhPqTxmrBqCr8LCCpErrDNbSJj25aNPF",
   "54idNAeqcggWsv4ebSnzNsf2tyqyDUYZxoTpcXwAPTddD2upA6pJHi1NmAhpGSdsLrj139YmzR7AB2uCNUoxYy9F",
-  "tCB89nuubx4ofLaPEhKwHnjy3VAZD5B67vMh6JR24t4mxur9zKoA4aJ6CipYoBS4bbs6LtoEwZu65cRHqAs6YKB",
-  "5HBTyrNBYzTue5Ht2hfTeYjV57YvN4uQ6S78xMxKLEWgnALBY5D9N9U2aWC5hvofZCNdLeTBLnfZ6br5BicSjZrt",
-  "5d5985agcDChHpfLsakPaNzHQ2s76nXmaajLeJRu8PpT11nAx8w5rebWuKDWmtDHXdpTvwLqszsEspBXg6QxWEh7",
-  "2171KL3LGGDhowzaXDFujLSN97y6CRM6jEp7j4i6HrngjtFXsah8QXizbBoqM7tD7y4SFv9SHAgEYd2bAPucwwwQ",
-  "43Q4umzTEhFUvLMUV3mpgXtcGhom9NPVMaBZaVS3VF1LAVKUSzCQtu5RdoPmCXxDeaWmfaTu9KTmWaFqPrH2PbBw"
+  "tCB89nuubx4ofLaPEhKwHnjy3VAZD5B67vMh6JR24t4mxur9zKoA4aJ6CipYoBS4bbs6LtoEwZu65cRHqAs6YKB"
  ],
- "runs": 41,
- "transactions_read": 336,
- "checked_at": "2026-10-10T23:35:47+00:00",
+ "runs": 42,
+ "transactions_read": 340,
+ "checked_at": "2026-10-11T05:52:53+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 3,
-  "settlements": 2
+  "transactions": 4,
+  "settlements": 0
  }
 }
