@@ -1,6 +1,30 @@
 {
  "settlements": [
   {
+   "signature": "aKAdAUSuJpWRUQE6De6iRFw5gZmwx7t4RJCX5Va6V5bRDd9sUaVqdNqUKT15W6uLKMiyM7eVNwTdJsmmDKh9gei",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "CPaugacHiSqAcLnF4hDuF4Fh3ZPrYvTb9Hi1hC3HqNNx",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.uefa.com",
+   "claims_uma": true,
+   "block_time": 1791927877,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5BTsGkPBWC4uMNMWcP6QCjk8rqFbqT4FGP7MTGyjKeGyrSVYipcvH1McfrqQbQvBdRrFUMRoPwZwuETWLysT8H6q",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "CPaugacHiSqAcLnF4hDuF4Fh3ZPrYvTb9Hi1hC3HqNNx",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.uefa.com",
+   "claims_uma": true,
+   "block_time": 1791927876,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "B42Zw57pwF44WHbrcP2ogRcpMWKzsVMJA3NwFzFeJGepduF7UfNJxkpfyi849H3GWaKgox117naS49ufsbZSVnx",
    "instructions": [
     "SubmitOracleResultUsdc"
@@ -455,33 +479,14 @@
    "claims_uma": true,
    "block_time": 1790206135,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3UPbZvjWsnKZXyqGAUTe5PzQbiRZErUefTA6HFXkZhVdrMqrCFPwZkQYFmmB7LBsaQUNKswHBUskXgR4MLPejovi",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-bloomberg",
-   "claims_uma": true,
-   "block_time": 1790199292,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2RDL9WdYuZdPwbSdiUjQGycia8AKQs8ALSn8Ub3c12vSnnF7vm9i8W9yddDsSBRjVzxHYUg9N5xEjxMwoAzEbgGe",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "4m7Lkk2SYkP4g95cGtf8ns4eGQiQiWZSVKTr1P3bmXoh",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-bloomberg",
-   "claims_uma": true,
-   "block_time": 1790195691,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "aKAdAUSuJpWRUQE6De6iRFw5gZmwx7t4RJCX5Va6V5bRDd9sUaVqdNqUKT15W6uLKMiyM7eVNwTdJsmmDKh9gei",
+  "5BTsGkPBWC4uMNMWcP6QCjk8rqFbqT4FGP7MTGyjKeGyrSVYipcvH1McfrqQbQvBdRrFUMRoPwZwuETWLysT8H6q",
+  "BVe7WpCbmxHxH1vWXTBC6nSFom1tFYSLZjps63t22YwynBMzWmjcFx6svBK8EYG5anCzyxmKE7srTGyCvSKzRUb",
+  "3o9JQQxqFcPp1Y9RgHEqszw2FRVdKAvtKc2UtWHXLQsUUByZwMVw5QCCh5ckSoB5NumxLAN1dfDvVAjyJyC9VkpR",
+  "2YcujsqTtf4gLRKKALieJ4EGZmYrX3RfjQBYN4nPjU1ZBXCduAa5qdRQ1ktSEWFuceGrE9UbakGReDH4zTGhsNVD",
   "3H98JsBMDJK385Zuxy3AbdaqDaSwgx4afGgMm4hZ55b23ZyhxrFScVZEWFXJKrkTWckGksfvZyg9xiDBFDhuNBhF",
   "3APhDhSnqdsydmkm1Py1qqXan2rwvmH8KvRoBujZxJLVq1CVqJqhBZ12oSQDu3JpEPD9MQyoweirQsTNKp6uJU7S",
   "NsDJU749Du3W5Sjn6M7qPkUfgRY77cpEPmYjxwwgba5hTXuGHqkjwdfRqYkCPVt8ZhQXTWsgw1so4Y6qVMaKp1C",
@@ -671,19 +676,14 @@
   "cknMau99scCanrKskaq8QsY9yRfeCuyY6shruZWxp5MiQD6wRBHzdjQaZ9XQ41dLH9FAeyAXuoct282LCRzjvhg",
   "3huLeGB8QQsjgo7XruQJmfT8EYkacAXNbAj1GZPkKGpNdJZTFdy5wS9oVegj6UnTrPU3RZbxEBqfTLK4EuoDsix1",
   "2sNs1vSi9F4j5e5wSTU2qCWfWQWpAyGvvHCUSuREYAYDQRYrf7T5fVThYefy1DeJSV3k5HSuCk6nsJK8eZWb7LRy",
-  "45FLNGtf5s5Pg7p8HwTdbJ6mUTCtrxr8ibVb5VypTYWoP6UxA32effrJoNg1hgvgDcFy6vvfCPZsv4cPytEszU6m",
-  "iaDdh7QJQABrZsJpDUTjAxy6CB7vfmQE8dvN2FMdRJ7exaBKXMvdDQyyKLnsgosGedDQADgni9rHyH9xPYiAW3c",
-  "5LUHjH62fGJWgEa5Cd9JTW3gLTE1gxTf4AsPvkQJt3ojuFzB27f45MMW6HXB8cDPEzw5MTQsuBJHz3PAZwqBSbKi",
-  "3TgWhmbR2MTSDUdCW8X8ihHkRgh5Xz3QAXDWfxxayHeXda9HAhKP36pJH1HY6utTknigU6Jpsk9PnRL4um23QiDr",
-  "32Tk9Z1kUH2gn7jHkSgRVgpapwoTPT8NZtyECLfBvoD9z7LJ6mKCQAfQHSfau3TsWxLDdrMThRpuWgTq3VQ2QnfF",
-  "5onNuch9R5JN8nVrR3hLdFMub8HLgyoWQLEuDWrW6XGpSPFy4jWL9TEGBR2XbwMAKJKcHrUejQRT1gfz3GZepbg7"
+  "45FLNGtf5s5Pg7p8HwTdbJ6mUTCtrxr8ibVb5VypTYWoP6UxA32effrJoNg1hgvgDcFy6vvfCPZsv4cPytEszU6m"
  ],
- "runs": 51,
- "transactions_read": 428,
- "checked_at": "2026-10-13T17:37:12+00:00",
+ "runs": 52,
+ "transactions_read": 433,
+ "checked_at": "2026-10-13T22:49:35+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 32,
-  "settlements": 0
+  "transactions": 5,
+  "settlements": 2
  }
 }
