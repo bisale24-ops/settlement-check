@@ -679,12 +679,16 @@
   "5sSW13ba5apUpbdk1HGW65Fiu6153rrLSfrWgscgXn3b2PPJnMhimrVs7cCik4G83jQ81ZcFYAhz4iWUBdHp6Ykt",
   "47pbr5eiDH1Qg7zAFwdSj4mFbfxd3Rvg8TuVTjZ6V8u4jrtj3hrr6HHSiQT6p9uXtSmTrAjwUCnhH4RHJcdmLGQy"
  ],
- "runs": 79,
+ "runs": 80,
  "transactions_read": 453,
- "checked_at": "2026-10-18T18:09:43+00:00",
+ "checked_at": "2026-10-18T20:49:01+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 3,
   "settlements": 0
+ },
+ "last_error": {
+  "at": "2026-10-18T20:49:01+00:00",
+  "what": "could not list signatures: ChainError"
  }
 }
