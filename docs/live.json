@@ -482,6 +482,8 @@
   }
  ],
  "seen": [
+  "2QWUxgqrMdXnuke1aYgDLyrL5K1aLQdUtJ5GE5GEXPnM27HZCctVLq8NGqL9VFDn95fxgMPFajVgSAJBgSudRgdY",
+  "4yPcWPs2Ro69S5StRbcCnkqvQj5HH8eFLhpct84ya181FcLS3CQK623wBDhHYBSUx2eLbqzGhJh2mM6WbG5EMVgD",
   "4NMpBdAdqUVD8rsrJoL7L2iF9wuMnCgCNi5kRacKCWu3i9hf33GSBJ61kZU4zYkeg2WjPmSFyTpvJW8Tg832H7Ya",
   "5ZwUsuZGGutnLxUgm78JWDEgEu7FVFHhpfMqZW4UL9PkZbvQQMPcbx2mb799wXwJgL1Ee7XXBotvgpK1YyTrz63m",
   "2HUmHq2hRDScEFifKMznqUb6tCWkZ5NG4E3uZGcqPo1uM1Jq5LEZXVE7RZwEGk4zLbSpyKdaxTEz6YDrwGvpSFs8",
@@ -676,20 +678,14 @@
   "4njhgfdpBUaKEedvC3cYxuhoeYPjpW166Em9E24SQ1YDuT6RbVKNcLBCbTQUjYLQLFEqE2P5DqFwQ2kjdiPaa4nx",
   "5D5NWvxvaHYBAKfYf77gKA7JdU9CJrUdrwgkA8YEUWCRs4i4ZmJ17BgR4SChDzqaBDTt2CGxvcw2YngecQrYjsp1",
   "36FXTUgCVtvvEMf9EY79RcVVtNyya8rTohdp6RMYXMugmKFgfiABXVHaXees854QLPaNQv6cEUqdZDYsaRS56eCr",
-  "viNGqZ1YL8kfv3T5rxSeEcCE94PywmsvKgKGtg9e99uMdpTVdhcKFdAqu5hY2qmkofd6BwuuveCKmgSoe9ASCk6",
-  "3EH7FWHArkP3RwJNxrjtvhxNg1JtwnJMufneZJsFZXanVwYmv7mCTtePFjkqZ7SLu1vGrgqUwnve4BsLw7sc4YQL",
-  "2qy7rK5s7s9kvQYAY1xB5Rtgfrf8JnaUFuvfRp9DyZ4k5bG7zYvcUf7df9oWq75V5HoXzkcxyPMRmEKPZayNhm5d"
+  "viNGqZ1YL8kfv3T5rxSeEcCE94PywmsvKgKGtg9e99uMdpTVdhcKFdAqu5hY2qmkofd6BwuuveCKmgSoe9ASCk6"
  ],
- "runs": 110,
- "transactions_read": 527,
- "checked_at": "2026-10-24T18:11:32+00:00",
+ "runs": 111,
+ "transactions_read": 529,
+ "checked_at": "2026-10-24T20:53:52+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 2,
   "settlements": 0
- },
- "last_error": {
-  "at": "2026-10-24T18:11:32+00:00",
-  "what": "could not list signatures: ChainError"
  }
 }
