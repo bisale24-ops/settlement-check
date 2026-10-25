@@ -1,6 +1,30 @@
 {
  "settlements": [
   {
+   "signature": "2KnKxGj89o9Qfd3RWjctkZdpSq5AYqm9F1Zr7j32fe1dBSzFi4c8EwMF2Xi6mzEKo9rR7mnh69wKedkS6j7nDqJ1",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "HgxqQ7CnAWXVpC2eMb48JyudTLS4ytUUipZQkmvgnKYP",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.coingecko.com",
+   "claims_uma": true,
+   "block_time": 1792945771,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "38giUEnNkYZAGtFcCSYxnc8EonuW6BSr7xW4AuMVHuSPVPQunZyH41UuyC5WLJgvLrwGf1fSPv7uuSK4v3DJWWSu",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "HgxqQ7CnAWXVpC2eMb48JyudTLS4ytUUipZQkmvgnKYP",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.coingecko.com",
+   "claims_uma": true,
+   "block_time": 1792944467,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "5zg7rvPBJJF9oiKVxv2VxfymopH24XUSjYhRbQG6EbiJd2uLbWKCJyxdP8rCFuF5GNssXXshbsqFEtPpU355qetE",
    "instructions": [
     "ResolveEventUsdc"
@@ -455,33 +479,27 @@
    "claims_uma": true,
    "block_time": 1790915422,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4qHavQwm5kYM48S7mr4ikZwWKciAhTiFNYd3BbS6NMafvA1im3qtgKC1xE8gESCBagp5QgVYyqixifZiryituCcc",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-bloomberg",
-   "claims_uma": true,
-   "block_time": 1790881184,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "8FLq9TjnV8jez7pnCm9LNsbVPY14T46uYdUAXcFD2U7LqCxWBJKdeak8SWdM3GJjUari2KueQSS4yZkbQ64WYh5",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "4yiz9ycF3PTwf6tMdTKTzFWNo9Yrph4XsSRHgPMpLpjG",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-bloomberg",
-   "claims_uma": true,
-   "block_time": 1790877583,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "4AdscFuLo5a9i2mfD8G8haCqrJxPZKgAG3oC11dqSHAoGDDhHx1DfrcDTPtgyo73EvYmoJTYgYyrBVRvQhD63z2o",
+  "5SEwBkBN8vLDDPrFfdqmHdYhMgywZmmB9Dj4xhydN7YamxHyxm5DuLpyDwvpuRQ96z7g4tPE1LiRyavzaqovDESK",
+  "iYWxZdVU5uqDpDuiYwKcV3xLBnarvp3Rehg1H1Aabx3qxEW8R4wv6KsZdm5vFPhDqE3gzyMCPVNBkoEpu1UBEo6",
+  "5R9DnXTcC1ptf7SoKmx3VEGdWuyyyFLyuxHuHAeiCrEBXn5na5XFaJUYqGmmNkYZp5g5SCf49m8JqqyYwFtkjAPb",
+  "gLmq5pZyzyRKdgXauqXnpkac3EmwD6T5AiobrDDjhUMT1i6pV7EhgV91zg2PXANq9hvUVc6uScb9zr38h49qY2E",
+  "2KnKxGj89o9Qfd3RWjctkZdpSq5AYqm9F1Zr7j32fe1dBSzFi4c8EwMF2Xi6mzEKo9rR7mnh69wKedkS6j7nDqJ1",
+  "38giUEnNkYZAGtFcCSYxnc8EonuW6BSr7xW4AuMVHuSPVPQunZyH41UuyC5WLJgvLrwGf1fSPv7uuSK4v3DJWWSu",
+  "41Tt4eojKhZbve5DMdT92F4w5sJyHvBguGksqyKzFWbT1KHoo9brcSzLaMc7RhsD6U621bicC28ro3XdVWjz5ZuE",
+  "5fwLUSq8NSqMjNSxPvaRNNCcmwZeDKuTCWnqVU6LgnB6FXQLhck3Ki4cFAiRgYMJk3nnywpVTmoWHnEYxoVqhaGx",
+  "49FHHHw7e8SudCvorNoXLbrRtpPDj1dDujE9EUxJSxyztdRxqo3ambtMrZsP6GkFWVgqzTAyAr8JSUf7sFQD3vjc",
+  "2M7moHxXpS1NNDTPBV9x5EACYm5omGt2Ki6LXWXoTdBCntu6bpEMtLve6wnCBi3eCvzurFobyygKdf73u4hdjA1m",
+  "4wXMGQas1oCxHrgUfb1d8b7jcrcGmEyrERoCcdx7UEqTgvyS9MQUVX4H56xkp4a4zUx3EZstmheaCmjBo9MHkQ7t",
+  "5NT9uZY4aMpign9kmdcDC5R34UuxrPnUciQysMwfyRVMqaPXB3rwjCtRyj2wpzS7LJULu3rB15MAda1wmVgmwdLW",
+  "58kZUS8wztaSgMCvWuqhVoaozBwaQizqBSe9mX9X35CKGzaB1aJFpKPLRwGbGQXP4T4riwi28Gzxwr3UoBSQVXkY",
+  "3zNgZH944A4mwD1BBkV4DTY2uQr2xnJZFWRcPAK8cbDMLG3LLZjcJsctDocLiRFB6QNhN9GhnuGSHHdE9Cmkjapw",
+  "2tfLde45hBejenE1XT34FboraHitxMSGSrZQbQYTpqYVaCd4rPpWunMdUzG6LKwH6vYtDoNLZmJSCYYGrBcDDCTV",
+  "5Vra9hhF8VCgDonVGo9QiKzCoonUp3XGbM37DrAu5Vi7Re35PZoxaAGJHfcqU7CP7pZuq22S9SXvxqwQW3GGNpND",
+  "3jWwgrE3UqucHX7sqEyczUxHNXNBsnsc3zFwbHDAuHdPr5AUXJsZXgNv9KSEBD9nNUESP2VeARbWX66WSuVNppWk",
   "3PqMppUEFYeM5bucmSPSzptuJZ4gdTLmZTE4jcNhz4uFrXZyfiYGAMtaDoYHzZzME81ELD6rAdJqACrb2Ytny5bS",
   "3HKdNZ8vbDknpsXDVpXHS1HidjkT9SGJV1HBNzBGiBANRSTNKHitgXLLUqRzVD9YtcoAb98GuYo45PnXYqiR5Ugm",
   "3TP4eEQzUJg2TyjLYTVjH99PRU6bZrNTZsAVxeNqK1PugeSH1hsqiQYhp3fH9nACvEVPvnxaPnqnLsrThz6gAmCc",
@@ -661,31 +679,14 @@
   "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",
-  "4kkCL6HSx1rHF5XDn7agBHQgc5XZmeWtQtjumXPTZekf9vHHH8mo4KUeT48p1wBbxNkbXZFqKpiKMMCxdf5vWFUL",
-  "4BqqfnC12PJDEKUtoPGG5TFriEUtBLwtbPBLPYvbmFh8DMhbeLiEzFQh1LVAYK5qfCrFv5AfY7W7MZ9obT2Rm7WU",
-  "5khSXVtCZwAZW6Cnp9rZr3g1hP5HdYESosfJqHtJ6dA31Nerc1ynmfVdLy4S5xUfngxd1EvdMAKbSkrG4DbffZsV",
-  "7z3YVCEvB28gUG996dR4oPommGYztgEWSsSxuq8dYV46Tf95GpcaMCsuy6J64EfDFYbUzAtzjLBrc9xmsEKCyjg",
-  "5ihRGeg9NsQ5isdKubFJ9jDXF4ZBYTdzqQVU568GhkUw6HbTUZrA3SFpGHdtaSD7DAsX8uTNU7E24qxnQoVH1STX",
-  "3f2ciAKwEw9ZkGZ7iYiQ4gFFyb6tpp68nDmrE1N2d6cRnPtDC1ZCH4hv9beJ3ap8Kbrpr1u4kzRDGzmo6adZcP26",
-  "2JB9EfR7Sf5d1vUFV6ErezCL3bXAy1DMNan3xyzjJP8ck2m36oo1andV2jskdm5UiViBsR2WuJUTxvLiTCZH37YY",
-  "3LBusUZwxtiK6SDpvmQ87bRh8zZzHzqZUgf6ZiuxUsC5kuCG7ZmPwmhJRwsaKkvPMda1E9NDHjMkBvcXDjrEH7HU",
-  "26DdY8FXQonwE6koYUT3SyHodPWw2MeJaARWZq4gnXR75Kh49RzJcKKyPp1sE5wjJkUPgamsDP4bHMtqqPiR2cFk",
-  "2BZHuH16T1ZkccgPwkxXuXokRdEkGH84fBhxYnjeTRsj9zfDJTffBzEdzxfW4qLgtytfLejT6BHTuCaSHWEKoLpA",
-  "5btb3FDAPwUq2PAf3UtLFuxKJSV1rQ9BtTdRLcDRSM2WfiiKYY4foC2Bh72U5mdbwU7vhGopMXkf1yutrizH6hrc",
-  "3U6VvMAVvVZkGs9UcfuLTvvif3k5eKtqiXzSR6uTT14iBZPbAULNFdYSstBtASP9dA76kVsVUeLgqEuRKchq5TPB",
-  "gNLgCYAX9iMTP7yykBQ6oHuxWRPKAKZ8MbWW7z2VjjPE5yzAjt9fXKJRHm3CPqR2J5FcoGZk6jTAJaJkopD4AKH",
-  "2Hi1P6LBokWruU3HunrRBd3jQepmJPa9i4XFgYmsR21SYqEugkVJA9iR3qmovPAZs2duyhsn3Tfhosv31imE9PAM",
-  "3izht9MqvhZPhDoH1h6umZrQ2u7P9ACCCmDgWYCVvjwu8AA4jToovBufhrCQJGTQ16cTdhEYgB3A5JaAsJvu1m6M",
-  "44p3SwgpTagK1f5gshC3Rap6kTa6EtpzwzMar3tVyr6kY7by2HKigyYtEiBiPxxydn4Y373rzkDtM5MFqAipxLuf",
-  "2RZnmdJYQLiT7XdwmfhRjVj19DofGvvH6u8HZiu5gnd7i4aeafqrJYhvEgDmstZsiSHA7DazTxriJ4Q8J98c6Vw8",
-  "3b3ckQHHEm53NLAELTbWnQK2o48Wq7wmbg4WZQvtk5hmSd7C5vxNvBRYtnfNSjL7dng6NrnhxiuDnaF5WGQsp7Ef"
+  "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"
  ],
- "runs": 115,
- "transactions_read": 547,
- "checked_at": "2026-10-25T14:24:44+00:00",
+ "runs": 116,
+ "transactions_read": 565,
+ "checked_at": "2026-10-25T18:25:33+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 11,
-  "settlements": 0
+  "transactions": 18,
+  "settlements": 2
  }
 }
