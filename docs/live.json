@@ -1,6 +1,78 @@
 {
  "settlements": [
   {
+   "signature": "5Q1eQa8EaKRoa4zb1j2xZJbJEQ1NcF26x3hwWMpcQPYAaQqophojEEZE514Pg6Pu5CNMLuT6ocZED3WohvTiMuec",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "GZxwg6FW5kERyKd73HNe4aBSM5XnVdbwxSTbvxazNxtW",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.coingecko.com",
+   "claims_uma": true,
+   "block_time": 1792972243,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5gD887SkGknZQLXUGu9umExaq4pPttnkmgww6v6SK7TTBhMiWobypRRkJRBn3uuzTSzikJy6kg5reNMdLYnuzhka",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "5mAqH1jZGr9tmbFXN1m2TdJsEiNwhMfHQTvdSukuRfeS",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1792970992,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "4aGxRxrPYmepSxzEYasuGX2UQAQ7xyzD79oJQLVFaGs6G3hxfKiKZW3U55WFFn4cRkxCbtnjWa5qDFYPYdTqSQKJ",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "3CtJ4eBZjTKqU2jJhXeJJCzmN1vThBoeRNLfhU73rHoN",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "me-sports-bein",
+   "claims_uma": true,
+   "block_time": 1792970984,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5Hz8r6sn41v6GPQ2fWtD2JxwWKDwkB9MC3t7eSY3FxFemSut6roEyaePd58891ptErS5cRi8Pqq3nyaTyfL1syuh",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "GZxwg6FW5kERyKd73HNe4aBSM5XnVdbwxSTbvxazNxtW",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "https://www.coingecko.com",
+   "claims_uma": true,
+   "block_time": 1792968642,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "AbDLJjswAiVeKPxEufo7qy7HE5VcAYsEgeJdhD2EJDuXHmio1ecnhi1sNtvpZSrkkDvmwc4eT4QPEAJ4qxMrsvo",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "5mAqH1jZGr9tmbFXN1m2TdJsEiNwhMfHQTvdSukuRfeS",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1792967390,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "v8UFtnE3c2Mq949y2HiLohKPJDAwnsYgGBT9XspKfSVMoG3jacf1nkWAnd1WufTTQQNNsMu52vmSzHGGXSKTrne",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "3CtJ4eBZjTKqU2jJhXeJJCzmN1vThBoeRNLfhU73rHoN",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "me-sports-bein",
+   "claims_uma": true,
+   "block_time": 1792967383,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "3WT7GrYFYupeYzREh1N9CRjtntp58yvPmo2eABXpC8gP5RiG1k62ydPgWb4WqrV3gGakFfheTEfTPzWPqDT8DyW1",
    "instructions": [
     "ResolveEventUsdc"
@@ -407,81 +479,16 @@
    "claims_uma": true,
    "block_time": 1791156601,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5onNuch9R5JN8nVrR3hLdFMub8HLgyoWQLEuDWrW6XGpSPFy4jWL9TEGBR2XbwMAKJKcHrUejQRT1gfz3GZepbg7",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "DW1G3gChuFpMJDCURtkQ6K6Ye2ihyv3Vsob1QE8Tivq7",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "ng-pop-africamagic",
-   "claims_uma": true,
-   "block_time": 1791156575,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "WX2SgXoiWvse2sj5Ny5FgEF3fxaMikEYVWeNA1XLi9jWhp9PhgubUjfmJBiEoKWC56Aox679jgJdxTiJetkbjRE",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "DW1G3gChuFpMJDCURtkQ6K6Ye2ihyv3Vsob1QE8Tivq7",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "ng-pop-africamagic",
-   "claims_uma": true,
-   "block_time": 1791152974,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5Hv5fQWUf7YSCR16xMMcTfBE5pzVN9p5wnM2NWFfGf5UuaU6ocW8Biat7dTEs4KuhGLpiciVfU3B6RXcXuZkMdEv",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://www.coingecko.com,https://coinmarketcap.com,https://www.coinbase.com,https://www.binance.com",
-   "claims_uma": true,
-   "block_time": 1791078306,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "579M9xqPmJb9oBj8Nn7B2ptXBPiZ8v4Zv95TikbcQswmTpPeVng3VUfeYCtnrcpn81Lbxjfg3Sv1xV8JRBgDMP1k",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "2vydGh1EPCCbzBncAZFcAbiiWZ9A6uuxt3Ay9Lf3qdZU",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://www.coingecko.com,https://coinmarketcap.com,https://www.coinbase.com,https://www.binance.com",
-   "claims_uma": true,
-   "block_time": 1791074705,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5ASDhjENujdNfR9Fy48ErCfty5RPo6Pv72tvnek1SShCzqSeHc75RqvBYRtPZidzdK277S5brUgbRh9ypp3LkKEd",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1790951439,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2Zi29u2Y5JKQ5GXJgmhGq4FawyLVv8yBH3mbNUVD9nayLyKqshTKn73HfjvMtrD6EAdkaciENuRUTdKZG45Ka3k2",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "pqZAm6T9jhaLuQWXhAJ373eTar6RfVsTT1oq1J5sARM",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1790947838,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "5Q1eQa8EaKRoa4zb1j2xZJbJEQ1NcF26x3hwWMpcQPYAaQqophojEEZE514Pg6Pu5CNMLuT6ocZED3WohvTiMuec",
+  "5gD887SkGknZQLXUGu9umExaq4pPttnkmgww6v6SK7TTBhMiWobypRRkJRBn3uuzTSzikJy6kg5reNMdLYnuzhka",
+  "4aGxRxrPYmepSxzEYasuGX2UQAQ7xyzD79oJQLVFaGs6G3hxfKiKZW3U55WFFn4cRkxCbtnjWa5qDFYPYdTqSQKJ",
+  "5Hz8r6sn41v6GPQ2fWtD2JxwWKDwkB9MC3t7eSY3FxFemSut6roEyaePd58891ptErS5cRi8Pqq3nyaTyfL1syuh",
+  "AbDLJjswAiVeKPxEufo7qy7HE5VcAYsEgeJdhD2EJDuXHmio1ecnhi1sNtvpZSrkkDvmwc4eT4QPEAJ4qxMrsvo",
+  "v8UFtnE3c2Mq949y2HiLohKPJDAwnsYgGBT9XspKfSVMoG3jacf1nkWAnd1WufTTQQNNsMu52vmSzHGGXSKTrne",
+  "2mUH59wPhGTPRJ8BKJmoNQGCXjcxcgqfwKGpKBf9riYcJUA2jSWC6iPEta7ov8jn5ykysVvseHnTYi4ELKGMqtts",
   "5CZifumQaFAKL4FtMvPs4eCxqQiVboLHBZ1ru5mmUuAmVvnF3WN9zj1wNd1xiKifoTKwvgqULnfRE91cvipfM6yA",
   "2qe5Uf3StgwsvnQnVY3V4QShnXrfPsNF3Kvcge1r3yT5pW8rEeMMahT5L2D4yVxzpXPus7N8xfp4rnogYEza7TqS",
   "5RyCCsTnXTsUyiTnnvnALn6gL7FqMH9iunvBaeyNWYrJ1qxWoBaszy1FaFtJNksuJ5LrJmZBrrDk8jJ1McUXkkbB",
@@ -672,21 +679,14 @@
   "4Wv4qGE7u5aSFBJhpFPe6CtMgpq3MNnUcyTJoDZ954qDVW76XccSPZWr43H6JpjBsE7b6bS2BG1d3xReEyYrvjqA",
   "GcYbbBnN1kSuCgGEUeZ9HacVmEgRQ6iJncAETRLU2xm736DQ3jqaffhceFin4Vm81ALi9E1xRP4foHd4ka2vGD4",
   "4DeharBB9MuAEj4nyAaA9hhmrsdDuebyKWzgxLovdtCpYSg4x3vRmUGQhhhJpBJU1a8J8qM3JGuQj1e5qx9LPtZu",
-  "B42Zw57pwF44WHbrcP2ogRcpMWKzsVMJA3NwFzFeJGepduF7UfNJxkpfyi849H3GWaKgox117naS49ufsbZSVnx",
-  "4K2HPuB9evLmPmbGnny6GLuqX3Foc6JN7ghUsTEYLpmrn7uPUu2XVZXeCRUbEuSvCkYDiYfqH9bifiK9wWiaCXUB",
-  "3YtFFg24HpVk8aXebZo86WS18Ye2Usf9erqGSw14b52VwqkNbNdvse6ha17D3qahDvqaH8F4RD9jrCYATDthovzU",
-  "3uHaKamv5Xx752wR6gRf2SvfrVxPFoVwtR7WrPAi6bz6Rb7oeAUbJ58ddkqxWvYy3wQjCznWd3mmtq5jBRbG8XVm",
-  "qPCYLPci5yfdDfiD3qJj8qQmyREpfui22xoHt95t6faWYDpJWXKfYxd6wWvtQsLuM8ZxvSE9w46vFzpKZxTRZ4Q",
-  "5Q7BQDctbXSxMquQ9uGxuuqskTKX1mVmgmGfXToN2kmDDsD6MpKgSTH5pV9J2RRcB6qKzCQx8xx4Uqo4En3XUPDa",
-  "5WZYZGa1KBGnHJSzu2CxLNZxYiyUD4DyMWHhVMmaREgdvu1BmC9FXadeJP9kRpMuKYRq7fbv1xcyLzKNnq48Kwyd",
-  "YbvpTG7U4A36qBFgJPVNiaha6QrXjjm3A4FXURevEmKRgVBRmxi8KoHKUUbQVEFt1oa8rnJqG9xy56p5VgK6dMe"
+  "B42Zw57pwF44WHbrcP2ogRcpMWKzsVMJA3NwFzFeJGepduF7UfNJxkpfyi849H3GWaKgox117naS49ufsbZSVnx"
  ],
- "runs": 117,
- "transactions_read": 571,
- "checked_at": "2026-10-25T21:50:20+00:00",
+ "runs": 118,
+ "transactions_read": 578,
+ "checked_at": "2026-10-26T00:25:08+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 6,
-  "settlements": 2
+  "transactions": 7,
+  "settlements": 6
  }
 }
