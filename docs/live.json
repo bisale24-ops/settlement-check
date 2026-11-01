@@ -1,6 +1,18 @@
 {
  "settlements": [
   {
+   "signature": "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "3duKpWCngAaPPjr38e9YV493SoZxSr3Az8cYVb9a6iUa",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1793559568,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "4pfTrFEdG5GuCzvRYZk3rzApphusCtAYPa8NUL5sEzdQ6E3c8zLXyVr2m3eZavTRXYJo45bVgAio7VjqcMGfsSGL",
    "instructions": [
     "ResolveEventUsdc"
@@ -467,21 +479,10 @@
    "claims_uma": true,
    "block_time": 1791649943,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3A9XLWXZPS1Xb6SnHpmygzx9excuXQ6129RCaQUmVNJ9i2JgtvgcXzigSonTsCfkZrNsTEsGgVjNj6FvNHmstHHH",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "9ArgG5SQf9T6QbVWEjNwpBpNkdPjNWNTNB15nkdivv15",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://www.espn.com",
-   "claims_uma": true,
-   "block_time": 1791646342,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
   "63S7MqerpHaV1bs6XvTyBozmpi6xUXsCaStxuZrxx9411uvTTqVUQzz2F4kcxoAyRfVjE7pPQLMHpsi4opPMeVob",
   "5iXCRdY9JKXBuhSNv3WCuM4RtDkW74mabJPUMDB68btVFB4YACPMHqRaQAHxHeD9iUw2Az9USasHrMchbaCyU1KU",
   "5DFLDmeRXM7kazmerVkLonatKazkeU3n5ySKRJdHhrjJkcgTpKSNSQSdmPuB8SjEn2a4bf5hJj6XSQE8rZFBuKVm",
@@ -499,12 +500,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 146,
- "transactions_read": 724,
- "checked_at": "2026-11-01T15:14:37+00:00",
+ "runs": 147,
+ "transactions_read": 725,
+ "checked_at": "2026-11-01T19:45:59+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 1,
-  "settlements": 0
+  "settlements": 1
  }
 }
