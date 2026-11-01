@@ -482,6 +482,8 @@
   }
  ],
  "seen": [
+  "5iXCRdY9JKXBuhSNv3WCuM4RtDkW74mabJPUMDB68btVFB4YACPMHqRaQAHxHeD9iUw2Az9USasHrMchbaCyU1KU",
+  "5DFLDmeRXM7kazmerVkLonatKazkeU3n5ySKRJdHhrjJkcgTpKSNSQSdmPuB8SjEn2a4bf5hJj6XSQE8rZFBuKVm",
   "4pfTrFEdG5GuCzvRYZk3rzApphusCtAYPa8NUL5sEzdQ6E3c8zLXyVr2m3eZavTRXYJo45bVgAio7VjqcMGfsSGL",
   "5iMxLoFJN4yEEJ2oqJxUQ4FNu2vG18YnruoDhtKciHXDJ6Gy8LjwobTBLVGazmoEzLMV4iwNiTWddHToCg9evFdM",
   "4XpCSCryp9739bDYrwFhnpNY5i3EGfZFmG1LfRARyZAK6SgMHpXRkvUMJpoMrnFJgGLw4y7hYNy57FjfUdoC48ar",
@@ -496,12 +498,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 144,
- "transactions_read": 721,
- "checked_at": "2026-11-01T01:15:22+00:00",
+ "runs": 145,
+ "transactions_read": 723,
+ "checked_at": "2026-11-01T07:38:34+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 5,
-  "settlements": 4
+  "transactions": 2,
+  "settlements": 0
  }
 }
