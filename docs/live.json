@@ -1,6 +1,18 @@
 {
  "settlements": [
   {
+   "signature": "5H2gLDuMtp2KRhdJ9snsHMym4rZcqaybjwBmUKJKe594FQ3vRDTF4ipWKVDiAN9hpTxnbDwt5tg9K6EYdLt2Wbgt",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "3duKpWCngAaPPjr38e9YV493SoZxSr3Az8cYVb9a6iUa",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1793563170,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
    "instructions": [
     "SubmitOracleResultUsdc"
@@ -467,21 +479,11 @@
    "claims_uma": true,
    "block_time": 1791658790,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3bJycYfZs5tos5wcPpnuVGeAvTuY8D8ZAgoUfjEA9fKhafNGxbrunTcQZTMfzRpjYs4q9cKpoyzi3EP6cjtMBG24",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "9ArgG5SQf9T6QbVWEjNwpBpNkdPjNWNTNB15nkdivv15",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://www.espn.com",
-   "claims_uma": true,
-   "block_time": 1791649943,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "5v9Dt6kerN5EsSrhU2z6yza78eNZCqaDgrrihxhRe29f2bQKujNEw2uQjQdjFBVkvSkwyRyM7naVMFxceVF3zktX",
+  "5H2gLDuMtp2KRhdJ9snsHMym4rZcqaybjwBmUKJKe594FQ3vRDTF4ipWKVDiAN9hpTxnbDwt5tg9K6EYdLt2Wbgt",
   "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
   "63S7MqerpHaV1bs6XvTyBozmpi6xUXsCaStxuZrxx9411uvTTqVUQzz2F4kcxoAyRfVjE7pPQLMHpsi4opPMeVob",
   "5iXCRdY9JKXBuhSNv3WCuM4RtDkW74mabJPUMDB68btVFB4YACPMHqRaQAHxHeD9iUw2Az9USasHrMchbaCyU1KU",
@@ -500,12 +502,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 147,
- "transactions_read": 725,
- "checked_at": "2026-11-01T19:45:59+00:00",
+ "runs": 148,
+ "transactions_read": 727,
+ "checked_at": "2026-11-01T23:39:20+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 1,
+  "transactions": 2,
   "settlements": 1
  }
 }
