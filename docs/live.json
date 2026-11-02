@@ -482,6 +482,15 @@
   }
  ],
  "seen": [
+  "5rfKmk6jionhAbXYSR2zpVtw9SZgn9G1UnXRhVXksMu2XHwoDnJHFeQcX6fAdk98FanJuuApze1M8Jk7BU2RtBWt",
+  "2os3mji89qqyL1SqivY9fwt4sgA3jswo4Y4RCDCF128txv5zS1w5NcW4Fkf8mU5wipcJdsuQ7LLiEdstFiqJ2zVm",
+  "34nVCPhVxT8VatgWjS3ru1epGxzMrGER16H9LT4qrLCAv5gqAowgREftNavcVykJMvajtwZ5EheLi1y6NExUc8fj",
+  "3hxBBaT1evvcLFTMpcqYWpEVT4zFM35LfP1ZHFRDFMAWu2mHDuP3PmqGTV62kFUWpjV5roioVcXqQVRcZfCWstJ2",
+  "3rFSRetEGLQJ32gNpi9cwn468UoQ1uR8q4Q8E3QtcxQtTUN1bSZaUzBFo4GBjEtZvMu9RHHPBQwT97hLnQ8vFDYp",
+  "4AQUkUcWa8vgeZBobtGJCe93dHboLhCHJQcxvwyqQDpiSXyuwc4cNoV68rryouUWL9HeTxCt5GCJMQXy2EFYqBjq",
+  "2txeTEfBVq5PmDCUCqUQoQiW5mENogXqxaaKBZL3drMGKn5HQifz8kqG4S4QJzExtPHpVwb2VdSaUHw1sfbMWdGJ",
+  "4BEMMQgxuk4tf2ysrCNMVaX8ph1syRotzuFSyUG9BNzSSNM8YY2RAFLSrYtcvoJgoKs6JCJYPBuPr57HunGySyzr",
+  "5E7nSVpcpPtqF55sar7WXy4UVXrsvvQY7oweG6JRa5R58QDoHtzbwiYJYpZLmtDLBFfx54r742DFccViUaWDVmyc",
   "4r7iFqGGxfypv53kCny3xS7uvXundWHmjkVyje4y4wmiHZg9kYKyzvygLoQ9TATDgRpyt2b6BeEym7JKoCYsrfu7",
   "7Zd8wLj8wCNi3i5aA3pD8w8YoozYeuzRejxr3MLPvZ284VDM4AkDS8TqkoEMkJD4NB5c19UoYtfkdiNnuz21a6H",
   "5v9Dt6kerN5EsSrhU2z6yza78eNZCqaDgrrihxhRe29f2bQKujNEw2uQjQdjFBVkvSkwyRyM7naVMFxceVF3zktX",
@@ -504,12 +513,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 149,
- "transactions_read": 729,
- "checked_at": "2026-11-02T06:15:19+00:00",
+ "runs": 150,
+ "transactions_read": 738,
+ "checked_at": "2026-11-02T16:15:33+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 2,
-  "settlements": 2
+  "transactions": 9,
+  "settlements": 0
  }
 }
