@@ -1,6 +1,30 @@
 {
  "settlements": [
   {
+   "signature": "4r7iFqGGxfypv53kCny3xS7uvXundWHmjkVyje4y4wmiHZg9kYKyzvygLoQ9TATDgRpyt2b6BeEym7JKoCYsrfu7",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "GKyoMX3pMAEVrbGgEzDvuUkL3XokoHhG4YTJWRtGL2Mb",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coingecko",
+   "claims_uma": true,
+   "block_time": 1793582971,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "7Zd8wLj8wCNi3i5aA3pD8w8YoozYeuzRejxr3MLPvZ284VDM4AkDS8TqkoEMkJD4NB5c19UoYtfkdiNnuz21a6H",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "GKyoMX3pMAEVrbGgEzDvuUkL3XokoHhG4YTJWRtGL2Mb",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coingecko",
+   "claims_uma": true,
+   "block_time": 1793579370,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "5H2gLDuMtp2KRhdJ9snsHMym4rZcqaybjwBmUKJKe594FQ3vRDTF4ipWKVDiAN9hpTxnbDwt5tg9K6EYdLt2Wbgt",
    "instructions": [
     "ResolveEventUsdc"
@@ -455,33 +479,11 @@
    "claims_uma": true,
    "block_time": 1791664188,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "viNGqZ1YL8kfv3T5rxSeEcCE94PywmsvKgKGtg9e99uMdpTVdhcKFdAqu5hY2qmkofd6BwuuveCKmgSoe9ASCk6",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "EtrjihLvFjmztdXwSxhwiKe4fWvVPspMC4TUeede7GLg",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1791662392,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3EH7FWHArkP3RwJNxrjtvhxNg1JtwnJMufneZJsFZXanVwYmv7mCTtePFjkqZ7SLu1vGrgqUwnve4BsLw7sc4YQL",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "EtrjihLvFjmztdXwSxhwiKe4fWvVPspMC4TUeede7GLg",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1791658790,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "4r7iFqGGxfypv53kCny3xS7uvXundWHmjkVyje4y4wmiHZg9kYKyzvygLoQ9TATDgRpyt2b6BeEym7JKoCYsrfu7",
+  "7Zd8wLj8wCNi3i5aA3pD8w8YoozYeuzRejxr3MLPvZ284VDM4AkDS8TqkoEMkJD4NB5c19UoYtfkdiNnuz21a6H",
   "5v9Dt6kerN5EsSrhU2z6yza78eNZCqaDgrrihxhRe29f2bQKujNEw2uQjQdjFBVkvSkwyRyM7naVMFxceVF3zktX",
   "5H2gLDuMtp2KRhdJ9snsHMym4rZcqaybjwBmUKJKe594FQ3vRDTF4ipWKVDiAN9hpTxnbDwt5tg9K6EYdLt2Wbgt",
   "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
@@ -502,12 +504,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 148,
- "transactions_read": 727,
- "checked_at": "2026-11-01T23:39:20+00:00",
+ "runs": 149,
+ "transactions_read": 729,
+ "checked_at": "2026-11-02T06:15:19+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 2,
-  "settlements": 1
+  "settlements": 2
  }
 }
