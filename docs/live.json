@@ -1,6 +1,18 @@
 {
  "settlements": [
   {
+   "signature": "4m4sU5pnuqfitHHkA6Y12A6Zbv1KimbUZqsSyjD5afd2sjQBBvGVrncfPrZFaJweiUdDkVy2tZ7zKYu69owBFqF7",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "8q2PfN8VMkevSnWpZ3zwXJKHZX18j5LkYzugGxqAr3jJ",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-business-bloomberg",
+   "claims_uma": true,
+   "block_time": 1793665770,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "43zovo5HQT9VseowMfS7hvCvyoyd6TyzkUFVbu3Y3efpE7Aa29qLR2zSVbfWoYSjefYUp2udj5nj7Y9YBHxeNE21",
    "instructions": [
     "SubmitOracleResultUsdc"
@@ -467,21 +479,10 @@
    "claims_uma": true,
    "block_time": 1791809971,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4njhgfdpBUaKEedvC3cYxuhoeYPjpW166Em9E24SQ1YDuT6RbVKNcLBCbTQUjYLQLFEqE2P5DqFwQ2kjdiPaa4nx",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "4J6WxFGuCw9deMJ6pQ7gwpVXCvLorMrz28icSnCYWeGB",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://www.espn.com,https://www.bbc.com/sport,https://www.premierleague.com",
-   "claims_uma": true,
-   "block_time": 1791667790,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "4m4sU5pnuqfitHHkA6Y12A6Zbv1KimbUZqsSyjD5afd2sjQBBvGVrncfPrZFaJweiUdDkVy2tZ7zKYu69owBFqF7",
   "43zovo5HQT9VseowMfS7hvCvyoyd6TyzkUFVbu3Y3efpE7Aa29qLR2zSVbfWoYSjefYUp2udj5nj7Y9YBHxeNE21",
   "3QB36JHeBcMqg6EbvZdahx1VuxxkiLGFMWy3ykcyZfKDX9WusY6MY3Szomt9jDvmhu7JMCREaB85Byj6cHtoKoLv",
   "5aevMmCtLdaYLm6BGYFekcAFWK2cFMVp8KEtjRAzUpSxsWmpkc9bGEBHotnKnduxJ8Ytnj4e8J8QJtxtLpjjSCZo",
@@ -523,12 +524,12 @@
   "bFY2ZpuM3UhfBkB5zCwb7DczzTkPtJgCRJRuqB3BfRfeyiT6ktZF2ATk6JpBACjtikLn1w65W2f2RBiVYrstrxv",
   "32rLaLakjbcAqsTJgMXrJ5nZFvCoER6zY94udrrb4ATrne4rCCCqWHNX9XHrKNmUfaG6vkriuaWgxUxBCNuDZhnz"
  ],
- "runs": 151,
- "transactions_read": 748,
- "checked_at": "2026-11-02T23:37:14+00:00",
+ "runs": 152,
+ "transactions_read": 749,
+ "checked_at": "2026-11-03T06:53:46+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 10,
+  "transactions": 1,
   "settlements": 1
  }
 }
