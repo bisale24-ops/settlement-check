@@ -481,13 +481,15 @@
    "signer_is_the_known_key": true
   }
  ],
- "seen": [],
- "runs": 159,
- "transactions_read": 760,
- "checked_at": "2026-11-05T06:54:13+00:00",
+ "seen": [
+  "4T6Y6GnWrGVRmq87UvoYkH59LrnPF17td1n51zYuWiFsGg9bnr5U2EAT2VvhfAiiAznnxSyfQjxtd4fKMfTMokk7"
+ ],
+ "runs": 160,
+ "transactions_read": 761,
+ "checked_at": "2026-11-05T15:31:52+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 0,
+  "transactions": 1,
   "settlements": 0
  }
 }
