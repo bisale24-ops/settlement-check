@@ -1,6 +1,30 @@
 {
  "settlements": [
   {
+   "signature": "5EdTs9raKFf7J2HwzsvFwR4D6R7LV6tE2Mp6qE8u6gTZFstDh5mg9MztF1CeRm2fbxnG8jW66zFMDm8CemHTigqb",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "6WMwNLEV1UuU6dw2Cn5PqE9tT5fP1hRcKc76ruk94MBs",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1794182375,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5D7DZ1RyCJRzjSwT7PWZKpTdUrkmp3YX5AmewmEVTPgUmNYb8yq9XKHrLzyHrPU3rC5HdikUNFYUZ6cFSF333wbE",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "6WMwNLEV1UuU6dw2Cn5PqE9tT5fP1hRcKc76ruk94MBs",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-sports-fifa",
+   "claims_uma": true,
+   "block_time": 1794178774,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "3zSbT6joNSnmE9J9YyRMm5LMXeGz6f2moJyy7fDcvfkENHzFiiQCA4Vm4oHcMLfnL2J93Qczcm14LQYRiSiDsmbx",
    "instructions": [
     "ResolveEventUsdc"
@@ -455,45 +479,19 @@
    "claims_uma": true,
    "block_time": 1791927876,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "B42Zw57pwF44WHbrcP2ogRcpMWKzsVMJA3NwFzFeJGepduF7UfNJxkpfyi849H3GWaKgox117naS49ufsbZSVnx",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "GM2wvtGY5HaG3T4DiVnJTDXsScZLMc9JU9ABzSRGUvKn",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://fantasy.premierleague.com/api/bootstrap-static/,https://fantasy.premierleague.com/api/event/6/live/",
-   "claims_uma": true,
-   "block_time": 1791809996,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4DeharBB9MuAEj4nyAaA9hhmrsdDuebyKWzgxLovdtCpYSg4x3vRmUGQhhhJpBJU1a8J8qM3JGuQj1e5qx9LPtZu",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "GM2wvtGY5HaG3T4DiVnJTDXsScZLMc9JU9ABzSRGUvKn",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "https://fantasy.premierleague.com/api/bootstrap-static/,https://fantasy.premierleague.com/api/event/6/live/",
-   "claims_uma": true,
-   "block_time": 1791809996,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
-  "3wxWHAyNEG6r7vbJe92mESzWqEpXgRsLxCGkLfM8to7knugUnncNfMP9XQYeMRk4tgBWYW8bPxoD14FQEd4fsqHW",
-  "38ohxkNV3yPwB24oXRA2bNrQ45QuSsBQ3sHwiCXgDG7dBJ9f4oqCvdFhTTe1zGMWMfE85hV6t1ES1pkzGAajQyaM",
-  "k2hRt8aQshqTKE4AyotetFZqmMvyrxVSkjF6SZbNZvAckoafLyqszr7xdEFYDT5m3xXGn4rKqqiqyyskjqjdL1W",
-  "9c3vtcpjvi13MBFYSeUm3LGQqKY4DHVU9p6MrKmckyrYb8evijVvT8uH5MNar8ePk2FcpyXk2FoHH7GGp7tG4Tv",
-  "4z2PgMjcXBpsartSYobWRZ942Am519p1kXnsJ3oELhsZdLdnbQyDvBXR7sVuHh1gDJJTtzKsGLYGbtra3B5PZvKZ"
+  "5EdTs9raKFf7J2HwzsvFwR4D6R7LV6tE2Mp6qE8u6gTZFstDh5mg9MztF1CeRm2fbxnG8jW66zFMDm8CemHTigqb",
+  "5D7DZ1RyCJRzjSwT7PWZKpTdUrkmp3YX5AmewmEVTPgUmNYb8yq9XKHrLzyHrPU3rC5HdikUNFYUZ6cFSF333wbE",
+  "3wxWHAyNEG6r7vbJe92mESzWqEpXgRsLxCGkLfM8to7knugUnncNfMP9XQYeMRk4tgBWYW8bPxoD14FQEd4fsqHW"
  ],
- "runs": 173,
- "transactions_read": 833,
- "checked_at": "2026-11-08T20:31:09+00:00",
+ "runs": 174,
+ "transactions_read": 835,
+ "checked_at": "2026-11-09T00:56:41+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 2,
-  "settlements": 0
+  "settlements": 2
  }
 }
