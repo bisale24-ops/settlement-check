@@ -1,487 +1,552 @@
 {
  "settlements": [
   {
-   "signature": "243AA4hGWB6XUKYbA4MTYp4YuQjBLKeAxBmcP9nKGSVBDL5CNf2BoEEjKcT7ENHWPx2BFYG3UYgRFp1KG8F61SKU",
+   "signature": "4jSBmqvhQBQr1bDnphbJRab6dVf391ANtPFuyxMnEJzCP5pocANc93Q3mUARdNe5vrDAUbThKKiDDsd7CUceeiTo",
    "instructions": [
     "ResolveEventUsdc"
    ],
-   "market": "HBj19UJxGCmNmSvcHSvf427wJpf3rriCfcz1VoQMeozD",
+   "market": "89wXZbH7b5JXbfpWAujggNhvGWjtvrSXnbFt8Z2QS5Ec",
    "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
+   "claimed": "world-stocks-yahoo-finance",
    "claims_uma": true,
-   "block_time": 1794436290,
+   "block_time": 1794452427,
    "signer_is_the_known_key": true
   },
   {
-   "signature": "4GyffL22TDteP2SmK3a9z9s8cyAc1bE5HsiwTHuRn3YZXdjg9oC98idiFfP6hcgH7Zyz82AcAmD5ynPNDNc9YnUP",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "DiqKCHXoswzzvCZunDDVbMMFLYWcgjfbEd9tkc8acs4z",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794436270,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4CsLJsackaPc1MbqXpDpQYYinC4JpsAFHbQsfaJ6xvCKbGmNweHbLDcCFCBrDBw7ygpKPYoR5g7H4udAKFkAp5F9",
+   "signature": "3YMPsX9s6A62QAFsw6ToZL5owyPjcs54Dg6YpWNGHdM2YUQ1rX2BAK6fpz6ts7mVUYVeDJk2aJcHuSicqHxBDkAR",
    "instructions": [
     "SubmitOracleResultUsdc"
+   ],
+   "market": "89wXZbH7b5JXbfpWAujggNhvGWjtvrSXnbFt8Z2QS5Ec",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-stocks-yahoo-finance",
+   "claims_uma": true,
+   "block_time": 1794448826,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "613x3hCcPEL4kppF8QkExQJ7n6KM51YZPMk4KFmKr5Ge2Acsn4J4SBgGeVEGgvMatLpsgojjJJXK36diNoU35BTX",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "7qGFThXcNRycmhE9XVt3RFsYLDpiJkTYPKpaiy3gTmTM",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794447557,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "4StffizHRbgUsLzenQb9Gh1yuy8ZvK7KLnbsPq44M1rWrqJgNvcdDE8GyEDSqAwuvrzBknhZvCLcU8j2ZNDp7vEA",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "EzRwzC2WMyw7v9AhKYQp1hrdvY18ngHGgoDmdp17x5j6",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794447556,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "59uTNftfj9C59dZRNcV9t3LeKioBpoBxoefr5nsjTpZrsZompoLsakC2RSkd1fu41iDjYVUG1ZWFbrnCBGRyfHxh",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "9oh3DkQUrtz27xrtshehhBQB7RmUp7sFQM1TsfALCUjV",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794447385,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5SLEVaHeMN73Vk4DpqNa7e66aaK2FbJd3689b6NhRYxRR6ueRqsPgbvhg2vN8U5CKzdPPYVd6foqZmT3pZ4hbfLs",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "8s5SvTkFKfdpyHRbSFo37NeM96tJqcLwC5CLZM9pLyzb",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794447275,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "49BCURfbk6JPEPpisf9U4LLy9xcv44AWfN1s55HBWRCQCvmoYu89WpvXRNNzL14fhs8Ztw6hz5cWkm6PNDLYsQap",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "3UZX1JBsrgBzxeV56e362jSuNGw4mm8cxwwQyq581JRi",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794446981,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "HdLGBweZ7jrdMniDTTuuQfAb2zGYs287ZkD3FvnpxQ2VGEQ1RPeAomfMgCRE1eBTVnXCCytAjXgCxtjfx9H5KPY",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "6ymJvD9ydvb2cgCqoeJEzgJJm5y2AMsGqADVt6xtXJWU",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794446951,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "587zqk14j5wzeRrqEzouFmejuKZzPUGjvLL7w4AoQY5vUh8sM4gJaPd278b9NqeffBm75nSTgUs1PTb6tHyVyBxf",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "Cqvye7NNjBnbgJ3SxuBXAJdkM4kZ22YzsQm9Q5Cr51UD",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794446941,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "2g3kZzY8zRQ3zzd3AS3mbbk2bdrPWvb42BRKhgh8eqR78hYmT4xNk1gmGuo6eQYuEGGky8DwKRejLtxWGPAnJRt4",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "F8RwMkqWAJexAPArkFo6gu9k1AvBtCkvJ4zsgYyYhEvF",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794446938,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "3HYBLxaFf5tYTgZnZHAA8YCVVET8upjbuto2o8TujtZc9xEULPXVLX3qHbQfmF9zhMbNeXGPqDopdhhyk8Zz7W1r",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "HSH3u4rZ6q36m8rvoovKLvQ9WANyGsjRh5rrYgRwwkGd",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794446928,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "2ztMVN7Ftk8DH3eVTUCtQ1d6XC3sXRv8Sdo5Regbe4VFbtKePwnFTqoxcTogxrSixaw2CSMksogU2mK8YkxWE5mB",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "2mUCsEbxZVmHFFHcvhEApQEsGsepM78qyjdnwUydjHdN",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794444050,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "4YyrH5P7Da72JSpUJ8WLcj9FQDNBjidHeEaJYgHE1tE42unmvUWHPBBhES69s2rEWP9iao41bx3vWafz6cEq7Goi",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "DKriAj81deaDkXQ2fCx5mTShkiB9CbvuR4ukHSQri6bK",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794444012,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "3ADbLVUJiLefgmQ2FLD1d1xjTud7wBbTvHUkjhhCdX2skpPPHCzmkHbsCcQc4R2BR47JqaZUWcsrGoxJy9CDGGun",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "7qGFThXcNRycmhE9XVt3RFsYLDpiJkTYPKpaiy3gTmTM",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443957,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5Anq1Jrzw3zBC3CagB2vqpCpAHKi2fhdrzeMd42Shj1tcg3HKRvYmUPDpn2tz8TfcH9xCbq4V6S2RDGqQcteDztc",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "EzRwzC2WMyw7v9AhKYQp1hrdvY18ngHGgoDmdp17x5j6",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443954,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "JsvkcoG4hrr1wpY3aLMvK326KrJ72AcWRzoQySb9oEedqshAY6TkjfBCdqAvypikxs1GDrCtFz7iX4fH84LnPci",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "9oh3DkQUrtz27xrtshehhBQB7RmUp7sFQM1TsfALCUjV",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443779,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "3sMwWxPZSrfTfKMdD7Pd2CME1bCBF9hKTKsqYvaZgvQm4zcCYVzqYphkQ6f9wa62GdeYjCEKurgmdgPVwR5MQn2c",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "CnqyPxguP8zqUnAeYd7jHbvnveYfmF4MgQ7UWoi7vS35",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794443765,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "32LXJkbzhcF1aaHRiw6BQ6FcFbyD8kgYdFtEdVRpVNJQqyGwkCWPD9PQzApgwA7BvDG1kxYXMEqmYGy4ddHZiWCJ",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "XLaKFVgjMyiy8aiC27KpS4T7F7uJEtFdKKbSJrYrvwD",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794443701,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "3d8oUtVaiej8fYts8fEM4hd5gNwRuQ6xhchJ83d2f3PfLfCCfWUq3UDdkziB2Uv7UphbzwuSQJhsQtZiDisSDkqg",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "8TnHMzMDsHi5fw9NKmkFHMe3Ec77nmjWn5h4k2WsY5eo",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794443677,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "bpLSLSUhmqpgMek1ggis4WpN7zHpFCT2aV4nLCWbxXnAeVhQhVeziF89qGbio7fAcfR4S4f2Ydg9LXQLcao63dF",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "8s5SvTkFKfdpyHRbSFo37NeM96tJqcLwC5CLZM9pLyzb",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794443674,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "ubDharRigJHyAkYN15dh3UMTpD7K4hxq5BcyAX7i12CyVyzsS9orczxWdnXbW5mGrCg1CGuEVpcGbShDiVTpu9t",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "CCP8sq8EDeBT6upM12mHTEy76r6PzuqgiN2T88sE79qR",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794443442,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "22gdzNR47XxqZRPdgtad26Fkh3KB9y5LiLrDCgGU4xpfzDWtXoLpNwBFik6bx58FSPTBgFixtK95Nh7p8tvCaqzd",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "CHr3QkCZTzK9a3nu9waLrepNdocYQQgG8uzTmcUQyunF",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-stocks-spglobal",
+   "claims_uma": true,
+   "block_time": 1794443420,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "2cenyaPcTV2vWdRtugnjXVgdH6BxqqpWHDN9B51PmXpDCt5JzPfB31qngBzXZhQT1ronMZAddCLVgHZwMNw7rVqn",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "3UZX1JBsrgBzxeV56e362jSuNGw4mm8cxwwQyq581JRi",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443419,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5u25FBAD54RAyQLdVbSYiVKzEGETHs1FAWHsbFudC8Sbve11TbLNaHAZKHSKNbNXuunyKcGRYz5Lk58ggwb4KCFB",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "AykS3Zhjf9rb7r3JSSkELp9pZ1CtyX7eoUek9XRYu3km",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794443381,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "3nDBFNuwabHgZ9EWEsU54onSfu2HjQG5cFWN5QPzqCQ8GvcArhGyqcQEUAUbxrJSFJHgfv3WhEdkZ8PL8gWFZo6j",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "Cqvye7NNjBnbgJ3SxuBXAJdkM4kZ22YzsQm9Q5Cr51UD",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443379,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "fxuuWDusPdmKbs1pVcpASJqD8wQNFkm5jjyyEfFL4tFpvPPDLbzhLMcYnJqRvbJCakCR1DWFEmGqPs2S317CBGd",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "4PE46uVYewvhXuufTSXUSEAtcyEh5126jhRczE54LL4Z",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794443355,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "2QzDQWeL22LXNT4GxJ6UpSs6saif7WfdSyoKgiZc4KiQLmtvgUkdXR55QQ72sbo5g2gdiHbDkEYKkXZjNL7DB1fR",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "6ymJvD9ydvb2cgCqoeJEzgJJm5y2AMsGqADVt6xtXJWU",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794443350,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5Pqd4hQ7Z9t3edBML4tQC9Nd76dKxL6W3ZEo7iR9cDHNR9Hq1TXKUKVqwkRc9TveWSMqi2eTdbEvHJyu5injH9iT",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "F8RwMkqWAJexAPArkFo6gu9k1AvBtCkvJ4zsgYyYhEvF",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794443337,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5jBWpnKcZhvVHGMNdcvKmr8eUsA7sXBPB34KkoJnnD7kRgLuXNwVheDdHpD3MaxsNZeZJwA7yP2Zp87NGGjYu7on",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "HSH3u4rZ6q36m8rvoovKLvQ9WANyGsjRh5rrYgRwwkGd",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinmarketcap",
+   "claims_uma": true,
+   "block_time": 1794443327,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "7M1xLmkFrXZm2M9PoG52hUC1zkAWuT26uUso3SuVrukvFCtLUdCgZdmnkT5QPKUoBYpLtS78cbsekMCZqvukMcm",
+   "instructions": [
+    "ResolveEventUsdc"
+   ],
+   "market": "7jaqTHJcEAEGVfEBQi4MEyXCScB5cewPSg2yuHFSPzGk",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794441193,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5JcvUikTsfyHV1dpB6tDRDzW4PXLtB77gXZ9SFHJtzyaAsmRAPK2LnJVbhGnwpJquvCSnkcpnXRk9p9c4cZDcSzW",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "2mUCsEbxZVmHFFHcvhEApQEsGsepM78qyjdnwUydjHdN",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794440449,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "4W2AJADXahQ9hGetHkaBRGsp5TVDgZY1w7KjQ5LDj8io6Y5iVnYHRdsctHZsidW5y736rLRz1fzf74QbG2AsFa8Y",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "DKriAj81deaDkXQ2fCx5mTShkiB9CbvuR4ukHSQri6bK",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794440410,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "22RVEYLrjrEtqTE5J8GtayifBMfo49RU3TM4ULQtpdeP7EmwUn3hsDu5FvN5JLEvB61GmT9njkbxmwhyKYRyWAqP",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "CnqyPxguP8zqUnAeYd7jHbvnveYfmF4MgQ7UWoi7vS35",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794440165,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5FJnchDiGSdw57ekxPzAKWGS6BtFFoSxdMvwVpSeMxzeSAQqRaqhKDKChukevxZBUhwTQ7Wks429gXYEcvkN3xA3",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "XLaKFVgjMyiy8aiC27KpS4T7F7uJEtFdKKbSJrYrvwD",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794440100,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "uGy8deiG3qrMSkQkWTaJNRaRgYsVcvjYWu6FW9gR2AV415a9jFqqxYuKtPmvaoHvSbD6YV3yXFptSFV1dT9V19U",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "8TnHMzMDsHi5fw9NKmkFHMe3Ec77nmjWn5h4k2WsY5eo",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794440075,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "5bWfdgEMmv51DfbkBQ5WFMvZnw44ES3uq3FEr9VWfQbQq3YqiHdUGGJzkMrdFHjvMaucwukdHsWaH77RjXVXhqYY",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "CCP8sq8EDeBT6upM12mHTEy76r6PzuqgiN2T88sE79qR",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-finance-reuters",
+   "claims_uma": true,
+   "block_time": 1794439841,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "63yQaHMhPX29K6VeRZ5hgdEz85HiGjhdadLBKZrww5iwWFPnvU4cVjJDsyvxvk7XpV3FnYJpkoJZU2oCnpxzYymo",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "CHr3QkCZTzK9a3nu9waLrepNdocYQQgG8uzTmcUQyunF",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-stocks-spglobal",
+   "claims_uma": true,
+   "block_time": 1794439818,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "4HqLvMBSqdEQ7tbFLgSQUqXJ1eY4rnUFALEkjeR3tmtigJ75gRryzb9De2HnbptVfkJuz7uNH8EMqVb7bRbsL2j3",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "AykS3Zhjf9rb7r3JSSkELp9pZ1CtyX7eoUek9XRYu3km",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-crypto-coinbase",
+   "claims_uma": true,
+   "block_time": 1794439811,
+   "signer_is_the_known_key": true
+  },
+  {
+   "signature": "BQbEnHY9nait51MLCwptv3r1oqURktSr42YKCF2XPFzEMCfSHjoMWqAiiAkr3rzzA9R5uh2224VXacgTUrKmYrw",
+   "instructions": [
+    "ResolveEventUsdc"
    ],
    "market": "3cdc6YcQTLh2dFFtSH2Q2wVupY6gEAScE6oqTnNYvgwe",
    "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
    "claimed": "world-crypto-coinbase",
    "claims_uma": true,
-   "block_time": 1794436165,
+   "block_time": 1794439766,
    "signer_is_the_known_key": true
   },
   {
-   "signature": "f6M1QVnuQjLjBmckKpBpqoCdbVq4wMhQHUqYUToPqB8XxVKpsycc2rE9km1SmSLBtDxuRCqC8CEEFsG1okCMFNb",
+   "signature": "2CRpmJ4JhukS9dbYmWjYxynvEJdo6T54nMpo9oeUYrmSQ86smRNB8i618WhrqhwN6Ae2aPWfNsW7uUTBG9PvXgdd",
    "instructions": [
     "SubmitOracleResultUsdc"
    ],
-   "market": "Eg13s5UtrNLdQeJKPTgnMfgmPZKbmcjU6APgbNUhWjNN",
+   "market": "4PE46uVYewvhXuufTSXUSEAtcyEh5126jhRczE54LL4Z",
    "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
    "claimed": "world-crypto-coinbase",
    "claims_uma": true,
-   "block_time": 1794435286,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5EFtrnD1BZrhJGHBvLVzrLzGhs9Cuox7JydQFSsechBixNPpDbU3L1BHK6pNHuJJZYzaQVe8W5cAQDokn4MTFxDB",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "5fpiKEDC5uhmuXypHwEZRXLhegxCvhpigXsCLxMnzX6H",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794434852,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "ARDdrveNPy52VETP2qszEJh3KtT6sUNUxoFEqL6zTNNMcRG1nGHNBpDAqfziD1A5yoozhMBd4VkeiUFt6bHWG2j",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "4x3ESkZFqeSnsdkrAFQaVNjEsivYSqcFa91TnPC4axup",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794433960,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5wJhUbCcTeGPJyxDTB9X7MQUAtgoBtsPjLR39x2aQ6NrD5Nb4WZtm74qKVDy8VtDULbgVBwjRGjPqGJeLnhtatbG",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "HBj19UJxGCmNmSvcHSvf427wJpf3rriCfcz1VoQMeozD",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794432720,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3CYiMSYwJgoya1NYfrUrUJr8Sg1cQwoDPjWeTvBH3oGXt38Dqwt3hGR3Kf8hwHPFebhASoADKMt75NFcWZ84tnHG",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "DiqKCHXoswzzvCZunDDVbMMFLYWcgjfbEd9tkc8acs4z",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794432700,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3EzQRR5TYPedzwDPrToviUGrn4Kh5E92thoMCmUPQ4KFCFNFJvw3wobMW1JLDMJRB3nmuH8AA69ZWKg98yg9ppyA",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "j2g9dTrR4MDMNCrK4zCT5paTTjMBvRi4cEEkjRbJfJ8",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794432020,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2S1AhG8V2UFLzYWHwR7HwAbSDPbsqckMaqNwz9pkxoezDkquj3jVbJtpRaa1sX4SCwXbCBnarRgneyb1DwbxaxcD",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "5fpiKEDC5uhmuXypHwEZRXLhegxCvhpigXsCLxMnzX6H",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794431251,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2TZLqaTmifDdNL5LcyUrjtG6X3JeUARBbrhb6d2oHkvTqRe3ipKKsdm76W3ucXJqoP5g9uGpvkVkYXxg8SGP8Tfr",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "4x3ESkZFqeSnsdkrAFQaVNjEsivYSqcFa91TnPC4axup",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794430359,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3KLq8XbyPf43iRFYhA8groK7iuqS7tMz7Pa8oGvfwCHMQEQs2gvuWG8T76cDu2FRp5Nksqbx1NGy8cbJV15CUmZw",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "FWW39yWGt6o4mv3Yd5nJhBYum5g76KWW1VQ9shEYT1b4",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794429696,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "jtyzzYmagXnZU9vR8ts1HaoYCabEGxYmbESZEhrQwJMUUDEnCg5MKLwzgocaeE2wLbXdwTcbkDmvP7C4ktBr6bu",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "j2g9dTrR4MDMNCrK4zCT5paTTjMBvRi4cEEkjRbJfJ8",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794428419,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3s6eyHmwHF4KCWv44UxQhcUq2Hg8GPo6RL7EzLGESWEaaia62esHZSMRV8eZoD71kYxEEqU4ZoCxixsv6CTrsPxQ",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "ZCyqxa91zwxF1G6tSnuvvBzKgv6fsJPVAE8svjPYcv6",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794426269,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "61ooAuiKtantn37br6jAQtfqTpriQT2NLhFGszcYpFmMGLZC7JcPbn6eSH7ybFbX9b2HsJtFGdHUVRoXYsPknfvt",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "FWW39yWGt6o4mv3Yd5nJhBYum5g76KWW1VQ9shEYT1b4",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794426095,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2KLKj9YJQmkw7NSrTJW27Mvn7ABvutyKrdBM4Dc9xxiRbyUA4gSxSf19o7BuXR5RPLg3zhXxZMYaZWyDj69XwifS",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "ZCyqxa91zwxF1G6tSnuvvBzKgv6fsJPVAE8svjPYcv6",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794422668,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2vqTt4FQavRMybuXZLNorAQusNHsQ8YK3LHRgqbAbXrgTTH8zwkHAphZ2BJsG2yN6CcvzM97KoY4eoRJd9sdPDny",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "79HYVPdUst36gU3LQHrNoVwQC4irBf9qLebYgpA7A86r",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinmarketcap",
-   "claims_uma": true,
-   "block_time": 1794422612,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "7DEoXQ7uzFCqLP2F8vgmUSk11xXXckaXszohfKDgv6n1XvFDGbKteoMvy7eeuhsHN8mDRTrqgSmEG2dMnUSjVHt",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "HmqaZj1av18hLBeHKhKRVU7SQnddGv8rx7q2ZDoDHXHv",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794421664,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4TDy6vZBtQUbDKhkar6YLW8caffRjJaqkZPqdQhWGRqNbWcsL83tNqR6AcZmEq2CU1U4JcRAf29ZXURxPPn7UrJJ",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "8mKgBXtnYNLQtvUD8LsyxKNDLDFre8mY8j4qDwPGw4T9",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794420563,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3Y2koUny8jgpBL9joqcwXwdQYjFChNyZGtViyitue5DVajZoEJ5RDcDPe51mSkHHLhAFf4CZGjWujMDxi6yAcjV4",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "79HYVPdUst36gU3LQHrNoVwQC4irBf9qLebYgpA7A86r",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinmarketcap",
-   "claims_uma": true,
-   "block_time": 1794419011,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2A7hooU8pMSJKQkJgJtSatjHuiFjjgKjcSZoSPxvHooSGLPU6ib15qNC1P7mjZRMXyGGg6kjtyoAFWkU9aXRBGDk",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "CAi8saobMpPgYpNMnb3tD484rHmjJk6oiHnFvYhnYwDR",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794418702,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "46kuo8foHhx9w8AgB2PdYnQ2FX8pNEJx2jD7nAHuLgD3qpmWBDf2dsU5A4BaUGpUpM6y8s7m1aYSph4kDiLyymo8",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "HmqaZj1av18hLBeHKhKRVU7SQnddGv8rx7q2ZDoDHXHv",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794418063,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "vrKiEsS1WuiiUAaamvhqFQwm2Hdb4CzrmChZSHWrGAWENhNYSfZDRZjHNh5kbyKNikQYUTaZgNQiGgyurdHEj6q",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "8mKgBXtnYNLQtvUD8LsyxKNDLDFre8mY8j4qDwPGw4T9",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794416962,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4RxKGRMW8pFGAKqk6NJDuyXwgc9E8Bc4ES7pqhdHPeex1mDUnt8xDKPhDgsFv2JETQoLz9YCkGwavsXuaN25F6oU",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "CAi8saobMpPgYpNMnb3tD484rHmjJk6oiHnFvYhnYwDR",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coinbase",
-   "claims_uma": true,
-   "block_time": 1794415140,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5EdTs9raKFf7J2HwzsvFwR4D6R7LV6tE2Mp6qE8u6gTZFstDh5mg9MztF1CeRm2fbxnG8jW66zFMDm8CemHTigqb",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "6WMwNLEV1UuU6dw2Cn5PqE9tT5fP1hRcKc76ruk94MBs",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1794182375,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5D7DZ1RyCJRzjSwT7PWZKpTdUrkmp3YX5AmewmEVTPgUmNYb8yq9XKHrLzyHrPU3rC5HdikUNFYUZ6cFSF333wbE",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "6WMwNLEV1UuU6dw2Cn5PqE9tT5fP1hRcKc76ruk94MBs",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1794178774,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "3zSbT6joNSnmE9J9YyRMm5LMXeGz6f2moJyy7fDcvfkENHzFiiQCA4Vm4oHcMLfnL2J93Qczcm14LQYRiSiDsmbx",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "6nVpCoyVGK87utDC2MhbFKrSDZt2QHB2hzVXN9qzpL96",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-politics-ap",
-   "claims_uma": true,
-   "block_time": 1793942985,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "6geuHXr9jCyi5gJ11ucgDo8WiBESfDUAZoucystMgSytFbVU2sawmCDThww1vgoW2oR6AZ1C9uRRHtYPB4zkXmk",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "5Z2aDkQbThXTBy5KGujK49cb3tEpiF6S6FSLF1gSwqWa",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-politics-ap",
-   "claims_uma": true,
-   "block_time": 1793942958,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4n5jeFm93bWudHqAhDZfMEctcfPj6ELD359QknGvgQHsUCmpvbmi6n9oQHi8DfoH6ogGi3AHLjSGs3NUJzrECDVQ",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "6nVpCoyVGK87utDC2MhbFKrSDZt2QHB2hzVXN9qzpL96",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-politics-ap",
-   "claims_uma": true,
-   "block_time": 1793939384,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2nsqmahfEEwq84Na7zGn1b2KPvTKnhq9XjmD7xQU4HRt53XkeXZFQQkuk3eaVftViK7z7BkZ582P1aVZDJKewsHg",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "5Z2aDkQbThXTBy5KGujK49cb3tEpiF6S6FSLF1gSwqWa",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-politics-ap",
-   "claims_uma": true,
-   "block_time": 1793939357,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4m4sU5pnuqfitHHkA6Y12A6Zbv1KimbUZqsSyjD5afd2sjQBBvGVrncfPrZFaJweiUdDkVy2tZ7zKYu69owBFqF7",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "8q2PfN8VMkevSnWpZ3zwXJKHZX18j5LkYzugGxqAr3jJ",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-business-bloomberg",
-   "claims_uma": true,
-   "block_time": 1793665770,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "43zovo5HQT9VseowMfS7hvCvyoyd6TyzkUFVbu3Y3efpE7Aa29qLR2zSVbfWoYSjefYUp2udj5nj7Y9YBHxeNE21",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "8q2PfN8VMkevSnWpZ3zwXJKHZX18j5LkYzugGxqAr3jJ",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-business-bloomberg",
-   "claims_uma": true,
-   "block_time": 1793662169,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4r7iFqGGxfypv53kCny3xS7uvXundWHmjkVyje4y4wmiHZg9kYKyzvygLoQ9TATDgRpyt2b6BeEym7JKoCYsrfu7",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "GKyoMX3pMAEVrbGgEzDvuUkL3XokoHhG4YTJWRtGL2Mb",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coingecko",
-   "claims_uma": true,
-   "block_time": 1793582971,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "7Zd8wLj8wCNi3i5aA3pD8w8YoozYeuzRejxr3MLPvZ284VDM4AkDS8TqkoEMkJD4NB5c19UoYtfkdiNnuz21a6H",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "GKyoMX3pMAEVrbGgEzDvuUkL3XokoHhG4YTJWRtGL2Mb",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coingecko",
-   "claims_uma": true,
-   "block_time": 1793579370,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5H2gLDuMtp2KRhdJ9snsHMym4rZcqaybjwBmUKJKe594FQ3vRDTF4ipWKVDiAN9hpTxnbDwt5tg9K6EYdLt2Wbgt",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "3duKpWCngAaPPjr38e9YV493SoZxSr3Az8cYVb9a6iUa",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1793563170,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5WtRhSGwx9WUk5WTZ8uLqeLPCFaM7AMfXtXYKeZWPVLMqNHqkcyKmhR7HihATnVSMv9cRJ9t34EsBVKY7kkKd3Qk",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "3duKpWCngAaPPjr38e9YV493SoZxSr3Az8cYVb9a6iUa",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-sports-fifa",
-   "claims_uma": true,
-   "block_time": 1793559568,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "4pfTrFEdG5GuCzvRYZk3rzApphusCtAYPa8NUL5sEzdQ6E3c8zLXyVr2m3eZavTRXYJo45bVgAio7VjqcMGfsSGL",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "8YNpw2JRotERjSg7wRcEdCJUqHFDMhZ2PnEiRCoLE75A",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-ngx",
-   "claims_uma": true,
-   "block_time": 1793492971,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5iMxLoFJN4yEEJ2oqJxUQ4FNu2vG18YnruoDhtKciHXDJ6Gy8LjwobTBLVGazmoEzLMV4iwNiTWddHToCg9evFdM",
-   "instructions": [
-    "ResolveEventUsdc"
-   ],
-   "market": "57ZkArg418RjpLPZsdrei1sWUxZ4VgQwJzn6vYPutWLy",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-ngx",
-   "claims_uma": true,
-   "block_time": 1793492924,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "5XBsG1W1ngMD8qorabDUYEqCUigu4HBspFb7jW1TpKk8tussgHJDXMphPfucknKvXnoX42G62dgMVe84VRv3HLGs",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "8YNpw2JRotERjSg7wRcEdCJUqHFDMhZ2PnEiRCoLE75A",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-ngx",
-   "claims_uma": true,
-   "block_time": 1793489370,
-   "signer_is_the_known_key": true
-  },
-  {
-   "signature": "uPoDENFESwRRkuYYKE4oLPN8JVqXjwhiu9WkDdUwQpHwfgM5Vc3rPhwxjNyxhPFHMM7AVVZEBxXE4dSvPdzxLpN",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "57ZkArg418RjpLPZsdrei1sWUxZ4VgQwJzn6vYPutWLy",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-stocks-ngx",
-   "claims_uma": true,
-   "block_time": 1793489323,
+   "block_time": 1794439754,
    "signer_is_the_known_key": true
   }
  ],
  "seen": [
+  "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",
@@ -544,84 +609,14 @@
   "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",
-  "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"
+  "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"
  ],
- "runs": 183,
- "transactions_read": 1113,
- "checked_at": "2026-11-11T22:43:29+00:00",
+ "runs": 184,
+ "transactions_read": 1178,
+ "checked_at": "2026-11-12T03:50:38+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 133,
-  "settlements": 24
+  "transactions": 65,
+  "settlements": 42
  }
 }
