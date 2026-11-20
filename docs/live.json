@@ -1,6 +1,18 @@
 {
  "settlements": [
   {
+   "signature": "5Wq4YfrfPoGHAKJXwNmXbYNiAn71Jh8ZxUCDbnph66v9XptyypSbFrGaUHMEem7kMBz5EJx2VSFCdQmpCynkUYAU",
+   "instructions": [
+    "SubmitOracleResultUsdc"
+   ],
+   "market": "GXh9iztJTm5v6qDWnR4YcKHbSc3AUZ2VEMGfKEegd92V",
+   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
+   "claimed": "world-gaming-ign,world-gaming-polygon,world-entertainment-variety",
+   "claims_uma": true,
+   "block_time": 1795206579,
+   "signer_is_the_known_key": true
+  },
+  {
    "signature": "4NNRqsbLcdoc7SMCHbvNP35mNUH4F3PSznD7L3XqZsJUB2Aj3rPk3e3mzWJythNXFAnRZU5U3v3JJFfFNVcdogr",
    "instructions": [
     "ResolveEventUsdc"
@@ -467,29 +479,18 @@
    "claims_uma": true,
    "block_time": 1794479837,
    "signer_is_the_known_key": true
-  },
-  {
-   "signature": "2q6BvSL83zq5yobMN51dj3PJwTyf3bEfes1JGtXq726yksE3fVhiy2kcneR7C8BzCTj8xvD3MffKZTEmfzarYism",
-   "instructions": [
-    "SubmitOracleResultUsdc"
-   ],
-   "market": "7Jsci24abKn5ZfM47BzjEysMpH4oQXyuBaEs4TpB831L",
-   "signer": "664h8sZvGwUx4hfqWYrewwvC7wenbKPTCFQTKZx5ghbR",
-   "claimed": "world-crypto-coingecko",
-   "claims_uma": true,
-   "block_time": 1794479398,
-   "signer_is_the_known_key": true
   }
  ],
  "seen": [
-  "31nSKQqaGy3saLs4e8aCnvGUgNWWwRAutaJqjQxcaWB23os8oFMVup8nC2vN9H2XQqFDEDVZnqgLHQfHaj3ZxcdV"
+  "5Wq4YfrfPoGHAKJXwNmXbYNiAn71Jh8ZxUCDbnph66v9XptyypSbFrGaUHMEem7kMBz5EJx2VSFCdQmpCynkUYAU",
+  "w7F6NxQTGEy3NBTG7B1ifMLkbjqPMWXvy4EcT6R29RauCcixNGLAszJBZGpXCCnLJBbBh3Wum3a9Kkd1sUd5AaH"
  ],
- "runs": 212,
- "transactions_read": 1464,
- "checked_at": "2026-11-20T12:59:00+00:00",
+ "runs": 213,
+ "transactions_read": 1466,
+ "checked_at": "2026-11-20T21:11:02+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 1,
-  "settlements": 0
+  "transactions": 2,
+  "settlements": 1
  }
 }
