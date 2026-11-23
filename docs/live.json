@@ -482,17 +482,15 @@
   }
  ],
  "seen": [
-  "4T8DYrzrjbh21jRjBc2mm5etNEufKjQWNb1pV6E3YZSf9Pskx5A9QDSy7jf96KMKoJqeov8zR7UpTN2c7fqdainh",
-  "41PjK6BYmJp2wv7AfCQbz4SnRQ4D4JNHWgdRWnhGeJnSpFcQTo3rjA2irjXaRXoLVH9jsbyQ7ynVWDDEmqm1w5oU",
-  "2CvTjwg68XQwH2bb2c5gBo2mLpq4ai7we16iBeB5rHbAzBAC13HYrA7VaMvw2vNy3XGsHEktyDz2RovQmyiRJFBC",
-  "3xxqmw51wZJKXWuWHJKCJqux48iQ8BuR2gAqVgt2jtraozU6SJVgEp7xMQq9pcmytwW47QoJix741Q7DCwK9mgTC"
+  "4Tekkt8T8HhPH3TT4WTyRZpW2RcDeeeMcfM4oqhVsFMWZbE8dSEFhLrf6UgfR1PoN8qd9VXJAapTNdHdG7EVk3KQ",
+  "2eAmhFXdoU4A7oi4fBADSgu87zbr29mH4qbfeXLyaMbH5szweXGi6yVV8EqdxiPVzGPfxDsuaqr2Q1dSjtC7ehor"
  ],
- "runs": 221,
- "transactions_read": 1498,
- "checked_at": "2026-11-23T02:50:27+00:00",
+ "runs": 222,
+ "transactions_read": 1500,
+ "checked_at": "2026-11-23T12:56:32+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 2,
-  "settlements": 2
+  "settlements": 0
  }
 }
