@@ -482,9 +482,9 @@
   }
  ],
  "seen": [],
- "runs": 224,
+ "runs": 225,
  "transactions_read": 1501,
- "checked_at": "2026-11-24T10:59:47+00:00",
+ "checked_at": "2026-11-24T21:16:49+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
   "transactions": 0,
