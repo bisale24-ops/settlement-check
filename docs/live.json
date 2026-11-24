@@ -482,15 +482,14 @@
   }
  ],
  "seen": [
-  "4Tekkt8T8HhPH3TT4WTyRZpW2RcDeeeMcfM4oqhVsFMWZbE8dSEFhLrf6UgfR1PoN8qd9VXJAapTNdHdG7EVk3KQ",
-  "2eAmhFXdoU4A7oi4fBADSgu87zbr29mH4qbfeXLyaMbH5szweXGi6yVV8EqdxiPVzGPfxDsuaqr2Q1dSjtC7ehor"
+  "3bnQRmzjuRgF9uX48ZYjDe7TvR68VfgpkGHbdwC1EoYZckTFZQBBmypjSSdqmh76bBptSRamh2FRdQpcK9sDNAR7"
  ],
- "runs": 222,
- "transactions_read": 1500,
- "checked_at": "2026-11-23T12:56:32+00:00",
+ "runs": 223,
+ "transactions_read": 1501,
+ "checked_at": "2026-11-24T00:56:43+00:00",
  "endpoint": "Solami RPC",
  "new_this_run": {
-  "transactions": 2,
+  "transactions": 1,
   "settlements": 0
  }
 }
